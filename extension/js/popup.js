@@ -1,4 +1,4 @@
-// RecarregaAi! 2.3.8
+// RecarregaAi! 2.3.9
 
 import {
   actionHistoryStatuses,
@@ -9,7 +9,8 @@ import {
   mediaKinds,
   normalizeMediaKind,
   pauseReasons,
-  runtimeMessageTypes
+  runtimeMessageTypes,
+  storageKeys
 } from "./modules/shared.js";
 import {
   loadThemePreference
@@ -18,7 +19,11 @@ import {
   clearCacheForOrigins,
   reloadTabIgnoringCache
 } from "./modules/cache.js";
-import { normalizeLanguage } from "./modules/language-dialog.js";
+import {
+  loadLanguagePreference,
+  normalizeLanguage,
+  saveLanguagePreference
+} from "./modules/language-dialog.js";
 import { extendPageTranslations } from "./modules/extended-translations.js";
 import { collectLoadedOrigins } from "./modules/tabs.js";
 
@@ -52,12 +57,10 @@ const popupElements = {
 
 const presetTimerIntervals = [3, 5, 10];
 
-let currentActiveTab = null;
 let automaticResumeNoticeUntil = 0;
+let currentActiveTab = null;
 let lastObservedTimerState = null;
-const activePopupLanguage = normalizeLanguage(
-  localStorage.getItem(popupLanguageStorageKey) || document.documentElement.lang
-);
+let activePopupLanguage = normalizeLanguage(document.documentElement.lang);
 
 const popupTranslations = extendPageTranslations({
   "pt-BR": {
@@ -430,6 +433,33 @@ const applyPopupLanguage = () => {
   setPopupText(".active-timers .popup__label", "otherPagesLabel");
   setPopupText("#active-timers-title", "activeTimerTitle");
   setPopupText("#open-options-button", "settings");
+};
+
+const loadPopupLanguage = async () => {
+  const fallbackLanguage = normalizeLanguage(
+    localStorage.getItem(popupLanguageStorageKey)
+    || document.documentElement.lang
+  );
+
+  try {
+    activePopupLanguage = await loadLanguagePreference({
+      fallbackLanguage
+    });
+  } catch (error) {
+    console.error("Erro ao carregar idioma do popup:", error);
+    activePopupLanguage = fallbackLanguage;
+  }
+
+  localStorage.setItem(popupLanguageStorageKey, activePopupLanguage);
+  applyPopupLanguage();
+
+  try {
+    await saveLanguagePreference({
+      language: activePopupLanguage
+    });
+  } catch (error) {
+    console.error("Erro ao sincronizar idioma do popup:", error);
+  }
 };
 
 const updateStatusMessage = (message, status = "neutral") => {
@@ -1212,14 +1242,38 @@ popupElements.timerIntervalInputs.forEach((timerInput) => {
   timerInput.addEventListener("change", syncCustomTimerInputState);
 });
 
-applyPopupLanguage();
-syncCustomTimerInputState();
-loadExtensionVersion();
-loadTheme().catch((error) => {
-  console.error("Erro ao carregar tema:", error);
+chrome.storage.onChanged.addListener((changes, areaName) => {
+  const languageChange = changes[storageKeys.language];
+
+  if (areaName !== "local" || !languageChange?.newValue) {
+    return;
+  }
+
+  activePopupLanguage = normalizeLanguage(languageChange.newValue);
+  localStorage.setItem(popupLanguageStorageKey, activePopupLanguage);
+  applyPopupLanguage();
+  refreshTimerState({
+    updateStatus: true
+  }).catch((error) => {
+    console.error("Erro ao atualizar idioma do popup:", error);
+  });
 });
-loadTimerState().catch((error) => {
-  console.error("Erro ao carregar estado do timer:", error);
+
+const initializePopup = async () => {
+  await loadPopupLanguage();
+  syncCustomTimerInputState();
+  loadExtensionVersion();
+
+  await loadTheme().catch((error) => {
+    console.error("Erro ao carregar tema:", error);
+  });
+  await loadTimerState().catch((error) => {
+    console.error("Erro ao carregar estado do timer:", error);
+  });
+};
+
+initializePopup().catch((error) => {
+  console.error("Erro ao iniciar popup do RecarregaAi:", error);
 });
 
 setInterval(() => {

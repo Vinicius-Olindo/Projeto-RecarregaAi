@@ -1,4 +1,4 @@
-// RecarregaAi! 2.3.8
+// RecarregaAi! 2.3.9
 
 export const oneSecondInMilliseconds = 1000;
 export const mediaResumeSafetySeconds = 3;
@@ -7,6 +7,7 @@ export const storageKeys = Object.freeze({
   actionHistory: "recarregaAiActionHistory",
   appSettings: "recarregaAiSettings",
   globalPause: "recarregaAiGlobalPause",
+  language: "recarregaAiLanguage",
   lastTimerRun: "recarregaAiLastTimerRun",
   theme: "recarregaAiTheme",
   timerSettingsPrefix: "recarregaAiTimer:",

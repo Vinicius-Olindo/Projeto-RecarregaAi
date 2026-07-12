@@ -1,6 +1,6 @@
 {
   "name": "recarregaai",
-  "version": "2.3.8",
+  "version": "2.3.9",
   "private": true,
   "type": "module",
   "description": "Extensao MV3 para limpar cache e recarregar paginas.",
@@ -10,7 +10,7 @@
     "check:js": "node scripts/check-js.mjs",
     "check:manifest": "node scripts/check-manifest.mjs",
     "lint": "eslint \"extension/js/**/*.js\" \"site/js/**/*.js\" \"scripts/**/*.mjs\" \"tests/**/*.mjs\" \"eslint.config.mjs\" --max-warnings=0",
-    "test": "node --test tests/timer-restoration.test.mjs tests/project-integrity.test.mjs",
+    "test": "node --test tests/timer-restoration.test.mjs tests/project-integrity.test.mjs tests/language-preference.test.mjs",
     "zip": "npm run check && node scripts/package-extension.mjs"
   },
   "devDependencies": {

@@ -1,4 +1,4 @@
-// RecarregaAi! 2.3.8
+// RecarregaAi! 2.3.9
 
 const FEEDBACK_RECIPIENT = "olinbytedigital@gmail.com";
 const FEEDBACK_PAGE_ORIGIN = "https://recarregaai.pages.dev";

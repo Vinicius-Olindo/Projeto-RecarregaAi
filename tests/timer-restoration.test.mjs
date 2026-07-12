@@ -1,4 +1,4 @@
-// RecarregaAi! 2.3.8
+// RecarregaAi! 2.3.9
 
 import assert from "node:assert/strict";
 import test from "node:test";

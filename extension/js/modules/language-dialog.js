@@ -1,4 +1,6 @@
-// RecarregaAi! 2.3.8
+// RecarregaAi! 2.3.9
+
+import { storageKeys } from "./shared.js";
 
 export const defaultLanguage = "pt-BR";
 export const supportedLanguages = [
@@ -17,6 +19,46 @@ const getElement = (selector, root = document) => root.querySelector(selector);
 export const normalizeLanguage = (language) => (
   supportedLanguages.includes(language) ? language : defaultLanguage
 );
+
+export const getChromeLanguageStorage = () => {
+  if (typeof chrome === "undefined" || !chrome.storage?.local) {
+    return null;
+  }
+
+  return chrome.storage.local;
+};
+
+export const loadLanguagePreference = async ({
+  fallbackLanguage = defaultLanguage,
+  storageArea = getChromeLanguageStorage()
+} = {}) => {
+  const normalizedFallback = normalizeLanguage(fallbackLanguage);
+
+  if (!storageArea) {
+    return normalizedFallback;
+  }
+
+  const storedData = await storageArea.get(storageKeys.language);
+
+  return normalizeLanguage(
+    storedData[storageKeys.language] || normalizedFallback
+  );
+};
+
+export const saveLanguagePreference = async ({
+  language,
+  storageArea = getChromeLanguageStorage()
+}) => {
+  const nextLanguage = normalizeLanguage(language);
+
+  if (storageArea) {
+    await storageArea.set({
+      [storageKeys.language]: nextLanguage
+    });
+  }
+
+  return nextLanguage;
+};
 
 export const initLanguageDialog = ({
   closeSelector = "#close-language-button",
