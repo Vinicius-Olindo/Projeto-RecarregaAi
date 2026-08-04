@@ -24,7 +24,7 @@ import {
   normalizeLanguage,
   saveLanguagePreference
 } from "./modules/language-dialog.js";
-import { extendPageTranslations } from "./modules/extended-translations.js";
+import { loadPageI18n } from "./modules/i18n.js";
 import { collectLoadedOrigins } from "./modules/tabs.js";
 
 const popupLanguageStorageKey = "recarregaAiPageLanguage";
@@ -62,314 +62,11 @@ let currentActiveTab = null;
 let lastObservedTimerState = null;
 let activePopupLanguage = normalizeLanguage(document.documentElement.lang);
 
-const popupTranslations = extendPageTranslations({
-  "pt-BR": {
-    activeCountPlural: "{count} páginas",
-    activeCountSingular: "1 página",
-    activePageOffStatus: "{count} atualizando. Esta página ainda está desligada.",
-    activeStatus: "Atualização ligada nesta página: a cada {interval}.",
-    activeTimerTitle: "Atualizações em andamento",
-    activatingTimer: "Ativando...",
-    audioCountdown: "Áudio",
-    audioPausedStatus:
-      "Áudio em reprodução. A atualização pausou e será retomada quando o áudio parar.",
-    audioPauseDetail:
-      "Retoma automaticamente quando o áudio terminar ou for pausado.",
-    audioPauseTitle: "Pausado por áudio",
-    autoLabel: "Automático",
-    automaticResumeStatus:
-      "Atividade encerrada. A atualização foi retomada.",
-    chooseTime: "Escolha um tempo para começar.",
-    chooseTimeBelow: "Escolha um tempo abaixo para começar.",
-    cleaningPage: "Limpando dados antigos desta página...",
-    cleanupError: "Não consegui limpar esta página agora.",
-    cleanupSuccess: "Página limpa e atualizada.",
-    countdownBadge: "min:seg",
-    currentButton: "Atual",
-    currentPageLabel: "Página atual",
-    customIntervalOption: "Outro tempo",
-    customTimerLabel: "Outro tempo em minutos",
-    defaultStartButton: "Ligar atualização",
-    intervalLegend: "Escolha de quanto em quanto tempo a página será atualizada",
-    invalidInterval: "Informe pelo menos 1 minuto.",
-    loadingCleanup: "Limpando...",
-    manualHint: "Limpa dados antigos e atualiza esta página uma vez.",
-    manualLabel: "Manual",
-    mediaCountdown: "Mídia",
-    mediaPausedStatus:
-      "Mídia em uso. A atualização pausou e será retomada quando a atividade terminar.",
-    mediaPauseDetail:
-      "Retoma automaticamente quando a atividade de mídia terminar.",
-    mediaPauseTitle: "Pausado por mídia",
-    minutePlural: "{count} minutos",
-    minuteShort: "min",
-    minuteSingular: "1 minuto",
-    noActiveStatus: "Nenhuma página atualizando sozinha agora.",
-    openButton: "Abrir",
-    openControlledPage: "Abrir página",
-    openControlledPageError: "Não consegui abrir essa página.",
-    otherPagesLabel: "Outras páginas",
-    pageNotIdentified: "Página não identificada",
-    pausedCountdown: "Pausado",
-    pauseError: "Não consegui pausar agora.",
-    pausedStatus: "Atualização pausada.",
-    pauseTimer: "Pausar",
-    permissionNeeded: "Você precisa autorizar este site para ligar a atualização.",
-    prepareTimer: "Preparando atualização automática...",
-    readyStatus: "Pronto para limpar e atualizar a página aberta.",
-    recurringTitle: "Atualização recorrente",
-    recordingCountdown: "Gravando",
-    recordingPausedStatus:
-      "Gravação em andamento. A atualização pausou e será retomada quando a gravação terminar.",
-    recordingPauseDetail:
-      "Retoma automaticamente quando a gravação terminar.",
-    recordingPauseTitle: "Pausado por gravação",
-    refreshOffTitle: "Atualização desligada",
-    reloadOnceTitle: "Atualizar agora",
-    removeTimer: "Remover",
-    resumeError: "Não consegui retomar agora.",
-    resumeStatus: "Atualização retomada.",
-    resumeTimer: "Retomar",
-    safetyPauseDetail:
-      "A atividade terminou. Retoma em {seconds}s para evitar uma atualização imediata.",
-    safetyPausedStatus:
-      "Mídia encerrada. A atualização será retomada em {seconds}s.",
-    safetyPauseTitle: "Pausa de segurança após mídia",
-    settings: "Configurações",
-    startError: "Não consegui ligar a atualização automática agora.",
-    startedStatus: "Atualização ligada: a cada {interval}.",
-    statusLabel: "Status",
-    stopError: "Não consegui desligar agora.",
-    stopStatus: "Atualização automática desligada.",
-    stopTimer: "Desligar",
-    subtitle: "Atualize a página com dados novos.",
-    tabUnavailable: "Não consegui identificar a página aberta.",
-    timerNote:
-      "O contador no ícone pode variar um pouco quando este painel está fechado.",
-    timerTabFallback: "Página em atualização",
-    typingCountdown: "Digitando",
-    typingPauseDetail:
-      "Retoma automaticamente quando você sair do campo de texto.",
-    typingPausedStatus:
-      "Você está digitando. A atualização pausou e será retomada ao sair do campo de texto.",
-    typingPauseTitle: "Pausado por digitação",
-    unsupportedPage: "Esta página não permite esse tipo de limpeza.",
-    updateNowButton: "Limpar e atualizar",
-    videoCountdown: "Vídeo",
-    videoPausedStatus:
-      "Vídeo em reprodução. A atualização pausou e será retomada quando o vídeo parar.",
-    videoPauseDetail:
-      "Retoma automaticamente quando o vídeo terminar ou for pausado.",
-    videoPauseTitle: "Pausado por vídeo",
-    waitForPage: "Aguarde esta página aparecer no painel e tente de novo.",
-    workingCheck: "Verificando o que precisa ser limpo..."
-  },
-  en: {
-    activeCountPlural: "{count} pages",
-    activeCountSingular: "1 page",
-    activePageOffStatus: "{count} refreshing. This page is still off.",
-    activeStatus: "Refresh enabled on this page: every {interval}.",
-    activeTimerTitle: "Refreshes in progress",
-    activatingTimer: "Starting...",
-    audioCountdown: "Audio",
-    audioPausedStatus:
-      "Audio is playing. Refresh paused and will resume when the audio stops.",
-    audioPauseDetail:
-      "Resumes automatically when the audio ends or is paused.",
-    audioPauseTitle: "Paused for audio",
-    autoLabel: "Automatic",
-    automaticResumeStatus: "Activity ended. Refresh has resumed.",
-    chooseTime: "Choose a time to start.",
-    chooseTimeBelow: "Choose a time below to start.",
-    cleaningPage: "Clearing old data from this page...",
-    cleanupError: "I could not clear this page right now.",
-    cleanupSuccess: "Page cleared and refreshed.",
-    countdownBadge: "min:sec",
-    currentButton: "Current",
-    currentPageLabel: "Current page",
-    customIntervalOption: "Custom time",
-    customTimerLabel: "Custom time in minutes",
-    defaultStartButton: "Start refresh",
-    intervalLegend: "Choose how often the page will be refreshed",
-    invalidInterval: "Enter at least 1 minute.",
-    loadingCleanup: "Clearing...",
-    manualHint: "Clears old data and refreshes this page once.",
-    manualLabel: "Manual",
-    mediaCountdown: "Media",
-    mediaPausedStatus:
-      "Media is in use. Refresh paused and will resume when the activity ends.",
-    mediaPauseDetail:
-      "Resumes automatically when the media activity ends.",
-    mediaPauseTitle: "Paused for media",
-    minutePlural: "{count} minutes",
-    minuteShort: "min",
-    minuteSingular: "1 minute",
-    noActiveStatus: "No page is refreshing automatically right now.",
-    openButton: "Open",
-    openControlledPage: "Open page",
-    openControlledPageError: "I could not open that page.",
-    otherPagesLabel: "Other pages",
-    pageNotIdentified: "Page not identified",
-    pausedCountdown: "Paused",
-    pauseError: "I could not pause right now.",
-    pausedStatus: "Refresh paused.",
-    pauseTimer: "Pause",
-    permissionNeeded: "You need to allow this site to start the refresh.",
-    prepareTimer: "Preparing automatic refresh...",
-    readyStatus: "Ready to clear and refresh the open page.",
-    recurringTitle: "Recurring refresh",
-    recordingCountdown: "Recording",
-    recordingPausedStatus:
-      "Recording is in progress. Refresh paused and will resume when recording ends.",
-    recordingPauseDetail:
-      "Resumes automatically when recording ends.",
-    recordingPauseTitle: "Paused for recording",
-    refreshOffTitle: "Refresh off",
-    reloadOnceTitle: "Refresh now",
-    removeTimer: "Remove",
-    resumeError: "I could not resume right now.",
-    resumeStatus: "Refresh resumed.",
-    resumeTimer: "Resume",
-    safetyPauseDetail:
-      "The activity ended. Resumes in {seconds}s to avoid an immediate refresh.",
-    safetyPausedStatus:
-      "Media ended. Refresh will resume in {seconds}s.",
-    safetyPauseTitle: "Safety pause after media",
-    settings: "Settings",
-    startError: "I could not start automatic refresh right now.",
-    startedStatus: "Refresh started: every {interval}.",
-    statusLabel: "Status",
-    stopError: "I could not turn it off right now.",
-    stopStatus: "Automatic refresh turned off.",
-    stopTimer: "Turn off",
-    subtitle: "Refresh the page with fresh data.",
-    tabUnavailable: "I could not identify the open page.",
-    timerNote:
-      "The icon countdown may vary slightly while this panel is closed.",
-    timerTabFallback: "Page refreshing",
-    typingCountdown: "Typing",
-    typingPauseDetail:
-      "Resumes automatically when you leave the text field.",
-    typingPausedStatus:
-      "You are typing. Refresh paused and will resume when you leave the text field.",
-    typingPauseTitle: "Paused for typing",
-    unsupportedPage: "This page does not allow this type of cleanup.",
-    updateNowButton: "Clear and refresh",
-    videoCountdown: "Video",
-    videoPausedStatus:
-      "Video is playing. Refresh paused and will resume when the video stops.",
-    videoPauseDetail:
-      "Resumes automatically when the video ends or is paused.",
-    videoPauseTitle: "Paused for video",
-    waitForPage: "Wait for this page to appear in the panel and try again.",
-    workingCheck: "Checking what needs to be cleared..."
-  },
-  es: {
-    activeCountPlural: "{count} páginas",
-    activeCountSingular: "1 página",
-    activePageOffStatus: "{count} actualizándose. Esta página sigue apagada.",
-    activeStatus: "Actualización activa en esta página: cada {interval}.",
-    activeTimerTitle: "Actualizaciones en curso",
-    activatingTimer: "Activando...",
-    audioCountdown: "Audio",
-    audioPausedStatus:
-      "Hay audio en reproducción. La actualización se pausó y se reanudará cuando el audio se detenga.",
-    audioPauseDetail:
-      "Se reanuda automáticamente cuando el audio termina o se pausa.",
-    audioPauseTitle: "Pausado por audio",
-    autoLabel: "Automático",
-    automaticResumeStatus:
-      "La actividad terminó. La actualización se reanudó.",
-    chooseTime: "Elige un tiempo para empezar.",
-    chooseTimeBelow: "Elige un tiempo abajo para empezar.",
-    cleaningPage: "Limpiando datos antiguos de esta página...",
-    cleanupError: "No pude limpiar esta página ahora.",
-    cleanupSuccess: "Página limpia y actualizada.",
-    countdownBadge: "min:seg",
-    currentButton: "Actual",
-    currentPageLabel: "Página actual",
-    customIntervalOption: "Otro tiempo",
-    customTimerLabel: "Otro tiempo en minutos",
-    defaultStartButton: "Activar actualización",
-    intervalLegend: "Elige cada cuánto tiempo se actualizará la página",
-    invalidInterval: "Ingresa al menos 1 minuto.",
-    loadingCleanup: "Limpiando...",
-    manualHint: "Limpia datos antiguos y actualiza esta página una vez.",
-    manualLabel: "Manual",
-    mediaCountdown: "Medios",
-    mediaPausedStatus:
-      "Hay medios en uso. La actualización se pausó y se reanudará cuando termine la actividad.",
-    mediaPauseDetail:
-      "Se reanuda automáticamente cuando termina la actividad multimedia.",
-    mediaPauseTitle: "Pausado por medios",
-    minutePlural: "{count} minutos",
-    minuteShort: "min",
-    minuteSingular: "1 minuto",
-    noActiveStatus: "Ninguna página se está actualizando sola ahora.",
-    openButton: "Abrir",
-    openControlledPage: "Abrir página",
-    openControlledPageError: "No pude abrir esa página.",
-    otherPagesLabel: "Otras páginas",
-    pageNotIdentified: "Página no identificada",
-    pausedCountdown: "Pausado",
-    pauseError: "No pude pausar ahora.",
-    pausedStatus: "Actualización pausada.",
-    pauseTimer: "Pausar",
-    permissionNeeded: "Debes autorizar este sitio para activar la actualización.",
-    prepareTimer: "Preparando actualización automática...",
-    readyStatus: "Listo para limpiar y actualizar la página abierta.",
-    recurringTitle: "Actualización recurrente",
-    recordingCountdown: "Grabando",
-    recordingPausedStatus:
-      "Hay una grabación en curso. La actualización se pausó y se reanudará cuando termine.",
-    recordingPauseDetail:
-      "Se reanuda automáticamente cuando termina la grabación.",
-    recordingPauseTitle: "Pausado por grabación",
-    refreshOffTitle: "Actualización apagada",
-    reloadOnceTitle: "Actualizar ahora",
-    removeTimer: "Eliminar",
-    resumeError: "No pude retomar ahora.",
-    resumeStatus: "Actualización retomada.",
-    resumeTimer: "Retomar",
-    safetyPauseDetail:
-      "La actividad terminó. Se reanuda en {seconds}s para evitar una actualización inmediata.",
-    safetyPausedStatus:
-      "Los medios terminaron. La actualización se reanudará en {seconds}s.",
-    safetyPauseTitle: "Pausa de seguridad después de medios",
-    settings: "Configuración",
-    startError: "No pude activar la actualización automática ahora.",
-    startedStatus: "Actualización activa: cada {interval}.",
-    statusLabel: "Estado",
-    stopError: "No pude desactivar ahora.",
-    stopStatus: "Actualización automática desactivada.",
-    stopTimer: "Desactivar",
-    subtitle: "Actualiza la página con datos nuevos.",
-    tabUnavailable: "No pude identificar la página abierta.",
-    timerNote:
-      "El contador del ícono puede variar un poco cuando este panel está cerrado.",
-    timerTabFallback: "Página en actualización",
-    typingCountdown: "Escribiendo",
-    typingPauseDetail:
-      "Se reanuda automáticamente cuando sales del campo de texto.",
-    typingPausedStatus:
-      "Estás escribiendo. La actualización se pausó y se reanudará cuando salgas del campo de texto.",
-    typingPauseTitle: "Pausado por escritura",
-    unsupportedPage: "Esta página no permite este tipo de limpieza.",
-    updateNowButton: "Limpiar y actualizar",
-    videoCountdown: "Video",
-    videoPausedStatus:
-      "Hay un video en reproducción. La actualización se pausó y se reanudará cuando el video se detenga.",
-    videoPauseDetail:
-      "Se reanuda automáticamente cuando el video termina o se pausa.",
-    videoPauseTitle: "Pausado por video",
-    waitForPage: "Espera a que esta página aparezca en el panel e inténtalo de nuevo.",
-    workingCheck: "Verificando qué se debe limpiar..."
-  }
-}, "popup");
+let popupTranslations = {};
 
 const getPopupCopy = (key) => (
   popupTranslations[activePopupLanguage]?.[key]
-  || popupTranslations["pt-BR"][key]
+  || popupTranslations["pt-BR"]?.[key]
   || key
 );
 
@@ -451,6 +148,15 @@ const loadPopupLanguage = async () => {
   }
 
   localStorage.setItem(popupLanguageStorageKey, activePopupLanguage);
+
+  try {
+    const { translations } = await loadPageI18n("popup", activePopupLanguage);
+
+    popupTranslations = translations;
+  } catch (error) {
+    console.error("Erro ao carregar traducoes do popup:", error);
+  }
+
   applyPopupLanguage();
 
   try {
@@ -1276,10 +982,43 @@ initializePopup().catch((error) => {
   console.error("Erro ao iniciar popup do RecarregaAi:", error);
 });
 
-setInterval(() => {
+let popupRefreshTimerId = null;
+
+const startPopupRefreshTimer = () => {
+  if (popupRefreshTimerId) {
+    return;
+  }
+
+  popupRefreshTimerId = setInterval(() => {
+    refreshTimerState({
+      updateStatus: true
+    }).catch((error) => {
+      console.error("Erro ao atualizar estado do timer:", error);
+    });
+  }, 1000);
+};
+
+const stopPopupRefreshTimer = () => {
+  if (!popupRefreshTimerId) {
+    return;
+  }
+
+  clearInterval(popupRefreshTimerId);
+  popupRefreshTimerId = null;
+};
+
+startPopupRefreshTimer();
+
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState === "hidden") {
+    stopPopupRefreshTimer();
+    return;
+  }
+
+  startPopupRefreshTimer();
   refreshTimerState({
     updateStatus: true
   }).catch((error) => {
     console.error("Erro ao atualizar estado do timer:", error);
   });
-}, 1000);
+});
