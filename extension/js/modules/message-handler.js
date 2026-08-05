@@ -19,7 +19,8 @@ import {
   handleTypingState,
   handleMediaState,
   getTimerStateResponse,
-  recordHistoryEntry
+  recordHistoryEntry,
+  autoStartTimerForTab
 } from "./timer-management.js";
 
 const extensionBaseUrl = chrome.runtime.getURL("");
@@ -29,6 +30,7 @@ const contentScriptMessageTypes = new Set([
   runtimeMessageTypes.typingState
 ]);
 const extensionPageMessageTypes = new Set([
+  runtimeMessageTypes.autoStartTimerForOrigin,
   runtimeMessageTypes.clearActionHistory,
   runtimeMessageTypes.getActionHistory,
   runtimeMessageTypes.getTimerState,
@@ -206,6 +208,21 @@ const runtimeMessageHandlers = {
     );
 
     return createTimerSettingsResponse(timerSettings);
+  },
+  [runtimeMessageTypes.autoStartTimerForOrigin]: async (message) => {
+    const { origin } = message.payload || {};
+
+    if (!origin) {
+      return { ok: false, error: "Origem nao informada." };
+    }
+
+    const tabs = await chrome.tabs.query({ url: `${origin}/*` });
+
+    await Promise.all(
+      tabs.map((tab) => autoStartTimerForTab(tab.id, tab).catch(() => undefined))
+    );
+
+    return { ok: true, startedCount: tabs.length };
   },
   [runtimeMessageTypes.stopTimer]: async (message, sender) => {
     await stopTimer(getMessageTabId(message, sender));

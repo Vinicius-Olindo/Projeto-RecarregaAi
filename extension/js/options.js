@@ -975,6 +975,11 @@ const addAutoStartSite = async () => {
     await saveOptionsSettings();
     renderSites();
 
+    chrome.runtime.sendMessage({
+      type: runtimeMessageTypes.autoStartTimerForOrigin,
+      payload: { origin }
+    }).catch(() => undefined);
+
     optionsElements.siteOriginInput.value = "";
     optionsElements.siteIntervalInput.value = "";
     updateOptionsStatus(getOptionsCopy("formSiteSaved"), "success");

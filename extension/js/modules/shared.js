@@ -39,6 +39,7 @@ export const alarmNames = Object.freeze({
 });
 
 export const runtimeMessageTypes = Object.freeze({
+  autoStartTimerForOrigin: "RECARREGA_AI_AUTO_START_TIMER_FOR_ORIGIN",
   clearActionHistory: "RECARREGA_AI_CLEAR_ACTION_HISTORY",
   getActionHistory: "RECARREGA_AI_GET_ACTION_HISTORY",
   getTimerState: "RECARREGA_AI_GET_TIMER_STATE",
