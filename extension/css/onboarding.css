@@ -1,26 +1,4 @@
-/* RecarregaAi! 2.3.9 */
-
-:root {
-  color-scheme: light;
-  --accent: #1687f8;
-  --accent-strong: #0872df;
-  --background: #f5f9ff;
-  --border: #cbdcf1;
-  --card: #ffffff;
-  --muted: #5b6f8d;
-  --text: #0b1830;
-}
-
-:root[data-theme="dark"] {
-  color-scheme: dark;
-  --accent: #45a7ff;
-  --accent-strong: #1687f8;
-  --background: #071225;
-  --border: #263b5c;
-  --card: #0e1c32;
-  --muted: #a5b6ce;
-  --text: #f5f8ff;
-}
+/* RecarregaAi! 2.3.9 — Onboarding */
 
 * {
   box-sizing: border-box;
@@ -30,13 +8,9 @@ body {
   min-width: 320px;
   min-height: 100vh;
   margin: 0;
-  color: var(--text);
-  background-color: var(--background);
-  background-image:
-    linear-gradient(color-mix(in srgb, var(--border) 35%, transparent) 1px, transparent 1px),
-    linear-gradient(90deg, color-mix(in srgb, var(--border) 35%, transparent) 1px, transparent 1px);
-  background-size: 48px 48px;
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  font-family: var(--font-family);
 }
 
 button,
@@ -50,22 +24,22 @@ a {
   justify-content: space-between;
   min-height: 74px;
   padding: 12px clamp(20px, 5vw, 72px);
-  border-bottom: 1px solid var(--border);
-  background: color-mix(in srgb, var(--card) 92%, transparent);
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-header);
 }
 
 .brand {
   display: inline-flex;
   gap: 12px;
   align-items: center;
-  color: var(--text);
+  color: var(--color-text);
   text-decoration: none;
 }
 
 .brand img {
   width: 42px;
   height: 42px;
-  border-radius: 8px;
+  border-radius: var(--radius-lg);
 }
 
 .brand span {
@@ -78,7 +52,7 @@ a {
 }
 
 .brand small {
-  color: var(--muted);
+  color: var(--color-muted);
 }
 
 .icon-button {
@@ -87,10 +61,10 @@ a {
   height: 42px;
   padding: 0;
   place-items: center;
-  color: var(--text);
-  border: 1px solid var(--border);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
   border-radius: 50%;
-  background: var(--card);
+  background: var(--color-surface);
   cursor: pointer;
 }
 
@@ -124,9 +98,9 @@ a {
 
 .eyebrow {
   margin: 0 0 14px;
-  color: var(--accent-strong);
+  color: var(--color-primary);
   font-size: 13px;
-  font-weight: 800;
+  font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -142,7 +116,7 @@ h1 {
 .intro__description {
   max-width: 720px;
   margin: 22px 0 0;
-  color: var(--muted);
+  color: var(--color-muted);
   font-size: 18px;
   line-height: 1.65;
 }
@@ -160,19 +134,19 @@ h1 {
   position: relative;
   min-height: 250px;
   padding: 28px;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background: var(--card);
-  box-shadow: 0 18px 45px rgb(14 42 79 / 9%);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-md);
 }
 
 .step__number {
   position: absolute;
   top: 24px;
   right: 24px;
-  color: var(--accent-strong);
+  color: var(--color-primary);
   font-size: 13px;
-  font-weight: 800;
+  font-weight: 600;
 }
 
 .step__icon {
@@ -181,7 +155,7 @@ h1 {
   height: 46px;
   margin-bottom: 28px;
   place-items: center;
-  color: var(--accent-strong);
+  color: var(--color-primary);
 }
 
 .step__icon svg {
@@ -200,7 +174,7 @@ h1 {
 
 .step p {
   margin: 0;
-  color: var(--muted);
+  color: var(--color-muted);
   line-height: 1.6;
 }
 
@@ -210,9 +184,9 @@ h1 {
   align-items: center;
   justify-content: space-between;
   padding: 24px 28px;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background: var(--card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
 }
 
 .actions > div:first-child {
@@ -221,7 +195,7 @@ h1 {
 }
 
 .actions span {
-  color: var(--muted);
+  color: var(--color-muted);
 }
 
 .actions__buttons {
@@ -232,31 +206,31 @@ h1 {
 .button {
   min-height: 44px;
   padding: 0 20px;
-  border: 1px solid var(--border);
-  border-radius: 7px;
-  font-weight: 750;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-weight: 500;
   cursor: pointer;
 }
 
 .button--primary {
   color: #ffffff;
-  border-color: var(--accent-strong);
-  background: var(--accent-strong);
+  border-color: var(--color-primary);
+  background: var(--color-primary);
 }
 
 .button--primary:hover {
-  background: var(--accent);
+  background: var(--color-primary-hover);
 }
 
 .button--secondary {
-  color: var(--text);
-  background: var(--card);
+  color: var(--color-text);
+  background: var(--color-surface);
 }
 
 .button:focus-visible,
 .icon-button:focus-visible,
 .brand:focus-visible {
-  outline: 3px solid color-mix(in srgb, var(--accent) 38%, transparent);
+  outline: 3px solid var(--color-primary-muted);
   outline-offset: 3px;
 }
 

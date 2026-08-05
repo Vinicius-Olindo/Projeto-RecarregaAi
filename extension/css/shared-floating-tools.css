@@ -24,14 +24,14 @@
   height: 48px;
   padding: 0;
   gap: 0;
-  color: #0f172a;
+  color: var(--color-text);
   text-decoration: none;
-  background: rgba(255, 255, 255, 0.97);
+  background: var(--color-surface);
   border: 0;
   border-radius: 999px;
   box-shadow:
-    0 16px 34px rgba(15, 23, 42, 0.16),
-    0 0 0 1px rgba(203, 213, 225, 0.85);
+    var(--shadow-lg),
+    0 0 0 1px var(--color-border);
   cursor: pointer;
   isolation: isolate;
   overflow: visible;
@@ -47,15 +47,15 @@
   width: 48px;
   min-width: 48px;
   gap: 0;
-  background: #ffffff;
+  background: var(--color-surface);
   box-shadow:
-    0 20px 44px rgba(15, 23, 42, 0.2),
-    0 0 0 1px rgba(148, 163, 184, 0.85);
+    var(--shadow-xl),
+    0 0 0 1px var(--color-border-strong);
   transform: translateY(-2px);
 }
 
 .floating-action:focus-visible {
-  outline: 3px solid rgba(45, 156, 255, 0.22);
+  outline: 3px solid var(--color-primary-muted);
   outline-offset: 4px;
 }
 
@@ -125,18 +125,18 @@
   max-width: none;
   padding: 9px 13px;
   overflow: visible;
-  color: #0f172a;
+  color: var(--color-text);
   font-size: 0.88rem;
-  font-weight: 850;
+  font-weight: 500;
   line-height: 1;
   opacity: 0;
   pointer-events: none;
   white-space: nowrap;
-  background: rgba(255, 255, 255, 0.98);
+  background: var(--color-surface);
   border-radius: 999px;
   box-shadow:
-    0 14px 30px rgba(15, 23, 42, 0.16),
-    0 0 0 1px rgba(203, 213, 225, 0.82);
+    var(--shadow-lg),
+    0 0 0 1px var(--color-border);
   transform: translate(8px, -50%);
   transition:
     opacity 140ms ease,
@@ -150,6 +150,32 @@
   opacity: 1;
   transform: translate(0, -50%);
   visibility: visible;
+}
+
+:root[data-theme="dark"] .floating-action {
+  background: var(--color-surface);
+  box-shadow:
+    var(--shadow-lg),
+    0 0 0 1px var(--color-border);
+}
+
+:root[data-theme="dark"] .floating-action:hover,
+:root[data-theme="dark"] .floating-action:focus-visible {
+  background: var(--color-surface-raised);
+  box-shadow:
+    var(--shadow-xl),
+    0 0 0 1px var(--color-border-strong);
+}
+
+:root[data-theme="dark"] .floating-action:focus-visible {
+  outline-color: var(--color-primary-muted);
+}
+
+:root[data-theme="dark"] .floating-action__label {
+  background: var(--color-surface);
+  box-shadow:
+    var(--shadow-lg),
+    0 0 0 1px var(--color-border);
 }
 
 @media (max-width: 720px) {

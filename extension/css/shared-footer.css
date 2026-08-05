@@ -2,20 +2,15 @@
 
 .privacy-footer {
   padding: 28px clamp(22px, 5vw, 48px) 26px;
-  color: var(--privacy-footer-muted, var(--color-muted, #5b6677));
-  background: var(--privacy-footer-background, var(--color-surface, #ffffff));
-  border-top: 1px solid var(--privacy-footer-border, var(--color-border, #d8e0eb));
+  color: var(--color-muted);
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
 }
 
 :root[data-theme="dark"] .privacy-footer {
-  --privacy-footer-background: #050b16;
-  --privacy-footer-border: rgba(53, 80, 111, 0.72);
-  --privacy-footer-icon-background: rgba(237, 244, 255, 0.08);
-  --privacy-footer-icon-border: rgba(237, 244, 255, 0.16);
-  --privacy-footer-icon-color: #edf4ff;
-  --privacy-footer-muted: #9ba9bd;
-  --privacy-footer-primary: #58b3ff;
-  --privacy-footer-text: #edf4ff;
+  background: var(--color-bg);
+  border-top-color: var(--color-border);
+  color: var(--color-muted);
 }
 
 .privacy-footer__inner {
@@ -41,7 +36,7 @@
   grid-area: brand;
   justify-self: start;
   gap: 12px;
-  color: var(--privacy-footer-text, var(--color-text, #101828));
+  color: var(--color-text);
   text-decoration: none;
 }
 
@@ -49,7 +44,7 @@
   width: 46px;
   height: 46px;
   flex: 0 0 auto;
-  filter: drop-shadow(0 8px 16px rgba(18, 97, 216, 0.14));
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.08));
 }
 
 .privacy-footer__nav {
@@ -65,9 +60,9 @@
 }
 
 .privacy-footer a {
-  color: var(--privacy-footer-text, var(--color-text, #101828));
+  color: var(--color-text);
   font-size: 0.92rem;
-  font-weight: 650;
+  font-weight: 500;
   text-decoration: none;
   transition:
     color 180ms ease,
@@ -76,19 +71,19 @@
 
 .privacy-footer a:hover,
 .privacy-footer a:focus-visible {
-  color: var(--privacy-footer-primary, var(--color-primary, #1261d8));
+  color: var(--color-primary);
   transform: translateY(-1px);
 }
 
 .privacy-footer a:focus-visible {
-  outline: 3px solid rgba(18, 97, 216, 0.22);
+  outline: 3px solid var(--color-primary-muted);
   outline-offset: 4px;
 }
 
 .privacy-footer__legal,
 .privacy-footer__developer {
   margin: 0;
-  color: var(--privacy-footer-muted, var(--color-muted, #5b6677));
+  color: var(--color-muted);
   font-size: 0.9rem;
   line-height: 1.45;
 }
@@ -109,11 +104,11 @@
   justify-content: center;
   width: 38px;
   height: 38px;
-  color: var(--privacy-footer-icon-color, var(--privacy-footer-text, var(--color-text, #101828)));
-  background: var(--privacy-footer-icon-background, rgba(255, 255, 255, 0.82));
-  border: 1px solid var(--privacy-footer-icon-border, var(--privacy-footer-border, var(--color-border, #d8e0eb)));
+  color: var(--color-text);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
   border-radius: 999px;
-  box-shadow: 0 10px 24px rgba(16, 24, 40, 0.08);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
 }
 
 .privacy-footer__icon-link svg {
@@ -130,27 +125,30 @@
 .privacy-footer .privacy-footer__icon-link:focus-visible,
 .privacy-footer .privacy-footer__icon-link:active {
   color: #ffffff;
-  background: var(--privacy-footer-primary, var(--color-primary, #1261d8));
+  background: var(--color-primary);
   border-color: transparent;
 }
 
 :root[data-theme="dark"] .privacy-footer__icon-link {
+  color: var(--color-text);
+  background: var(--color-surface-raised);
+  border-color: var(--color-border);
   box-shadow:
     0 0 0 1px rgba(255, 255, 255, 0.08),
     0 12px 26px rgba(2, 6, 23, 0.34);
 }
 
 :root[data-theme="dark"] .privacy-footer__icon-link svg {
-  color: var(--privacy-footer-icon-color);
-  stroke: var(--privacy-footer-icon-color);
+  color: var(--color-text);
+  stroke: var(--color-text);
 }
 
 :root[data-theme="dark"] .privacy-footer .privacy-footer__icon-link:hover,
 :root[data-theme="dark"] .privacy-footer .privacy-footer__icon-link:focus-visible,
 :root[data-theme="dark"] .privacy-footer .privacy-footer__icon-link:active {
   color: #ffffff;
-  background: #2d9cff;
-  border-color: #2d9cff;
+  background: var(--color-primary);
+  border-color: var(--color-primary);
 }
 
 :root[data-theme="dark"] .privacy-footer .privacy-footer__icon-link:hover svg,
@@ -170,15 +168,15 @@
 
 .privacy-footer__developer {
   grid-area: developer;
-  color: var(--privacy-footer-muted, var(--color-muted, #5b6677));
+  color: var(--color-muted);
   font-size: 0.86rem;
 }
 
 .privacy-footer__developer-link {
   margin-left: 4px;
-  color: var(--privacy-footer-text, var(--color-text, #101828));
+  color: var(--color-text);
   font-size: inherit;
-  font-weight: 850;
+  font-weight: 500;
 }
 
 @media (max-width: 1080px) {

@@ -20,7 +20,7 @@ body.has-open-dialog {
 .language-dialog__backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(2, 6, 23, 0.66);
+  background: rgba(0, 0, 0, 0.5);
   border: 0;
   cursor: pointer;
   backdrop-filter: blur(3px);
@@ -34,10 +34,10 @@ body.has-open-dialog {
   overflow: auto;
   padding: 28px;
   text-align: center;
-  background: #ffffff;
-  border: 1px solid #d7e3f3;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
   border-radius: 18px;
-  box-shadow: 0 28px 80px rgba(2, 6, 23, 0.28);
+  box-shadow: var(--shadow-xl);
 }
 
 .language-dialog__close {
@@ -49,30 +49,30 @@ body.has-open-dialog {
   justify-content: center;
   width: 34px;
   height: 34px;
-  color: #667085;
-  background: #ffffff;
-  border: 1px solid #d7e3f3;
+  color: var(--color-muted);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
   border-radius: 999px;
   cursor: pointer;
 }
 
 .language-dialog__close:hover,
 .language-dialog__close:focus-visible {
-  color: #111827;
-  border-color: #b7c7dc;
+  color: var(--color-text);
+  border-color: var(--color-border-strong);
 }
 
 .language-dialog__title {
   margin: 0;
-  color: #020617;
+  color: var(--color-text);
   font-size: 1.28rem;
-  font-weight: 950;
+  font-weight: 600;
 }
 
 .language-dialog__description {
   max-width: 380px;
   margin: 10px auto 24px;
-  color: #667085;
+  color: var(--color-muted);
   font-size: 0.94rem;
   line-height: 1.55;
 }
@@ -89,9 +89,9 @@ body.has-open-dialog {
   gap: 7px;
   min-height: 122px;
   padding: 18px 12px;
-  color: #020617;
-  background: #ffffff;
-  border: 1px solid #d7e3f3;
+  color: var(--color-text);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
   border-radius: 16px;
   cursor: pointer;
   transition:
@@ -103,14 +103,14 @@ body.has-open-dialog {
 
 .language-card:hover,
 .language-card:focus-visible {
-  border-color: rgba(45, 156, 255, 0.55);
-  box-shadow: 0 16px 34px rgba(15, 23, 42, 0.1);
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-md);
   transform: translateY(-1px);
 }
 
 .language-card.is-selected {
-  background: #ecfdf5;
-  border-color: #10b981;
+  background: var(--color-success-soft);
+  border-color: var(--color-success);
   box-shadow: inset 0 0 0 1px rgba(16, 185, 129, 0.18);
 }
 
@@ -121,7 +121,7 @@ body.has-open-dialog {
   width: 18px;
   height: 18px;
   content: "";
-  background: #10b981;
+  background: var(--color-success);
   border-radius: 999px;
 }
 
@@ -139,21 +139,41 @@ body.has-open-dialog {
 
 .language-card__badge {
   font-size: 1.1rem;
-  font-weight: 950;
+  font-weight: 600;
 }
 
 .language-card__name {
-  color: #020617;
+  color: var(--color-text);
   font-size: 0.88rem;
-  font-weight: 800;
+  font-weight: 600;
   overflow-wrap: anywhere;
 }
 
 .language-card__code {
-  color: #64748b;
+  color: var(--color-muted);
   font-size: 0.72rem;
-  font-weight: 800;
+  font-weight: 600;
   letter-spacing: 0.04em;
+}
+
+:root[data-theme="dark"] .language-dialog__panel {
+  background: var(--color-surface);
+  border-color: var(--color-border);
+}
+
+:root[data-theme="dark"] .language-card {
+  background: var(--color-surface);
+  border-color: var(--color-border);
+}
+
+:root[data-theme="dark"] .language-card.is-selected {
+  background: rgba(16, 185, 129, 0.12);
+  border-color: var(--color-success);
+}
+
+:root[data-theme="dark"] .language-dialog__close {
+  background: var(--color-surface);
+  border-color: var(--color-border);
 }
 
 @media (max-width: 720px) {

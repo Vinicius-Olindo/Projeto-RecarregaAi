@@ -1,15 +1,6 @@
 /* RecarregaAi! 2.3.9 */
 
 :root {
-  --color-page: #ffffff;
-  --color-text: #0f172a;
-  --color-muted: #475569;
-  --color-border: #e2e8f0;
-  --color-primary: #2d9cff;
-  --color-primary-dark: #1479cf;
-  --color-primary-soft: #e9f5ff;
-  --color-success: #15803d;
-  --color-success-soft: #dcfce7;
   --color-error: #b42318;
   --color-error-soft: #fee4e2;
   --color-card-border: #e8eef7;
@@ -17,7 +8,6 @@
   --color-dialog-text: #020617;
   --color-form: rgba(255, 255, 255, 0.92);
   --color-header: #ffffff;
-  --color-input: #ffffff;
   --color-input-border: #cbd5e1;
   --color-install-text: #020617;
   --color-intro: #1e293b;
@@ -27,25 +17,10 @@
   --color-page-start: #ffffff;
   --color-page-middle: #f8fbff;
   --color-radio-ring: #ffffff;
-  --font-family:
-    Inter,
-    Arial,
-    sans-serif;
-
   color-scheme: light;
-  font-family: var(--font-family);
 }
 
 :root[data-theme="dark"] {
-  --color-page: #07111f;
-  --color-text: #edf4ff;
-  --color-muted: #9ba9bd;
-  --color-border: #233450;
-  --color-primary: #58b3ff;
-  --color-primary-dark: #8bc8ff;
-  --color-primary-soft: rgba(45, 156, 255, 0.16);
-  --color-success: #32d49b;
-  --color-success-soft: rgba(50, 212, 155, 0.13);
   --color-error: #ff928a;
   --color-error-soft: rgba(255, 107, 97, 0.14);
   --color-card-border: #233450;
@@ -53,7 +28,6 @@
   --color-dialog-text: #edf4ff;
   --color-form: rgba(15, 23, 40, 0.92);
   --color-header: rgba(7, 17, 31, 0.94);
-  --color-input: #0a1322;
   --color-input-border: #35506f;
   --color-install-text: #edf4ff;
   --color-intro: #c7d4e8;
@@ -63,7 +37,6 @@
   --color-page-start: #07111f;
   --color-page-middle: #0f1728;
   --color-radio-ring: #0f1728;
-
   color-scheme: dark;
 }
 
@@ -78,15 +51,7 @@ body {
   min-height: 100vh;
   margin: 0;
   color: var(--color-text);
-  background:
-    radial-gradient(circle at 18% 16%, rgba(45, 156, 255, 0.08), transparent 28rem),
-    radial-gradient(circle at 84% 42%, rgba(20, 121, 207, 0.06), transparent 24rem),
-    linear-gradient(
-      180deg,
-      var(--color-page-start) 0%,
-      var(--color-page-middle) 58%,
-      var(--color-page-start) 100%
-    );
+  background: var(--color-bg);
 }
 
 body.has-open-dialog {
@@ -135,9 +100,9 @@ textarea {
 }
 
 .brand__name {
-  color: var(--color-primary-dark);
+  color: var(--color-primary-hover);
   font-size: 1.1rem;
-  font-weight: 900;
+  font-weight: 600;
 }
 
 .brand__version {
@@ -155,7 +120,7 @@ textarea {
   gap: 10px;
   color: var(--color-install-text);
   font-size: 0.92rem;
-  font-weight: 900;
+  font-weight: 600;
   text-decoration: none;
   background: var(--color-option);
   border: 1.5px solid var(--color-text);
@@ -173,7 +138,7 @@ textarea {
 
 .chrome-install-button:hover,
 .chrome-install-button:focus-visible {
-  border-color: var(--color-primary-dark);
+  border-color: var(--color-primary-hover);
   box-shadow: 0 14px 28px rgba(15, 23, 42, 0.12);
   transform: translateY(-1px);
 }
@@ -184,7 +149,7 @@ textarea {
   height: 18px;
   flex: 0 0 auto;
   background:
-    radial-gradient(circle at center, #2d9cff 0 28%, #ffffff 29% 39%,
+    radial-gradient(circle at center, #0d9488 0 28%, #ffffff 29% 39%,
     transparent 40%),
     conic-gradient(#16a34a 0 33%, #facc15 0 66%, #ef4444 0 100%);
   border-radius: 50%;
@@ -206,7 +171,7 @@ textarea {
 .intro__title {
   max-width: 760px;
   font-size: clamp(2.5rem, 6vw, 4.2rem);
-  font-weight: 950;
+  font-weight: 600;
   line-height: 0.98;
   letter-spacing: -0.04em;
 }
@@ -278,8 +243,8 @@ textarea {
 
 .reason-option:has(input:checked) {
   background: var(--color-primary-soft);
-  border-color: rgba(45, 156, 255, 0.38);
-  box-shadow: inset 0 0 0 1px rgba(45, 156, 255, 0.08);
+  border-color: rgba(13, 148, 136, 0.38);
+  box-shadow: inset 0 0 0 1px rgba(13, 148, 136, 0.08);
 }
 
 .reason-option input {
@@ -312,18 +277,18 @@ textarea {
 }
 
 .reason-option input:focus-visible + .reason-option__control {
-  outline: 3px solid rgba(45, 156, 255, 0.22);
+  outline: 3px solid rgba(13, 148, 136, 0.22);
   outline-offset: 2px;
 }
 
 .selected-reason {
   color: var(--color-muted);
   font-size: 0.92rem;
-  font-weight: 800;
+  font-weight: 500;
 }
 
 .selected-reason strong {
-  color: var(--color-primary-dark);
+  color: var(--color-primary-hover);
 }
 
 .details {
@@ -333,8 +298,8 @@ textarea {
 
 .details summary {
   width: fit-content;
-  color: var(--color-primary-dark);
-  font-weight: 850;
+  color: var(--color-primary-hover);
+  font-weight: 500;
   cursor: pointer;
 }
 
@@ -352,7 +317,7 @@ textarea {
 .field span {
   color: var(--color-muted);
   font-size: 0.84rem;
-  font-weight: 850;
+  font-weight: 500;
 }
 
 .field input,
@@ -370,7 +335,7 @@ textarea {
 .field input:focus,
 .field textarea:focus {
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(45, 156, 255, 0.16);
+  box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.16);
 }
 
 .field textarea {
@@ -392,7 +357,7 @@ textarea {
   justify-content: center;
   min-height: 48px;
   padding: 0 24px;
-  font-weight: 850;
+  font-weight: 500;
   border-radius: 12px;
   cursor: pointer;
   transition:
@@ -414,8 +379,8 @@ textarea {
 }
 
 .button--primary:hover {
-  background: var(--color-primary-dark);
-  border-color: var(--color-primary-dark);
+  background: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
 }
 
 .button--primary:disabled:hover {
@@ -484,7 +449,7 @@ textarea {
   overflow: hidden;
   color: #0f172a;
   font-size: 0.9rem;
-  font-weight: 850;
+  font-weight: 500;
   opacity: 0;
   white-space: nowrap;
   transition:
@@ -556,7 +521,7 @@ textarea {
   margin: 0;
   color: var(--color-dialog-text);
   font-size: 1.28rem;
-  font-weight: 950;
+  font-weight: 600;
 }
 
 .language-dialog__description {
@@ -593,7 +558,7 @@ textarea {
 
 .language-card:hover,
 .language-card:focus-visible {
-  border-color: rgba(45, 156, 255, 0.55);
+  border-color: rgba(13, 148, 136, 0.55);
   box-shadow: 0 16px 34px rgba(15, 23, 42, 0.1);
   transform: translateY(-1px);
 }
@@ -629,14 +594,14 @@ textarea {
 
 .language-card__badge {
   font-size: 1.1rem;
-  font-weight: 950;
+  font-weight: 600;
 }
 
 .language-card__name {
   overflow: hidden;
   color: var(--color-dialog-text);
   font-size: 0.88rem;
-  font-weight: 800;
+  font-weight: 500;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -644,7 +609,7 @@ textarea {
 .language-card__code {
   color: var(--color-language-code);
   font-size: 0.72rem;
-  font-weight: 800;
+  font-weight: 500;
   letter-spacing: 0.04em;
 }
 
