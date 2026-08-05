@@ -223,8 +223,7 @@ export const getUrlOrigin = (urlValue) => {
     }
 
     return url.origin;
-  } catch (error) {
-    console.error("URL invalida para limpeza de cache:", error);
+  } catch {
     return null;
   }
 };
@@ -286,10 +285,10 @@ export const getBadgeColor = (nextRunAt) => {
   const remainingSeconds = getRemainingSeconds(nextRunAt);
 
   if (remainingSeconds <= 10) {
-    return "#ef7a1f";
+    return "#d97706";
   }
 
-  return "#1f7aef";
+  return "#0d9488";
 };
 
 export const getTimerAlarmName = (tabId) => `${alarmNames.timerPrefix}${tabId}`;
