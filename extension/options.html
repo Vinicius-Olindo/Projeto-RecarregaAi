@@ -24,8 +24,6 @@
       </span>
     </a>
 
-    <p class="settings-header__title">Configurações</p>
-
     <button id="close-options-button" class="settings-header__link" type="button">
       <svg viewBox="0 0 24 24" aria-hidden="true">
         <path d="M10 4H5v16h5" />
@@ -38,127 +36,14 @@
 
   <main class="options" aria-labelledby="options-title">
     <section class="settings-page-intro" aria-labelledby="options-title">
-      <div>
-        <h1 id="options-title">Configurações do RecarregaAi!</h1>
-        <p class="brand__subtitle">
-          Ajuste o tempo padrão, organize sites de início automático e revise
-          as permissões usadas pela extensão.
-        </p>
-      </div>
-
-      <div class="settings-page-intro__status">
-        <span>Configuração local</span>
-        <strong>Salva no navegador</strong>
-      </div>
+      <h1 id="options-title">Configurações</h1>
+      <p class="brand__subtitle">
+        Ajuste o tempo padrão, organize sites de início automático e revise
+        as permissões usadas pela extensão.
+      </p>
     </section>
 
-    <div class="settings-dashboard">
-      <aside class="settings-sidebar">
-        <nav class="settings-nav" aria-label="Navegação das configurações">
-          <a href="#general-section">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <circle cx="12" cy="12" r="8" />
-              <path d="M12 8v5l3 2" />
-            </svg>
-            <span class="settings-nav__label">Geral</span>
-          </a>
-
-          <a href="#sites-section">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <circle cx="12" cy="12" r="9" />
-              <path d="M3 12h18" />
-              <path d="M12 3c2.4 2.7 3.6 5.7 3.6 9S14.4 18.3 12 21" />
-              <path d="M12 3c-2.4 2.7-3.6 5.7-3.6 9s1.2 6.3 3.6 9" />
-            </svg>
-            <span class="settings-nav__label">Sites</span>
-          </a>
-
-          <a href="#backup-section">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M12 3v12" />
-              <path d="m8 11 4 4 4-4" />
-              <path d="M5 19h14" />
-              <path d="M5 5h4" />
-              <path d="M15 5h4" />
-            </svg>
-            <span class="settings-nav__label">Backup</span>
-          </a>
-
-          <a href="#history-section">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M4 12a8 8 0 1 0 2.3-5.7" />
-              <path d="M4 4v5h5" />
-              <path d="M12 8v5l3 2" />
-            </svg>
-            <span class="settings-nav__label">Histórico</span>
-          </a>
-
-          <a href="#permissions-section">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M12 3 5 6v5c0 4.6 2.9 8.3 7 10 4.1-1.7 7-5.4 7-10V6z" />
-              <path d="m9 12 2 2 4-5" />
-            </svg>
-            <span class="settings-nav__label">Permissões</span>
-          </a>
-        </nav>
-
-        <section class="settings-sidebar-card" aria-label="Resumo rápido">
-          <span class="settings-sidebar-card__eyebrow">Pronto para personalizar</span>
-          <strong class="settings-sidebar-card__title">
-            Controle simples, por guia e por site.
-          </strong>
-          <p class="settings-sidebar-card__text">
-            Tudo fica salvo localmente no navegador e pode ser ajustado quando
-            seu fluxo mudar.
-          </p>
-        </section>
-      </aside>
-
-      <div class="settings-content">
-        <section class="summary-grid" aria-label="Resumo das configurações">
-          <article class="summary-card">
-            <span class="summary-card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="8" />
-                <path d="M12 8v5l3 2" />
-              </svg>
-            </span>
-            <div>
-              <strong>Tempo padrão</strong>
-              <span id="summary-default-interval">3 minutos</span>
-            </div>
-          </article>
-
-          <article class="summary-card">
-            <span class="summary-card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24">
-                <path d="M4 7h16" />
-                <path d="M7 7v12" />
-                <path d="M17 7v12" />
-                <path d="M5 19h14" />
-                <path d="M8 4h8" />
-              </svg>
-            </span>
-            <div>
-              <strong>Sites automáticos</strong>
-              <span id="summary-sites-count">Nenhum site cadastrado</span>
-            </div>
-          </article>
-
-          <article class="summary-card">
-            <span class="summary-card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24">
-                <path d="M12 3 5 6v5c0 4.6 2.9 8.3 7 10 4.1-1.7 7-5.4 7-10V6z" />
-                <path d="m9 12 2 2 4-5" />
-              </svg>
-            </span>
-            <div>
-              <strong>Controle local</strong>
-              <span>Configurações salvas no navegador.</span>
-            </div>
-          </article>
-        </section>
-
+    <div class="settings-content">
         <section id="general-section" class="panel panel--general" aria-labelledby="general-title">
           <div class="panel__heading">
             <p class="panel__eyebrow">Preferências</p>
@@ -555,7 +440,6 @@
 
         <p id="options-status" class="options__status" role="status"></p>
       </div>
-    </div>
   </main>
 
   <footer class="privacy-footer">

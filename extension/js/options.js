@@ -64,8 +64,6 @@ const optionsElements = {
   siteOriginInput: document.querySelector("#site-origin-input"),
   sitesEmptyState: document.querySelector("#sites-empty-state"),
   sitesList: document.querySelector("#sites-list"),
-  summaryDefaultInterval: document.querySelector("#summary-default-interval"),
-  summarySitesCount: document.querySelector("#summary-sites-count"),
   themeToggleButton: document.querySelector("#theme-toggle-button"),
   themeToggleLabel: document.querySelector("#theme-toggle-label")
 };
@@ -445,29 +443,6 @@ const formatMinuteLabel = (minutes) => {
   return replaceOptionsToken("minutePlural", {
     count: String(minutes)
   });
-};
-
-const formatSiteCount = (count) => {
-  if (count === 0) {
-    return getOptionsCopy("readySitesEmpty");
-  }
-
-  if (count === 1) {
-    return getOptionsCopy("readySitesSingular");
-  }
-
-  return replaceOptionsToken("readySitesPlural", {
-    count: String(count)
-  });
-};
-
-const updateSettingsSummary = () => {
-  optionsElements.summaryDefaultInterval.textContent = formatMinuteLabel(
-    currentSettings.defaultIntervalInMinutes
-  );
-  optionsElements.summarySitesCount.textContent = formatSiteCount(
-    currentSettings.autoStartSites.length
-  );
 };
 
 const getStoredOptionsSettings = async () => {
@@ -863,8 +838,6 @@ const renderSites = () => {
     item.append(info, removeButton);
     optionsElements.sitesList.append(item);
   });
-
-  updateSettingsSummary();
 };
 
 const syncPreferenceControls = () => {
@@ -912,7 +885,6 @@ const loadOptionsSettings = async () => {
   currentSettings = await getStoredOptionsSettings();
   optionsElements.defaultIntervalInput.value = currentSettings.defaultIntervalInMinutes;
   syncPreferenceControls();
-  updateSettingsSummary();
   renderSites();
 };
 
@@ -929,7 +901,6 @@ const saveDefaultInterval = async () => {
 
   currentSettings.defaultIntervalInMinutes = Math.floor(defaultInterval);
   await saveOptionsSettings();
-  updateSettingsSummary();
   updateOptionsStatus(getOptionsCopy("formSettingsSaved"), "success");
 };
 
@@ -1048,22 +1019,9 @@ const applyOptionsLanguage = (language) => {
     : defaultLanguage;
   document.title = getOptionsCopy("documentTitle");
 
-  setTexts(".settings-nav__label", [
-    "navGeneral",
-    "navSites",
-    "navBackup",
-    "historyNavLabel",
-    "navPermissions"
-  ]);
   setText(".settings-header__link span", "headerExit");
-  setText(".settings-header__title", "headerTitle");
   setText("#options-title", "pageTitle");
   setText(".brand__subtitle", "pageDescription");
-  setText(".settings-page-intro__status span", "introStatusLabel");
-  setText(".settings-page-intro__status strong", "introStatusText");
-  setText(".settings-sidebar-card__eyebrow", "heroCardBadge");
-  setText(".settings-sidebar-card__title", "heroCardTitle");
-  setText(".settings-sidebar-card__text", "heroCardBody");
   setText(".panel--general .panel__eyebrow", "preferencesEyebrow");
   setText("#general-title", "defaultTimeLabel");
   setText(".panel--general .panel__description", "timeDescription");
@@ -1157,10 +1115,7 @@ const applyOptionsLanguage = (language) => {
     "defaultIntervalPlaceholder"
   );
 
-  setAttribute(".summary-grid", "aria-label", "permissionsSummaryLabel");
   setAttribute(".permissions-grid", "aria-label", "permissionsGridLabel");
-  setAttribute(".settings-nav", "aria-label", "settingsNavLabel");
-  setAttribute(".settings-sidebar-card", "aria-label", "heroCardLabel");
   setAttribute("#sites-list", "aria-label", "siteListLabel");
   setAttribute("#history-list", "aria-label", "historyTitle");
   setAttribute(".history-toolbar", "aria-label", "historyFilterLabel");
@@ -1172,7 +1127,6 @@ const applyOptionsLanguage = (language) => {
   setAttribute("#back-to-top-button", "aria-label", "backToTop");
   setAttribute("#close-language-button", "aria-label", "closeDialog");
 
-  updateSettingsSummary();
   renderSites();
   renderActionHistory();
   updateOptionsThemeButtonLabel({
