@@ -117,7 +117,7 @@ chrome.alarms.onAlarm.addListener((alarm) => {
 
 chrome.tabs.onRemoved.addListener((tabId) => {
   removePendingScrollPosition(tabId);
-  stopTimer(tabId).catch((error) => {
+  queueTimerMaintenance(() => stopTimer(tabId)).catch((error) => {
     console.error("Erro ao remover timer da guia fechada:", error);
   });
 });
@@ -131,7 +131,7 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
     console.error("Erro ao restaurar a posicao da pagina:", error);
   });
 
-  handleCompletedTabUpdate(tabId, tab).catch((error) => {
+  queueTimerMaintenance(() => handleCompletedTabUpdate(tabId, tab)).catch((error) => {
     console.error("Erro ao preparar guia atualizada no RecarregaAi:", error);
   });
 });

@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="Content-Security-Policy"
       content="default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; form-action 'none'; frame-src 'none'" />
-    <title>Primeiros passos - RecarregaAi!</title>
+    <title data-i18n="pageTitle">Primeiros passos - RecarregaAi!</title>
     <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/icon16.png" />
     <link rel="stylesheet" href="css/shared-design-tokens.css" />
     <link rel="stylesheet" href="css/onboarding.css" />
   </head>
   <body>
     <header class="onboarding-header">
-      <a class="brand" href="onboarding.html" aria-label="RecarregaAi!">
+      <a class="brand" href="#" aria-label="RecarregaAi!">
         <img src="assets/icons/icon128.png" alt="" aria-hidden="true" />
         <span>
           <strong>RecarregaAi!</strong>
@@ -25,6 +25,8 @@
         id="theme-toggle-button"
         class="icon-button"
         type="button"
+        data-i18n-aria="themeLight"
+        data-i18n-title="themeLight"
         aria-label="Ativar tema escuro"
         title="Ativar tema escuro"
       >
@@ -40,9 +42,9 @@
 
     <main class="onboarding">
       <section class="intro" aria-labelledby="onboarding-title">
-        <p class="eyebrow">Configuração inicial</p>
-        <h1 id="onboarding-title">Tudo pronto para manter suas guias atualizadas.</h1>
-        <p class="intro__description">
+        <p class="eyebrow" data-i18n="eyebrow">Configuração inicial</p>
+        <h1 id="onboarding-title" data-i18n="title">Tudo pronto para manter suas guias atualizadas.</h1>
+        <p class="intro__description" data-i18n="description">
           Fixe o RecarregaAi!, escolha uma guia e defina o intervalo. Cada guia
           funciona de forma independente e pausa quando você está digitando.
         </p>
@@ -57,8 +59,8 @@
               <path d="M9 7h6" />
             </svg>
           </span>
-          <h2>Fixe o ícone</h2>
-          <p>Abra o menu de extensões do Chrome e fixe o RecarregaAi! na barra.</p>
+          <h2 data-i18n="step1Title">Fixe o ícone</h2>
+          <p data-i18n="step1Description">Abra o menu de extensões do Chrome e fixe o RecarregaAi! na barra.</p>
         </li>
 
         <li class="step">
@@ -69,8 +71,8 @@
               <path d="M3 9h18M8 4v5" />
             </svg>
           </span>
-          <h2>Escolha a guia</h2>
-          <p>Abra a página que deseja acompanhar e clique no ícone da extensão.</p>
+          <h2 data-i18n="step2Title">Escolha a guia</h2>
+          <p data-i18n="step2Description">Abra a página que deseja acompanhar e clique no ícone da extensão.</p>
         </li>
 
         <li class="step">
@@ -81,22 +83,22 @@
               <path d="M12 9v5l3 2M9 2h6" />
             </svg>
           </span>
-          <h2>Ative o timer</h2>
-          <p>Use 3, 5, 10 minutos ou informe um intervalo personalizado.</p>
+          <h2 data-i18n="step3Title">Ative o timer</h2>
+          <p data-i18n="step3Description">Use 3, 5, 10 minutos ou informe um intervalo personalizado.</p>
         </li>
       </ol>
 
       <section class="actions" aria-label="Ações iniciais">
         <div>
-          <strong>Você mantém o controle.</strong>
-          <span>Timers, sites automáticos e histórico ficam nas configurações.</span>
+          <strong data-i18n="controlTitle">Você mantém o controle.</strong>
+          <span data-i18n="controlDescription">Timers, sites automáticos e histórico ficam nas configurações.</span>
         </div>
 
         <div class="actions__buttons">
-          <button id="open-options-button" class="button button--secondary" type="button">
+          <button id="open-options-button" class="button button--secondary" type="button" data-i18n="openOptionsButton">
             Abrir configurações
           </button>
-          <button id="finish-onboarding-button" class="button button--primary" type="button">
+          <button id="finish-onboarding-button" class="button button--primary" type="button" data-i18n="startButton">
             Começar
           </button>
         </div>

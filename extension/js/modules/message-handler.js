@@ -11,6 +11,7 @@ import { clearActionHistory, getActionHistory } from "./history.js";
 import {
   pauseAllTimers,
   pauseTimer,
+  queueTimerMaintenance,
   resumeAllTimers,
   resumeTimer,
   startTimer,
@@ -168,7 +169,9 @@ const runtimeMessageHandlers = {
     return createTimerSettingsResponse(timerSettings);
   },
   [runtimeMessageTypes.pauseAllTimers]: async (message) => ({
-    globalPause: await pauseAllTimers(message.payload?.durationInMinutes),
+    globalPause: await queueTimerMaintenance(() =>
+      pauseAllTimers(message.payload?.durationInMinutes)
+    ),
     ok: true
   }),
   [runtimeMessageTypes.recordManualCleanup]: async (message) => {
@@ -198,7 +201,7 @@ const runtimeMessageHandlers = {
     return createTimerSettingsResponse(timerSettings);
   },
   [runtimeMessageTypes.resumeAllTimers]: async () => ({
-    activeTimers: await resumeAllTimers(),
+    activeTimers: await queueTimerMaintenance(() => resumeAllTimers()),
     globalPause: null,
     ok: true
   }),
@@ -225,7 +228,9 @@ const runtimeMessageHandlers = {
     return { ok: true, startedCount: tabs.length };
   },
   [runtimeMessageTypes.stopTimer]: async (message, sender) => {
-    await stopTimer(getMessageTabId(message, sender));
+    await queueTimerMaintenance(() =>
+      stopTimer(getMessageTabId(message, sender))
+    );
 
     return {
       ok: true

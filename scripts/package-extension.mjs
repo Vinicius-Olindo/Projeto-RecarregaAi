@@ -24,7 +24,8 @@ const includePaths = [
   "manifest.json",
   "onboarding.html",
   "options.html",
-  "popup.html"
+  "popup.html",
+  "translations"
 ];
 const publicOnlyFiles = new Set([
   "css/privacy.css",
