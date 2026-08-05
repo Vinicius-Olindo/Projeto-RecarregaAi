@@ -984,9 +984,12 @@ const updateOptionsThemeButtonLabel = ({ isDarkTheme }) => {
   optionsElements.themeToggleButton.setAttribute("aria-pressed", String(isDarkTheme));
   optionsElements.themeToggleButton.setAttribute("aria-label", nextThemeLabel);
   optionsElements.themeToggleButton.title = nextThemeLabel;
-  optionsElements.themeToggleLabel.textContent = isDarkTheme
-    ? getOptionsCopy("themeLight")
-    : getOptionsCopy("themeDark");
+
+  if (optionsElements.themeToggleLabel) {
+    optionsElements.themeToggleLabel.textContent = isDarkTheme
+      ? getOptionsCopy("themeLight")
+      : getOptionsCopy("themeDark");
+  }
 };
 
 const loadOptionsTheme = async () => {
@@ -1079,10 +1082,6 @@ const applyOptionsLanguage = (language) => {
   setText("#collapse-history-button", "historyCollapse");
   setText(".history-note", "historyLimitNote");
   setText("#permissions-title", "permissionsTitle");
-  setTextAt(".summary-card strong", 0, "defaultTimeLabel");
-  setTextAt(".summary-card strong", 1, "autoSitesLabel");
-  setTextAt(".summary-card strong", 2, "localControlLabel");
-  setTextAt(".summary-card div > span", 2, "localControlText");
   setTextAt(".panel .panel__eyebrow", 1, "autoStartEyebrow");
   setTextAt(".panel .panel__description", 1, "autoStartDescription");
   setText(".panel--permissions .panel__eyebrow", "transparencyEyebrow");

@@ -169,8 +169,12 @@ const loadPopupLanguage = async () => {
 };
 
 const updateStatusMessage = (message, status = "neutral") => {
-  popupElements.statusMessage.textContent = message;
-  popupElements.statusPanel.dataset.status = status;
+  if (popupElements.statusMessage) {
+    popupElements.statusMessage.textContent = message;
+  }
+  if (popupElements.statusPanel) {
+    popupElements.statusPanel.dataset.status = status;
+  }
 };
 
 const updateButtonState = (button, isLoading, loadingText, defaultText) => {
