@@ -149,8 +149,8 @@
 :root[data-theme="dark"] .privacy-footer .privacy-footer__icon-link:focus-visible,
 :root[data-theme="dark"] .privacy-footer .privacy-footer__icon-link:active {
   color: #ffffff;
-  background: #2d9cff;
-  border-color: #2d9cff;
+  background: #14b8a6;
+  border-color: #14b8a6;
 }
 
 :root[data-theme="dark"] .privacy-footer .privacy-footer__icon-link:hover svg,
