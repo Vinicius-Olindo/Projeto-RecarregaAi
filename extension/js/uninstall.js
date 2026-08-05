@@ -5,7 +5,8 @@ import { loadPageI18n } from "./modules/i18n.js";
 import { initFloatingTools } from "./modules/floating-tools.js";
 import {
   loadThemePreference,
-  toggleThemePreference
+  toggleThemePreference,
+  watchSystemTheme
 } from "./modules/theme.js";
 import { enforceTopLevelPublicPage } from "./modules/public-page-security.js";
 
@@ -140,6 +141,7 @@ const loadUninstallTheme = async () => {
   await loadThemePreference({
     onChange: updateUninstallThemeButtonLabel
   });
+  watchSystemTheme({ onChange: updateUninstallThemeButtonLabel });
 };
 
 const toggleUninstallTheme = async () => {

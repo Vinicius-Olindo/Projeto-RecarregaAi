@@ -2,7 +2,8 @@
 
 import {
   loadThemePreference,
-  toggleThemePreference
+  toggleThemePreference,
+  watchSystemTheme
 } from "./modules/theme.js";
 
 const onboardingElements = {
@@ -59,6 +60,8 @@ onboardingElements.finishButton.addEventListener("click", () => {
 
 loadThemePreference({
   onChange: updateThemeButton
+}).then(() => {
+  watchSystemTheme({ onChange: updateThemeButton });
 }).catch((error) => {
   console.error("Erro ao carregar tema do onboarding:", error);
 });

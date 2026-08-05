@@ -13,7 +13,8 @@ import {
   storageKeys
 } from "./modules/shared.js";
 import {
-  loadThemePreference
+  loadThemePreference,
+  watchSystemTheme
 } from "./modules/theme.js";
 import {
   clearCacheForOrigins,
@@ -188,6 +189,7 @@ const loadExtensionVersion = () => {
 
 const loadTheme = async () => {
   await loadThemePreference();
+  watchSystemTheme();
 };
 
 const sendRuntimeMessage = (message) => new Promise((resolve, reject) => {

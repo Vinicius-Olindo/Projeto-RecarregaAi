@@ -16,6 +16,7 @@ import { getTabMediaActivity, isTabEditingText } from "./media-detection.js";
 
 let badgeCountdownTimerId = null;
 let badgeCountdownRestartQueue = Promise.resolve();
+const previousBadgeState = new Map();
 
 const mediaBadgeStates = {
   [mediaKinds.audio]: {
@@ -108,24 +109,24 @@ export const updateTimerBadge = async (timerSettings) => {
   let countdownTime = formatCountdownTime(remainingSeconds);
 
   if (isPaused) {
-    badgeColor = "#667085";
+    badgeColor = "#737373";
     badgeText = "II";
     countdownTime = "pausado";
 
     if (isPausedGlobally) {
-      badgeColor = "#7c3aed";
+      badgeColor = "#6366f1";
       badgeText = "ALL";
       countdownTime = "pausa geral";
     }
 
     if (isPausedBySchedule) {
-      badgeColor = "#475467";
+      badgeColor = "#525252";
       badgeText = "H";
       countdownTime = "fora do horario";
     }
 
     if (isPausedByTyping) {
-      badgeColor = "#ef7a1f";
+      badgeColor = "#d97706";
       badgeText = "DIG";
       countdownTime = "digitando";
     }
@@ -138,12 +139,12 @@ export const updateTimerBadge = async (timerSettings) => {
         timerSettings.resumeScheduledAt
       );
 
-      badgeColor = "#1f7aef";
+      badgeColor = "#0d9488";
       badgeText = mediaBadgeState.badgeText;
       countdownTime = mediaBadgeState.countdownTime;
 
       if (safetySeconds > 0) {
-        badgeColor = "#0f9f6e";
+        badgeColor = "#059669";
         badgeText = `${safetySeconds}s`;
         countdownTime = `retomado em ${safetySeconds}s`;
       }
@@ -151,6 +152,16 @@ export const updateTimerBadge = async (timerSettings) => {
   }
 
   try {
+    const badgeKey = badgeTarget.tabId ?? "global";
+    const newState = `${badgeColor}|${badgeText}`;
+    const prevState = previousBadgeState.get(badgeKey);
+
+    if (prevState === newState) {
+      return;
+    }
+
+    previousBadgeState.set(badgeKey, newState);
+
     await chrome.action.setBadgeBackgroundColor({
       ...badgeTarget,
       color: badgeColor

@@ -12,6 +12,12 @@ export const getNextTheme = (theme) => (
     : themeModes.dark
 );
 
+export const getSystemTheme = () => (
+  window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? themeModes.dark
+    : themeModes.light
+);
+
 export const getChromeLocalStorage = () => {
   if (typeof chrome === "undefined" || !chrome.storage?.local) {
     return null;
@@ -41,26 +47,25 @@ export const applyThemePreference = ({
 };
 
 export const loadThemePreference = async ({
-  defaultTheme = themeModes.light,
+  defaultTheme = null,
   onChange = null,
   root = document.documentElement,
   storageArea = getChromeLocalStorage()
 } = {}) => {
   if (!storageArea) {
-    return applyThemePreference({
-      onChange,
-      root,
-      theme: defaultTheme
-    });
+    const resolved = defaultTheme || getSystemTheme();
+    return applyThemePreference({ onChange, root, theme: resolved });
   }
 
   const storedData = await storageArea.get(storageKeys.theme);
+  const storedTheme = storedData[storageKeys.theme];
 
-  return applyThemePreference({
-    onChange,
-    root,
-    theme: storedData[storageKeys.theme] || defaultTheme
-  });
+  if (storedTheme) {
+    return applyThemePreference({ onChange, root, theme: storedTheme });
+  }
+
+  const systemTheme = getSystemTheme();
+  return applyThemePreference({ onChange, root, theme: systemTheme });
 };
 
 export const saveThemePreference = async ({
@@ -97,3 +102,48 @@ export const toggleThemePreference = async ({
     theme: getNextTheme(currentTheme)
   })
 );
+
+let systemThemeListener = null;
+
+export const watchSystemTheme = ({
+  onChange = null,
+  root = document.documentElement,
+  storageArea = getChromeLocalStorage()
+} = {}) => {
+  if (systemThemeListener) {
+    return;
+  }
+
+  const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+
+  systemThemeListener = async () => {
+    if (!storageArea) {
+      return;
+    }
+
+    const storedData = await storageArea.get(storageKeys.theme);
+
+    if (storedData[storageKeys.theme]) {
+      return;
+    }
+
+    applyThemePreference({
+      onChange,
+      root,
+      theme: getSystemTheme()
+    });
+  };
+
+  mediaQuery.addEventListener("change", systemThemeListener);
+};
+
+export const unwatchSystemTheme = () => {
+  if (!systemThemeListener) {
+    return;
+  }
+
+  window.matchMedia("(prefers-color-scheme: dark)")
+    .removeEventListener("change", systemThemeListener);
+
+  systemThemeListener = null;
+};

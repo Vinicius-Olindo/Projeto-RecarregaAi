@@ -8,7 +8,8 @@ import {
 } from "./modules/language-dialog.js";
 import {
   loadThemePreference,
-  toggleThemePreference
+  toggleThemePreference,
+  watchSystemTheme
 } from "./modules/theme.js";
 import { enforceTopLevelPublicPage } from "./modules/public-page-security.js";
 
@@ -145,6 +146,7 @@ const loadPrivacyTheme = async () => {
   await loadThemePreference({
     onChange: updatePrivacyThemeButtonLabel
   });
+  watchSystemTheme({ onChange: updatePrivacyThemeButtonLabel });
 };
 
 const togglePrivacyTheme = async () => {

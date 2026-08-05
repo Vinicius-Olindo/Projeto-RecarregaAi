@@ -23,7 +23,8 @@ import {
   loadThemePreference,
   normalizeTheme,
   saveThemePreference,
-  toggleThemePreference
+  toggleThemePreference,
+  watchSystemTheme
 } from "./modules/theme.js";
 
 const optionsPreviewStorageKey = "recarregaAiOptionsPreviewSettings";
@@ -1016,6 +1017,7 @@ const loadOptionsTheme = async () => {
   await loadThemePreference({
     onChange: updateOptionsThemeButtonLabel
   });
+  watchSystemTheme({ onChange: updateOptionsThemeButtonLabel });
 };
 
 const toggleOptionsTheme = async () => {
