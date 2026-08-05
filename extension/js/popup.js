@@ -111,8 +111,7 @@ const applyPopupLanguage = () => {
   setPopupText("#resume-timer-button", "resumeTimer");
   setPopupText("#remove-timer-button", "removeTimer");
   setPopupText("#quick-action-title", "manualLabel");
-  setPopupText(".quick-action__title", "reloadOnceTitle");
-  setPopupText(".quick-action .popup__hint", "manualHint");
+  setPopupText(".popup__primary-action .popup__hint", "manualHint");
   setPopupText("#reload-page-button", "updateNowButton");
   setPopupText(".popup__timer .popup__label", "autoLabel");
   setPopupText("#timer-title", "recurringTitle");

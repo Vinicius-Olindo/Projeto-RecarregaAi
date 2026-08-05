@@ -28,15 +28,16 @@
         </div>
       </header>
 
-      <section class="popup__status" data-status="neutral" aria-live="polite">
-        <span class="popup__status-indicator" aria-hidden="true"></span>
+      <section class="popup__primary-action" aria-labelledby="primary-action-title">
+        <h2 id="primary-action-title" class="screen-reader-only">Ação principal</h2>
 
-        <div class="popup__status-content">
-          <p class="popup__label">Status</p>
-          <strong id="status-message" class="popup__message">
-            Pronto para limpar e atualizar a página aberta.
-          </strong>
-        </div>
+        <button id="reload-page-button" class="popup__button popup__button--primary" type="button">
+          Limpar e atualizar
+        </button>
+
+        <p class="popup__hint">
+          Limpa dados antigos e recarrega esta página.
+        </p>
       </section>
 
       <section id="timer-overview" class="timer-overview" data-state="empty">
@@ -78,11 +79,6 @@
           </div>
         </div>
 
-        <p class="timer-overview__note">
-          O contador no ícone pode variar um pouco quando este painel está
-          fechado.
-        </p>
-
         <div class="timer-overview__actions">
           <button
             id="open-controlled-tab-button"
@@ -120,20 +116,6 @@
             Remover
           </button>
         </div>
-      </section>
-
-      <section class="quick-action" aria-labelledby="quick-action-title">
-        <div class="quick-action__copy">
-          <p id="quick-action-title" class="popup__label">Manual</p>
-          <p class="quick-action__title">Atualizar agora</p>
-          <p class="popup__hint">
-            Limpa dados antigos e atualiza esta página uma vez.
-          </p>
-        </div>
-
-        <button id="reload-page-button" class="popup__button" type="button">
-          Limpar e atualizar
-        </button>
       </section>
 
       <section class="popup__timer" aria-labelledby="timer-title">
