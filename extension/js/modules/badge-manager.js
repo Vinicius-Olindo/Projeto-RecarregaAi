@@ -170,6 +170,10 @@ export const updateTimerBadge = async (timerSettings) => {
       ...badgeTarget,
       text: badgeText
     });
+    await chrome.action.setBadgeTextColor({
+      ...badgeTarget,
+      color: "#ffffff"
+    });
     await chrome.action.setTitle({
       ...badgeTarget,
       title: isPaused
