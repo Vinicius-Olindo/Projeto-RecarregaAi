@@ -123,14 +123,14 @@ button {
 .brand__name {
   color: var(--color-primary);
   font-size: 1.08rem;
-  font-weight: 950;
+  font-weight: 800;
 }
 
 .brand__version {
   margin-top: 2px;
   color: var(--color-muted);
   font-size: 0.8rem;
-  font-weight: 750;
+  font-weight: 700;
 }
 
 .top-nav,
@@ -159,7 +159,7 @@ button {
   gap: 10px;
   color: #171717;
   font-size: 0.92rem;
-  font-weight: 900;
+  font-weight: 800;
   text-decoration: none;
   background: #ffffff;
   border: 1.5px solid #e5e5e5;
@@ -209,7 +209,7 @@ button {
   padding: 0 2px;
   color: var(--color-muted);
   font-size: 0.9rem;
-  font-weight: 850;
+  font-weight: 700;
   text-decoration: none;
   transition:
     color 160ms ease,
@@ -370,7 +370,7 @@ button {
   margin: 0;
   color: var(--color-primary);
   font-size: 0.78rem;
-  font-weight: 950;
+  font-weight: 800;
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
@@ -412,7 +412,7 @@ button {
   min-height: 42px;
   padding: 0 18px;
   color: inherit;
-  font-weight: 900;
+  font-weight: 800;
   text-decoration: none;
   border-radius: 999px;
   cursor: pointer;
@@ -484,23 +484,21 @@ button {
   gap: 8px;
 }
 
-.trust-item__icon,
-.feature-card__icon,
-.accordion-card__icon {
+.trust-item__dot,
+.feature-card__dot,
+.accordion-card__dot {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-primary);
-  font-weight: 700;
-  background: var(--color-primary-soft);
-  border-radius: 8px;
+  width: 8px;
+  height: 8px;
+  background: var(--color-primary);
+  border-radius: 50%;
 }
 
-.trust-item__icon {
-  width: 48px;
-  height: 36px;
-  font-size: 0.8rem;
-  letter-spacing: 0.05em;
+.trust-item__dot {
+  width: 8px;
+  height: 8px;
 }
 
 .trust-item strong {
@@ -532,7 +530,7 @@ button {
 .final-cta h2 {
   margin: 8px 0 0;
   font-size: clamp(2rem, 4.6vw, 3.35rem);
-  font-weight: 950;
+  font-weight: 800;
   line-height: 1.06;
   letter-spacing: -0.03em;
 }
@@ -567,10 +565,9 @@ button {
   transform: translateY(-2px);
 }
 
-.feature-card__icon {
-  width: 40px;
-  height: 40px;
-  font-size: 0.8rem;
+.feature-card__dot {
+  width: 8px;
+  height: 8px;
 }
 
 .feature-card h3 {
@@ -615,8 +612,8 @@ button {
 .accordion-card summary {
   position: relative;
   display: grid;
-  grid-template-columns: 54px 1fr;
-  gap: 18px;
+  grid-template-columns: 20px 1fr;
+  gap: 14px;
   align-items: center;
   padding: 24px 62px 24px 24px;
 }
@@ -644,10 +641,9 @@ button {
   content: "-";
 }
 
-.accordion-card__icon {
-  width: 44px;
-  height: 44px;
-  font-size: 0.8rem;
+.accordion-card__dot {
+  width: 8px;
+  height: 8px;
 }
 
 .accordion-card strong {
@@ -671,13 +667,13 @@ button {
 }
 
 .accordion-card > p {
-  padding: 0 62px 24px 96px;
+  padding: 0 62px 24px 58px;
 }
 
 .faq-item summary {
   position: relative;
   padding: 22px 62px 22px 24px;
-  font-weight: 900;
+  font-weight: 800;
 }
 
 .faq-item p {
@@ -801,7 +797,7 @@ button {
   overflow: hidden;
   color: #171717;
   font-size: 0.9rem;
-  font-weight: 850;
+  font-weight: 700;
   opacity: 0;
   white-space: nowrap;
   transition:
@@ -890,7 +886,7 @@ button {
   margin: 0;
   color: #0a0a0a;
   font-size: 1.28rem;
-  font-weight: 950;
+  font-weight: 800;
 }
 
 :root[data-theme="dark"] .language-dialog__title {
@@ -952,19 +948,19 @@ button {
 
 .language-card strong {
   font-size: 1rem;
-  font-weight: 950;
+  font-weight: 800;
 }
 
 .language-card span {
   font-size: 0.88rem;
-  font-weight: 850;
+  font-weight: 700;
   overflow-wrap: anywhere;
 }
 
 .language-card small {
   color: #737373;
   font-size: 0.76rem;
-  font-weight: 800;
+  font-weight: 700;
 }
 
 @media (prefers-reduced-motion: reduce) {
