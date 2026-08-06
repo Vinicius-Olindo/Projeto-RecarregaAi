@@ -116,7 +116,9 @@ chrome.alarms.onAlarm.addListener((alarm) => {
 });
 
 chrome.tabs.onRemoved.addListener((tabId) => {
-  removePendingScrollPosition(tabId);
+  removePendingScrollPosition(tabId).catch((error) => {
+    console.error("Erro ao limpar posicao da pagina:", error);
+  });
   queueTimerMaintenance(() => stopTimer(tabId)).catch((error) => {
     console.error("Erro ao remover timer da guia fechada:", error);
   });

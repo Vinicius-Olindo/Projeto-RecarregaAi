@@ -15,10 +15,12 @@ export const createChromeAlarm = async (alarmName, alarmInfo) => {
   try {
     await chrome.alarms.create(alarmName, alarmInfo);
 
-    const createdAlarm = await chrome.alarms.get(alarmName);
+    let createdAlarm;
 
-    if (!createdAlarm) {
-      throw new Error(`Alarme ${alarmName} nao encontrado apos criacao.`);
+    try {
+      createdAlarm = await chrome.alarms.get(alarmName);
+    } catch (verifyError) {
+      console.warn(`Falha ao verificar alarme ${alarmName} (pode ter disparado):`, verifyError);
     }
 
     return createdAlarm;

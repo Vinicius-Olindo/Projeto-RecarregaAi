@@ -78,6 +78,47 @@ const automaticPauseReasons = new Set([
   pauseReasons.typing
 ]);
 
+const savePendingScrollPosition = async (tabId, position) => {
+  pendingScrollPositions.set(tabId, position);
+
+  try {
+    await chrome.storage.session.set({
+      [`recarregaAiScroll_${tabId}`]: position
+    });
+  } catch (error) {
+    console.warn("Nao foi possivel salvar posicao da pagina:", error);
+  }
+};
+
+const loadPendingScrollPositions = async () => {
+  try {
+    const data = await chrome.storage.session.get(null);
+    const scrollPrefix = "recarregaAiScroll_";
+
+    for (const [key, value] of Object.entries(data)) {
+      if (key.startsWith(scrollPrefix)) {
+        const tabId = Number(key.slice(scrollPrefix.length));
+
+        if (Number.isInteger(tabId) && value) {
+          pendingScrollPositions.set(tabId, value);
+        }
+      }
+    }
+  } catch (error) {
+    console.warn("Nao foi possivel carregar posicoes da pagina:", error);
+  }
+};
+
+const clearPendingScrollPositionStorage = async (tabId) => {
+  pendingScrollPositions.delete(tabId);
+
+  try {
+    await chrome.storage.session.remove(`recarregaAiScroll_${tabId}`);
+  } catch (error) {
+    console.warn("Nao foi possivel limpar posicao da pagina:", error);
+  }
+};
+
 export const queueTimerMaintenance = (maintenanceTask) => {
   const queuedTask = timerMaintenanceQueue
     .catch(() => undefined)
@@ -512,10 +553,11 @@ export const syncOperatingHoursState = async () => {
 export const restoreGlobalPause = async () => {
   const globalPause = await getGlobalPause();
 
-  if (
-    globalPause
-    && new Date(globalPause.endsAt).getTime() > Date.now()
-  ) {
+  if (!globalPause) {
+    return;
+  }
+
+  if (new Date(globalPause.endsAt).getTime() > Date.now()) {
     await createGlobalPauseAlarm(globalPause);
     const timerSettingsList = await getAllTimerSettings();
 
@@ -865,7 +907,7 @@ export const restorePendingScrollPosition = async (tabId) => {
     return;
   }
 
-  pendingScrollPositions.delete(tabId);
+  await clearPendingScrollPositionStorage(tabId);
 
   for (const delay of [0, 250, 750]) {
     if (delay > 0) {
@@ -916,7 +958,7 @@ const clearCacheAndReloadTab = async (
     const scrollPosition = await captureTabScrollPosition(timerSettings.tabId);
 
     if (scrollPosition) {
-      pendingScrollPositions.set(timerSettings.tabId, scrollPosition);
+      await savePendingScrollPosition(timerSettings.tabId, scrollPosition);
     }
   }
 
@@ -925,7 +967,7 @@ const clearCacheAndReloadTab = async (
   try {
     await reloadTabIgnoringCache(timerSettings.tabId);
   } catch (error) {
-    pendingScrollPositions.delete(timerSettings.tabId);
+    await clearPendingScrollPositionStorage(timerSettings.tabId);
     throw error;
   }
 
@@ -1227,9 +1269,10 @@ export const getTimerStateResponse = async (activeTabId) => {
 };
 
 export const ensureStartupAlarms = async () => {
+  await loadPendingScrollPositions();
   await ensureRuntimeTimerAlarms();
 };
 
-export const removePendingScrollPosition = (tabId) => {
-  pendingScrollPositions.delete(tabId);
+export const removePendingScrollPosition = async (tabId) => {
+  await clearPendingScrollPositionStorage(tabId);
 };

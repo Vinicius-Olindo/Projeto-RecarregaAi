@@ -179,17 +179,33 @@ export const getNextOperatingHoursBoundary = (
   }
 
   const currentState = isWithinOperatingHours(schedule, date);
+  const startMinutes = getClockMinutes(schedule.startTime);
+  const endMinutes = getClockMinutes(schedule.endTime);
   const candidate = new Date(date);
 
   candidate.setSeconds(0, 0);
   candidate.setMinutes(candidate.getMinutes() + 1);
 
-  for (let minute = 0; minute <= 8 * 24 * 60; minute += 1) {
-    if (isWithinOperatingHours(schedule, candidate) !== currentState) {
-      return candidate;
-    }
+  for (let day = 0; day < 8; day += 1) {
+    const testDate = new Date(candidate);
 
-    candidate.setMinutes(candidate.getMinutes() + 1);
+    testDate.setDate(testDate.getDate() + day);
+
+    const boundaries = [startMinutes, endMinutes];
+
+    for (const boundaryMinutes of boundaries) {
+      const testBoundary = new Date(testDate);
+
+      testBoundary.setHours(Math.floor(boundaryMinutes / 60), boundaryMinutes % 60, 0, 0);
+
+      if (testBoundary <= candidate) {
+        continue;
+      }
+
+      if (isWithinOperatingHours(schedule, testBoundary) !== currentState) {
+        return testBoundary;
+      }
+    }
   }
 
   return null;
