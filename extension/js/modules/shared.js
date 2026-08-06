@@ -1,4 +1,4 @@
-// RecarregaAi! 2.3.9
+// RecarregaAi! 2.4.0
 
 export const oneSecondInMilliseconds = 1000;
 export const mediaResumeSafetySeconds = 3;

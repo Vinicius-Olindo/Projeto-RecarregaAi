@@ -1,4 +1,4 @@
-// RecarregaAi! 2.3.9
+// RecarregaAi! 2.4.0
 
 import { appConfig } from "./modules/config.js";
 import { loadPageI18n } from "./modules/i18n.js";
@@ -13,7 +13,7 @@ import { enforceTopLevelPublicPage } from "./modules/public-page-security.js";
 enforceTopLevelPublicPage();
 
 const feedbackBackendUrl = appConfig.feedbackBackendUrl;
-const defaultVersionLabel = chrome.runtime?.getManifest?.()?.version || "2.3.9";
+const defaultVersionLabel = chrome.runtime?.getManifest?.()?.version || "2.4.0";
 const defaultLanguage = "pt-BR";
 const defaultReason = "Não informou motivo";
 const feedbackCooldownInMilliseconds = 60 * 1000;

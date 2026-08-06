@@ -1,6 +1,6 @@
 # RecarregaAi!
 
-**Versão atual: 2.3.9**
+**Versão atual: 2.4.0**
 
 O RecarregaAi! é uma extensão para Google Chrome que limpa o cache do endereço aberto e recarrega páginas automaticamente em intervalos definidos pelo usuário.
 
@@ -190,7 +190,7 @@ documentação, backend ou arquivos do site dentro do ZIP da extensão.
 
 ## Versionamento
 
-Toda alteração entregue incrementa a versão do projeto e mantém os arquivos sincronizados no formato numérico `x.y.z`. Ao chegar a uma versão como `2.3.9`, a próxima será `2.4.0`.
+Toda alteração entregue incrementa a versão do projeto e mantém os arquivos sincronizados no formato numérico `x.y.z`. Ao chegar a uma versão como `2.4.0`, a próxima será `2.4.0`.
 
 ## Contato
 

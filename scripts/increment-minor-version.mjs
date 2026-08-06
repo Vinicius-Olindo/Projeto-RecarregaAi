@@ -1,4 +1,4 @@
-// RecarregaAi! 2.3.9
+// RecarregaAi! 2.4.0
 
 import { readFileSync, writeFileSync, readdirSync, statSync } from "node:fs";
 import { join, relative } from "node:path";

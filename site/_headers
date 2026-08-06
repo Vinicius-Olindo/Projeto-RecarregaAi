@@ -1,4 +1,4 @@
-# RecarregaAi! 2.3.9
+# RecarregaAi! 2.4.0
 
 /*
   Content-Security-Policy: default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; form-action https://script.google.com; frame-src https://script.google.com https://script.googleusercontent.com; frame-ancestors 'none'; upgrade-insecure-requests
