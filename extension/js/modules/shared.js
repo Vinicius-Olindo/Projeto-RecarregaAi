@@ -52,6 +52,7 @@ export const runtimeMessageTypes = Object.freeze({
   recordManualCleanup: "RECARREGA_AI_RECORD_MANUAL_CLEANUP",
   startTimer: "RECARREGA_AI_START_TIMER",
   stopTimer: "RECARREGA_AI_STOP_TIMER",
+  stopTimersForOrigin: "RECARREGA_AI_STOP_TIMERS_FOR_ORIGIN",
   typingState: "RECARREGA_AI_TYPING_STATE"
 });
 

@@ -970,6 +970,11 @@ const removeAutoStartSite = async (index) => {
 
   if (removedSite?.origin) {
     await removeAutoStartPermissionIfUnused(removedSite.origin);
+
+    chrome.runtime.sendMessage({
+      type: runtimeMessageTypes.stopTimersForOrigin,
+      payload: { origin: removedSite.origin }
+    }).catch(() => undefined);
   }
 
   renderSites();

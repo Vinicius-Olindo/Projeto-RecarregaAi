@@ -9,6 +9,9 @@ import {
 } from "./shared.js";
 import { clearActionHistory, getActionHistory } from "./history.js";
 import {
+  getAllTimerSettings
+} from "./storage.js";
+import {
   pauseAllTimers,
   pauseTimer,
   queueTimerMaintenance,
@@ -42,7 +45,8 @@ const extensionPageMessageTypes = new Set([
   runtimeMessageTypes.resumeTimer,
   runtimeMessageTypes.resumeAllTimers,
   runtimeMessageTypes.startTimer,
-  runtimeMessageTypes.stopTimer
+  runtimeMessageTypes.stopTimer,
+  runtimeMessageTypes.stopTimersForOrigin
 ]);
 
 const isOwnExtensionSender = (sender) => (
@@ -235,6 +239,26 @@ const runtimeMessageHandlers = {
     return {
       ok: true
     };
+  },
+  [runtimeMessageTypes.stopTimersForOrigin]: async (message) => {
+    const origin = message?.payload?.origin;
+
+    if (!origin) {
+      return { ok: false, error: "Origem nao informada." };
+    }
+
+    const allTimers = await getAllTimerSettings();
+    const timersToStop = allTimers.filter(
+      (timer) => timer.enabled && timer.mainOrigin === origin
+    );
+
+    await Promise.all(
+      timersToStop.map((timer) =>
+        queueTimerMaintenance(() => stopTimer(timer.tabId))
+      )
+    );
+
+    return { ok: true, stoppedCount: timersToStop.length };
   },
   [runtimeMessageTypes.typingState]: async (message, sender) => {
     const timerSettings = await handleTypingState(
