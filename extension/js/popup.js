@@ -222,11 +222,21 @@ const getActiveTab = async () => {
   return activeTab;
 };
 
-const requestTimerPermission = async (origin) => (
-  chrome.permissions.request({
+const requestTimerPermission = async (origin) => {
+  const alreadyGranted = await chrome.permissions.contains({
     origins: [getPermissionPatternForOrigin(origin)]
-  })
-);
+  });
+
+  if (alreadyGranted) {
+    return true;
+  }
+
+  const granted = await chrome.permissions.request({
+    origins: [getPermissionPatternForOrigin(origin)]
+  });
+
+  return granted;
+};
 
 const recordManualCleanupHistory = async ({
   detail = null,
@@ -806,8 +816,19 @@ const startTimer = async () => {
       return;
     }
 
+    const freshTab = await getActiveTab();
+    const tabId = freshTab?.id ?? activeTab.id;
+
+    if (typeof tabId !== "number") {
+      updateStatusMessage(
+        getPopupCopy("waitForPage"),
+        "error"
+      );
+      return;
+    }
+
     const intervalInMinutes = getSelectedTimerInterval();
-    const loadedOrigins = await collectLoadedOrigins(activeTab.id, [origin]);
+    const loadedOrigins = await collectLoadedOrigins(tabId, [origin]);
 
     await sendRuntimeMessage({
       type: runtimeMessageTypes.startTimer,
@@ -815,10 +836,10 @@ const startTimer = async () => {
         intervalInMinutes,
         mainOrigin: origin,
         origins: loadedOrigins,
-        tabId: activeTab.id,
-        tabTitle: activeTab.title,
-        tabUrl: activeTab.url,
-        windowId: activeTab.windowId
+        tabId,
+        tabTitle: freshTab?.title ?? activeTab.title,
+        tabUrl: freshTab?.url ?? activeTab.url,
+        windowId: freshTab?.windowId ?? activeTab.windowId
       }
     });
 
