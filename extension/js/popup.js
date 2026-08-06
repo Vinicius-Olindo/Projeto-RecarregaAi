@@ -28,7 +28,32 @@ import {
 import { loadPageI18n } from "./modules/i18n.js";
 import { collectLoadedOrigins } from "./modules/tabs.js";
 
+const PENDING_START_KEY = "recarregaAiPendingStart";
 const popupLanguageStorageKey = "recarregaAiPageLanguage";
+
+const savePendingStart = async (data) => {
+  try {
+    await chrome.storage.session.set({ [PENDING_START_KEY]: data });
+  } catch (error) {
+    console.warn("Nao foi possivel salvar inicio pendente:", error);
+  }
+};
+
+const loadAndClearPendingStart = async () => {
+  try {
+    const data = await chrome.storage.session.get(PENDING_START_KEY);
+    const pending = data[PENDING_START_KEY];
+
+    if (pending) {
+      await chrome.storage.session.remove(PENDING_START_KEY);
+    }
+
+    return pending || null;
+  } catch (error) {
+    console.warn("Nao foi possivel carregar inicio pendente:", error);
+    return null;
+  }
+};
 
 const popupElements = {
   activeTimersCount: document.querySelector("#active-timers-count"),
@@ -799,17 +824,21 @@ const startTimer = async () => {
     });
 
     if (!alreadyGranted) {
-      const granted = await chrome.permissions.request({
-        origins: [permissionPattern]
+      await savePendingStart({
+        intervalInMinutes,
+        mainOrigin: origin,
+        origins: loadedOrigins,
+        tabId: activeTab.id,
+        tabTitle: activeTab.title,
+        tabUrl: activeTab.url,
+        windowId: activeTab.windowId
       });
 
-      if (!granted) {
-        updateStatusMessage(
-          getPopupCopy("permissionNeeded"),
-          "error"
-        );
-        return;
-      }
+      chrome.permissions.request({
+        origins: [permissionPattern]
+      }).catch(() => undefined);
+
+      return;
     }
 
     sendRuntimeMessage({
@@ -1038,6 +1067,35 @@ const initializePopup = async () => {
   await loadTimerState().catch((error) => {
     console.error("Erro ao carregar estado do timer:", error);
   });
+
+  const pendingStart = await loadAndClearPendingStart();
+
+  if (pendingStart) {
+    const hasPermission = await chrome.permissions.contains({
+      origins: [getPermissionPatternForOrigin(pendingStart.mainOrigin)]
+    });
+
+    if (hasPermission) {
+      sendRuntimeMessage({
+        type: runtimeMessageTypes.startTimer,
+        payload: pendingStart
+      }).then(() => {
+        updateStatusMessage(
+          replacePopupTokens("startedStatus", {
+            interval: formatTimerInterval(pendingStart.intervalInMinutes)
+          }),
+          "active"
+        );
+        return refreshTimerState();
+      }).catch((error) => {
+        console.error("Erro ao ativar timer apos permissao:", error);
+        updateStatusMessage(
+          getPopupCopy("startError"),
+          "error"
+        );
+      });
+    }
+  }
 };
 
 initializePopup().catch((error) => {
