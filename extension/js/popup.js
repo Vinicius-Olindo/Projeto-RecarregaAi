@@ -610,7 +610,7 @@ const updateActiveTimersList = (activeTimers, activeTab) => {
   const shouldShowActiveTimers = activeTimers.length > 0
     && (!hasCurrentTabTimer || activeTimers.length > 1);
 
-  popupElements.activeTimersList.innerHTML = "";
+  popupElements.activeTimersList.replaceChildren();
   popupElements.activeTimersSection.hidden = !shouldShowActiveTimers;
   popupElements.activeTimersCount.textContent = String(activeTimers.length);
 

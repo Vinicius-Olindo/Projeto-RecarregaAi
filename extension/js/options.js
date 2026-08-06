@@ -806,7 +806,7 @@ const normalizeSiteOrigin = (inputValue) => {
 };
 
 const renderSites = () => {
-  optionsElements.sitesList.innerHTML = "";
+  optionsElements.sitesList.replaceChildren();
 
   const hasSites = currentSettings.autoStartSites.length > 0;
 
