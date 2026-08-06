@@ -859,6 +859,13 @@ const stopTimer = async () => {
   try {
     const tabId = await getActiveTabIdForTimerAction();
 
+    updateButtonState(
+      popupElements.removeTimerButton,
+      true,
+      getPopupCopy("removingTimer"),
+      getPopupCopy("removeTimer")
+    );
+
     await sendRuntimeMessage({
       payload: {
         tabId
@@ -871,12 +878,26 @@ const stopTimer = async () => {
   } catch (error) {
     console.error("Erro ao parar timer:", error);
     updateStatusMessage(getPopupCopy("stopError"), "error");
+  } finally {
+    updateButtonState(
+      popupElements.removeTimerButton,
+      false,
+      getPopupCopy("removingTimer"),
+      getPopupCopy("removeTimer")
+    );
   }
 };
 
 const pauseTimer = async () => {
   try {
     const tabId = await getActiveTabIdForTimerAction();
+
+    updateButtonState(
+      popupElements.pauseTimerButton,
+      true,
+      getPopupCopy("pausingTimer"),
+      getPopupCopy("pauseTimer")
+    );
 
     await sendRuntimeMessage({
       payload: {
@@ -890,12 +911,26 @@ const pauseTimer = async () => {
   } catch (error) {
     console.error("Erro ao pausar timer:", error);
     updateStatusMessage(getPopupCopy("pauseError"), "error");
+  } finally {
+    updateButtonState(
+      popupElements.pauseTimerButton,
+      false,
+      getPopupCopy("pausingTimer"),
+      getPopupCopy("pauseTimer")
+    );
   }
 };
 
 const resumeTimer = async () => {
   try {
     const tabId = await getActiveTabIdForTimerAction();
+
+    updateButtonState(
+      popupElements.resumeTimerButton,
+      true,
+      getPopupCopy("resumingTimer"),
+      getPopupCopy("resumeTimer")
+    );
 
     await sendRuntimeMessage({
       payload: {
@@ -909,6 +944,13 @@ const resumeTimer = async () => {
   } catch (error) {
     console.error("Erro ao retomar timer:", error);
     updateStatusMessage(getPopupCopy("resumeError"), "error");
+  } finally {
+    updateButtonState(
+      popupElements.resumeTimerButton,
+      false,
+      getPopupCopy("resumingTimer"),
+      getPopupCopy("resumeTimer")
+    );
   }
 };
 

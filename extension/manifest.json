@@ -5,6 +5,9 @@
   "version_name": "2.3.9",
   "description": "Limpe o cache e recarregue páginas automaticamente.",
   "default_locale": "pt",
+  "minimum_chrome_version": "109",
+  "author": "OlinByte Digital",
+  "homepage_url": "https://recarregaai.pages.dev/",
   "action": {
     "default_icon": {
       "16": "assets/icons/icon16.png",

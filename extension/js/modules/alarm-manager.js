@@ -40,7 +40,7 @@ export const createTimerAlarm = async (
 
   await clearChromeAlarm(alarmName);
   await createChromeAlarm(alarmName, {
-    delayInMinutes: Math.max(0.5, delayInMinutes),
+    delayInMinutes: Math.max(0.01, delayInMinutes),
     periodInMinutes: timerSettings.intervalInMinutes
   });
 };

@@ -794,14 +794,16 @@ const saveTimerRunResult = async (timerSettings, result) => {
     return null;
   }
 
+  if (latestTimerSettings.paused) {
+    return latestTimerSettings;
+  }
+
   const updatedTimerSettings = {
     ...latestTimerSettings,
     lastError: result.error || null,
     lastRunAt: result.finishedAt,
     lastRunStatus: result.status,
-    nextRunAt: latestTimerSettings.paused
-      ? latestTimerSettings.nextRunAt
-      : getNextRunDate(latestTimerSettings.intervalInMinutes),
+    nextRunAt: getNextRunDate(latestTimerSettings.intervalInMinutes),
     origins: result.origins || latestTimerSettings.origins
   };
 
