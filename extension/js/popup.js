@@ -222,22 +222,6 @@ const getActiveTab = async () => {
   return activeTab;
 };
 
-const requestTimerPermission = async (origin) => {
-  const alreadyGranted = await chrome.permissions.contains({
-    origins: [getPermissionPatternForOrigin(origin)]
-  });
-
-  if (alreadyGranted) {
-    return true;
-  }
-
-  const granted = await chrome.permissions.request({
-    origins: [getPermissionPatternForOrigin(origin)]
-  });
-
-  return granted;
-};
-
 const recordManualCleanupHistory = async ({
   detail = null,
   origin,
@@ -806,57 +790,67 @@ const startTimer = async () => {
       return;
     }
 
-    const hasPermission = await requestTimerPermission(origin);
-
-    if (!hasPermission) {
-      updateStatusMessage(
-        getPopupCopy("permissionNeeded"),
-        "error"
-      );
-      return;
-    }
-
-    const freshTab = await getActiveTab();
-    const tabId = freshTab?.id ?? activeTab.id;
-
-    if (typeof tabId !== "number") {
-      updateStatusMessage(
-        getPopupCopy("waitForPage"),
-        "error"
-      );
-      return;
-    }
-
     const intervalInMinutes = getSelectedTimerInterval();
-    const loadedOrigins = await collectLoadedOrigins(tabId, [origin]);
+    const loadedOrigins = await collectLoadedOrigins(activeTab.id, [origin]);
+    const permissionPattern = getPermissionPatternForOrigin(origin);
 
-    await sendRuntimeMessage({
+    const alreadyGranted = await chrome.permissions.contains({
+      origins: [permissionPattern]
+    });
+
+    if (!alreadyGranted) {
+      const granted = await chrome.permissions.request({
+        origins: [permissionPattern]
+      });
+
+      if (!granted) {
+        updateStatusMessage(
+          getPopupCopy("permissionNeeded"),
+          "error"
+        );
+        return;
+      }
+    }
+
+    sendRuntimeMessage({
       type: runtimeMessageTypes.startTimer,
       payload: {
         intervalInMinutes,
         mainOrigin: origin,
         origins: loadedOrigins,
-        tabId,
-        tabTitle: freshTab?.title ?? activeTab.title,
-        tabUrl: freshTab?.url ?? activeTab.url,
-        windowId: freshTab?.windowId ?? activeTab.windowId
+        tabId: activeTab.id,
+        tabTitle: activeTab.title,
+        tabUrl: activeTab.url,
+        windowId: activeTab.windowId
       }
+    }).then(() => {
+      updateStatusMessage(
+        replacePopupTokens("startedStatus", {
+          interval: formatTimerInterval(intervalInMinutes)
+        }),
+        "active"
+      );
+      return refreshTimerState();
+    }).catch((error) => {
+      console.error("Erro ao ativar timer:", error);
+      updateStatusMessage(
+        error.message || getPopupCopy("startError"),
+        "error"
+      );
+    }).finally(() => {
+      updateButtonState(
+        popupElements.startTimerButton,
+        false,
+        getPopupCopy("activatingTimer"),
+        getPopupCopy("defaultStartButton")
+      );
     });
-
-    updateStatusMessage(
-      replacePopupTokens("startedStatus", {
-        interval: formatTimerInterval(intervalInMinutes)
-      }),
-      "active"
-    );
-    await refreshTimerState();
   } catch (error) {
     console.error("Erro ao ativar timer:", error);
     updateStatusMessage(
       error.message || getPopupCopy("startError"),
       "error"
     );
-  } finally {
     updateButtonState(
       popupElements.startTimerButton,
       false,
