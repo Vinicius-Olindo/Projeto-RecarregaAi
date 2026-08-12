@@ -17,6 +17,7 @@ import { getTabMediaActivity, isTabEditingText } from "./media-detection.js";
 let badgeCountdownTimerId = null;
 let badgeCountdownRestartQueue = Promise.resolve();
 const previousBadgeState = new Map();
+const blinkState = new Map();
 
 const mediaBadgeStates = {
   [mediaKinds.audio]: {
@@ -153,7 +154,18 @@ export const updateTimerBadge = async (timerSettings) => {
 
   try {
     const badgeKey = badgeTarget.tabId ?? "global";
-    const newState = `${badgeColor}|${badgeText}`;
+    const isUrgent = !isPaused && remainingSeconds > 0 && remainingSeconds <= 10;
+    let displayText = badgeText;
+
+    if (isUrgent) {
+      const blinkOn = !blinkState.get(badgeKey);
+      blinkState.set(badgeKey, blinkOn);
+      displayText = blinkOn ? badgeText : "";
+    } else {
+      blinkState.delete(badgeKey);
+    }
+
+    const newState = `${badgeColor}|${displayText}`;
     const prevState = previousBadgeState.get(badgeKey);
 
     if (prevState === newState) {
@@ -168,7 +180,7 @@ export const updateTimerBadge = async (timerSettings) => {
     });
     await chrome.action.setBadgeText({
       ...badgeTarget,
-      text: badgeText
+      text: displayText
     });
     await chrome.action.setBadgeTextColor({
       ...badgeTarget,

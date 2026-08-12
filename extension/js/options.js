@@ -56,6 +56,7 @@ const optionsElements = {
   operatingEndTime: document.querySelector("#operating-end-time"),
   operatingWeekdays: document.querySelectorAll("[name='operating-weekday']"),
   preserveScrollInput: document.querySelector("#preserve-scroll-input"),
+  playSoundInput: document.querySelector("#play-sound-input"),
   saveSettingsButton: document.querySelector("#save-settings-button"),
   showMoreHistoryButton: document.querySelector("#show-more-history-button"),
   siteFormAlert: document.querySelector("#site-form-alert"),
@@ -840,6 +841,9 @@ const syncPreferenceControls = () => {
   optionsElements.preserveScrollInput.checked = Boolean(
     currentSettings.preserveScrollPosition
   );
+  optionsElements.playSoundInput.checked = Boolean(
+    currentSettings.playSoundOnComplete
+  );
   optionsElements.operatingHoursEnabled.checked = isEnabled;
   optionsElements.operatingStartTime.value = operatingHours.startTime;
   optionsElements.operatingEndTime.value = operatingHours.endTime;
@@ -859,6 +863,8 @@ const syncPreferenceControls = () => {
 const savePreferenceSettings = async () => {
   currentSettings.preserveScrollPosition =
     optionsElements.preserveScrollInput.checked;
+  currentSettings.playSoundOnComplete =
+    optionsElements.playSoundInput.checked;
   currentSettings.operatingHours = normalizeOperatingHours({
     enabled: optionsElements.operatingHoursEnabled.checked,
     endTime: optionsElements.operatingEndTime.value,
@@ -1029,6 +1035,8 @@ const applyOptionsLanguage = (language) => {
   setText("#save-settings-button", "saveDefaultInterval");
   setText("#preserve-scroll-title", "preserveScrollTitle");
   setText("#preserve-scroll-description", "preserveScrollDescription");
+  setText("#play-sound-title", "playSoundTitle");
+  setText("#play-sound-description", "playSoundDescription");
   setText("#operating-hours-title", "operatingTitle");
   setText("#operating-hours-description", "operatingDescription");
   setText("#operating-days-label", "operatingDays");

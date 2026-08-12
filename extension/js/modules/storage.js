@@ -217,6 +217,7 @@ export const getAppSettings = async () => {
       ? storedSettings.autoStartSites
       : [],
     operatingHours: normalizeOperatingHours(storedSettings.operatingHours),
+    playSoundOnComplete: Boolean(storedSettings.playSoundOnComplete),
     preserveScrollPosition: Boolean(storedSettings.preserveScrollPosition)
   };
 };

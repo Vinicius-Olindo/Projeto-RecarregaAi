@@ -61,6 +61,7 @@ import {
   clearAllTimerBadges,
   startBadgeCountdown as startBadgeCountdownBase
 } from "./badge-manager.js";
+import { playNotificationSound } from "./notification-sound.js";
 
 const startBadgeCountdown = () => startBadgeCountdownBase(
   getAllTimerSettings,
@@ -861,6 +862,14 @@ const saveTimerRunResult = async (timerSettings, result) => {
         : actionHistoryStatuses.error
     }
   );
+
+  if (result.status === "success") {
+    const appSettings = await getAppSettings();
+
+    if (appSettings.playSoundOnComplete) {
+      playNotificationSound();
+    }
+  }
 
   if (!updatedTimerSettings.paused) {
     await createTimerAlarm(updatedTimerSettings);

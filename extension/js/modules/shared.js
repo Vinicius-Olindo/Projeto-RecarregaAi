@@ -95,6 +95,7 @@ export const defaultAppSettings = Object.freeze({
   autoStartSites: [],
   defaultIntervalInMinutes: 3,
   operatingHours: defaultOperatingHours,
+  playSoundOnComplete: false,
   preserveScrollPosition: false
 });
 
