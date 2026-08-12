@@ -151,6 +151,28 @@ a {
   justify-content: center;
 }
 
+.header-action--theme .theme-icon--moon {
+  display: none;
+}
+
+:root[data-theme="dark"] .header-action--theme .theme-icon--sun {
+  display: none;
+}
+
+:root[data-theme="dark"] .header-action--theme .theme-icon--moon {
+  display: block;
+}
+
+.header-action--theme[aria-pressed="true"] {
+  color: var(--color-primary);
+  background: var(--color-primary-soft);
+}
+
+.header-action--theme svg {
+  width: 16px;
+  height: 16px;
+}
+
 .header-action--language {
   gap: var(--space-1);
 }
