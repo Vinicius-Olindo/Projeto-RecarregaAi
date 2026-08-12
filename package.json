@@ -10,7 +10,7 @@
     "check:js": "node scripts/check-js.mjs",
     "check:manifest": "node scripts/check-manifest.mjs",
     "lint": "eslint \"extension/js/**/*.js\" \"site/js/**/*.js\" \"scripts/**/*.mjs\" \"tests/**/*.mjs\" \"eslint.config.mjs\" --max-warnings=0",
-    "test": "node --test tests/timer-restoration.test.mjs tests/project-integrity.test.mjs tests/language-preference.test.mjs",
+    "test": "node --test tests/timer-restoration.test.mjs tests/timer-logic.test.mjs tests/storage-logic.test.mjs tests/pwa-service-worker.test.mjs tests/project-integrity.test.mjs tests/language-preference.test.mjs",
     "zip": "npm run check && node scripts/package-extension.mjs",
     "version:bump": "node scripts/increment-minor-version.mjs"
   },

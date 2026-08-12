@@ -373,14 +373,6 @@ const setTexts = (selector, keys) => {
   });
 };
 
-const setTextAt = (selector, index, key) => {
-  const element = document.querySelectorAll(selector)[index];
-
-  if (element) {
-    element.textContent = getOptionsCopy(key);
-  }
-};
-
 const setAttribute = (selector, attribute, key) => {
   const element = document.querySelector(selector);
 
