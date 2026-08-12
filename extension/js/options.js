@@ -1,4 +1,4 @@
-// RecarregaAi! 2.4.0
+// RecarregaAi! 2.5.0
 
 import { initFloatingTools } from "./modules/floating-tools.js";
 import { loadPageI18n } from "./modules/i18n.js";
@@ -1027,13 +1027,13 @@ const applyOptionsLanguage = (language) => {
     : defaultLanguage;
   document.title = getOptionsCopy("documentTitle");
 
-  setText(".settings-header__link span", "headerExit");
+  setText("#close-options-button span", "headerExit");
   setText("#options-title", "pageTitle");
   setText(".brand__subtitle", "pageDescription");
-  setText(".panel--general .panel__eyebrow", "preferencesEyebrow");
+  setText("#general-section .settings-section__eyebrow", "preferencesEyebrow");
   setText("#general-title", "defaultTimeLabel");
-  setText(".panel--general .panel__description", "timeDescription");
-  setText(".settings-row .field__label", "defaultIntervalInputLabel");
+  setText("#general-section .settings-section__description", "timeDescription");
+  setText(".inline-row .field__label", "defaultIntervalInputLabel");
   setText("#save-settings-button", "saveDefaultInterval");
   setText("#preserve-scroll-title", "preserveScrollTitle");
   setText("#preserve-scroll-description", "preserveScrollDescription");
@@ -1052,27 +1052,24 @@ const applyOptionsLanguage = (language) => {
       });
   }
   setText("#sites-title", "sitesTitle");
-  setText("#site-form-title", "siteFormTitle");
-  setText("#site-form-description", "siteFormDescription");
-  setText("#site-origin-label .field__label-text", "siteAddressLabel");
-  setText("#site-origin-hint", "siteAddressHint");
-  setText("#site-interval-label .field__label-text", "siteIntervalLabel");
-  setText("#site-interval-hint", "siteIntervalHint");
-  setText("#add-site-button .button__label", "addSite");
+  setText("#sites-section .settings-section__eyebrow", "autoStartEyebrow");
+  setText("#sites-section .settings-section__description", "autoStartDescription");
+  setText("#site-origin-label", "siteAddressLabel");
+  setText("#site-interval-label", "siteIntervalLabel");
+  setText("#add-site-button", "addSite");
   setText(".empty-state strong", "emptySitesTitle");
   setText(".empty-state div span", "emptySitesDescription");
-  setText(".panel--sites .empty-state__status", "emptySitesStatus");
-  setText(".panel--backup .panel__eyebrow", "backupEyebrow");
+  setText("#backup-section .settings-section__eyebrow", "backupEyebrow");
   setText("#backup-title", "backupTitle");
-  setText(".panel--backup .panel__description", "backupDescription");
+  setText("#backup-section .settings-section__description", "backupDescription");
   setText("#export-settings-label", "backupExport");
   setText("#export-settings-description", "backupExportDescription");
   setText("#import-settings-label", "backupImport");
   setText("#import-settings-description", "backupImportDescription");
-  setText(".backup-note__text", "backupNoteWithHistory");
-  setText(".panel--history .panel__eyebrow", "historyEyebrow");
+  setText(".backup-note span", "backupNoteWithHistory");
+  setText("#history-section .settings-section__eyebrow", "historyEyebrow");
   setText("#history-title", "historyTitle");
-  setText(".panel--history .panel__description", "historyDescription");
+  setText("#history-section .settings-section__description", "historyDescription");
   setText("#clear-history-button", isHistoryClearPending
     ? "historyClearConfirm"
     : "historyClear");
@@ -1087,17 +1084,15 @@ const applyOptionsLanguage = (language) => {
   setText("#collapse-history-button", "historyCollapse");
   setText(".history-note", "historyLimitNote");
   setText("#permissions-title", "permissionsTitle");
-  setTextAt(".panel .panel__eyebrow", 1, "autoStartEyebrow");
-  setTextAt(".panel .panel__description", 1, "autoStartDescription");
-  setText(".panel--permissions .panel__eyebrow", "transparencyEyebrow");
-  setText(".panel--permissions .panel__description", "permissionsDescription");
-  setTexts(".permission-card strong", [
+  setText("#permissions-section .settings-section__eyebrow", "transparencyEyebrow");
+  setText("#permissions-section .settings-section__description", "permissionsDescription");
+  setTexts(".permission-item strong", [
     "currentPageTitle",
     "cleanupTitle",
     "authorizedSitesTitle",
     "localPreferencesTitle"
   ]);
-  setTexts(".permission-card p", [
+  setTexts(".permission-item p", [
     "currentPageDescription",
     "cleanupDescription",
     "authorizedSitesDescription",
@@ -1108,10 +1103,7 @@ const applyOptionsLanguage = (language) => {
     "footerPrivacy",
     "footerFeedback"
   ]);
-  setText(".privacy-footer__legal", "footerLegal");
-  setText(".privacy-footer__developer-label", "footerDeveloper");
-  setText("#open-language-button .floating-action__label", "languageLabel");
-  setText("#back-to-top-button .floating-action__label", "backToTop");
+  setText(".privacy-footer__developer a", "footerDeveloper");
   setText("#language-dialog-title", "languageDialogTitle");
   setText(".language-dialog__description", "languageDialogDescription");
 
@@ -1126,7 +1118,6 @@ const applyOptionsLanguage = (language) => {
   setAttribute(".privacy-footer__nav", "aria-label", "linksLabel");
   setAttribute(".privacy-footer__social", "aria-label", "contactChannelsLabel");
   setAttribute(".language-grid", "aria-label", "languageGridLabel");
-  setAttribute(".floating-tools", "aria-label", "quickActionsLabel");
   setAttribute("#open-language-button", "aria-label", "languageLabel");
   setAttribute("#back-to-top-button", "aria-label", "backToTop");
   setAttribute("#close-language-button", "aria-label", "closeDialog");

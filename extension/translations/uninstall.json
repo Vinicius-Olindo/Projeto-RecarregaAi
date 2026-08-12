@@ -9,7 +9,7 @@
     "footerDeveloper": "Desenvolvido por:",
     "footerFeedback": "Feedback",
     "footerHome": "Início",
-    "footerLegal": "© RecarregaAi! 2.4.0. Todos os direitos reservados.",
+    "footerLegal": "© RecarregaAi! 2.5.0. Todos os direitos reservados.",
     "footerPrivacy": "Privacidade",
     "feedbackNotConfigured": "O serviço de feedback ainda não foi configurado.",
     "formSubmitError": "Não consegui confirmar o envio agora. Tente novamente em alguns instantes.",
@@ -30,7 +30,7 @@
     "reasonRequired": "Selecione um motivo antes de enviar.",
     "selectedPrefix": "Selecionado: ",
     "sendButton": "Enviar feedback",
-    "versionLabel": "2.4.0"
+    "versionLabel": "2.5.0"
   },
   "en": {
     "backToTop": "Back to start",
@@ -42,7 +42,7 @@
     "footerDeveloper": "Developed by:",
     "footerFeedback": "Feedback",
     "footerHome": "Home",
-    "footerLegal": "© RecarregaAi! 2.4.0. All rights reserved.",
+    "footerLegal": "© RecarregaAi! 2.5.0. All rights reserved.",
     "footerPrivacy": "Privacy",
     "feedbackNotConfigured": "The feedback service has not been configured yet.",
     "formSubmitError": "I could not confirm the send right now. Try again in a few moments.",
@@ -63,7 +63,7 @@
     "reasonRequired": "Select a reason before sending.",
     "selectedPrefix": "Selected: ",
     "sendButton": "Send feedback",
-    "versionLabel": "2.4.0"
+    "versionLabel": "2.5.0"
   },
   "es": {
     "backToTop": "Volver al inicio",
@@ -75,7 +75,7 @@
     "footerDeveloper": "Desarrollado por:",
     "footerFeedback": "Feedback",
     "footerHome": "Inicio",
-    "footerLegal": "© RecarregaAi! 2.4.0. Todos los derechos reservados.",
+    "footerLegal": "© RecarregaAi! 2.5.0. Todos los derechos reservados.",
     "footerPrivacy": "Privacidad",
     "feedbackNotConfigured": "El servicio de feedback todavía no está configurado.",
     "formSubmitError": "No pude confirmar el envío ahora. Inténtalo de nuevo en unos momentos.",
@@ -96,7 +96,7 @@
     "reasonRequired": "Selecciona un motivo antes de enviar.",
     "selectedPrefix": "Seleccionado: ",
     "sendButton": "Enviar feedback",
-    "versionLabel": "2.4.0"
+    "versionLabel": "2.5.0"
   },
   "fr": {
     "backToTop": "Retour au début",
@@ -109,7 +109,7 @@
     "footerDeveloper": "Développé par :",
     "footerFeedback": "Commentaires",
     "footerHome": "Accueil",
-    "footerLegal": "© RecarregaAi! 2.4.0. Tous droits réservés.",
+    "footerLegal": "© RecarregaAi! 2.5.0. Tous droits réservés.",
     "footerPrivacy": "Confidentialité",
     "formSubmitError": "Je n'ai pas pu confirmer l'envoi pour le moment. Réessayez dans quelques instants.",
     "formSubmitLoading": "Envoi de commentaires...",
@@ -129,7 +129,7 @@
     "sendButton": "Envoyer des commentaires",
     "themeToDark": "Thème sombre",
     "themeToLight": "Thème lumière",
-    "versionLabel": "2.4.0"
+    "versionLabel": "2.5.0"
   },
   "de": {
     "backToTop": "Zurück zum Anfang",
@@ -142,7 +142,7 @@
     "footerDeveloper": "Entwickelt von:",
     "footerFeedback": "Feedback",
     "footerHome": "Startseite",
-    "footerLegal": "© RecarregaAi! 2.4.0. Alle Rechte vorbehalten.",
+    "footerLegal": "© RecarregaAi! 2.5.0. Alle Rechte vorbehalten.",
     "footerPrivacy": "Datenschutz",
     "formSubmitError": "Ich konnte den Versand derzeit nicht bestätigen. Versuchen Sie es in ein paar Augenblicken noch einmal.",
     "formSubmitLoading": "Feedback wird gesendet...",
@@ -162,7 +162,7 @@
     "sendButton": "Feedback senden",
     "themeToDark": "Dunkles Thema",
     "themeToLight": "Leichtes Thema",
-    "versionLabel": "2.4.0"
+    "versionLabel": "2.5.0"
   },
   "it": {
     "backToTop": "Ritorno all'inizio",
@@ -175,7 +175,7 @@
     "footerDeveloper": "Sviluppato da:",
     "footerFeedback": "Feedback",
     "footerHome": "Casa",
-    "footerLegal": "© RecarregaAi! 2.4.0. Tutti i diritti riservati.",
+    "footerLegal": "© RecarregaAi! 2.5.0. Tutti i diritti riservati.",
     "footerPrivacy": "Privacy",
     "formSubmitError": "Non ho potuto confermare l'invio in questo momento. Riprova tra qualche istante.",
     "formSubmitLoading": "Invio del feedback...",
@@ -195,7 +195,7 @@
     "sendButton": "Invia feedback",
     "themeToDark": "Tema scuro",
     "themeToLight": "Tema leggero",
-    "versionLabel": "2.4.0"
+    "versionLabel": "2.5.0"
   },
   "id": {
     "backToTop": "Kembali ke awal",
@@ -208,7 +208,7 @@
     "footerDeveloper": "Dikembangkan oleh:",
     "footerFeedback": "Masukan",
     "footerHome": "Beranda",
-    "footerLegal": "© RecarregaAi! 2.4.0. Semua hak dilindungi undang-undang.",
+    "footerLegal": "© RecarregaAi! 2.5.0. Semua hak dilindungi undang-undang.",
     "footerPrivacy": "Privasi",
     "formSubmitError": "Saya tidak dapat mengonfirmasi pengiriman saat ini. Coba lagi dalam beberapa saat.",
     "formSubmitLoading": "Mengirim masukan...",
@@ -228,7 +228,7 @@
     "sendButton": "Kirim masukan",
     "themeToDark": "Tema gelap",
     "themeToLight": "Tema ringan",
-    "versionLabel": "2.4.0"
+    "versionLabel": "2.5.0"
   },
   "tr": {
     "backToTop": "Başa dön",
@@ -241,7 +241,7 @@
     "footerDeveloper": "Geliştiren:",
     "footerFeedback": "Geribildirim",
     "footerHome": "Ana Sayfa",
-    "footerLegal": "© RecarregaAi! 2.4.0. Her hakkı saklıdır.",
+    "footerLegal": "© RecarregaAi! 2.5.0. Her hakkı saklıdır.",
     "footerPrivacy": "Gizlilik",
     "formSubmitError": "Gönderimi şu anda onaylayamadım. Birkaç dakika sonra tekrar deneyin.",
     "formSubmitLoading": "Geri bildirim gönderiliyor...",
@@ -261,7 +261,7 @@
     "sendButton": "Geri bildirim gönder",
     "themeToDark": "Koyu tema",
     "themeToLight": "Işık teması",
-    "versionLabel": "2.4.0"
+    "versionLabel": "2.5.0"
   },
   "reasons": {
     "workflow": {

@@ -1,4 +1,4 @@
-// RecarregaAi! 2.4.0
+// RecarregaAi! 2.5.0
 
 import { appConfig } from "./modules/config.js";
 import { alarmNames, storageKeys, getTabIdFromTimerAlarmName } from "./modules/shared.js";

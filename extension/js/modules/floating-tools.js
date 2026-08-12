@@ -1,9 +1,8 @@
-// RecarregaAi! 2.4.0
+// RecarregaAi! 2.5.0
 
 const defaultFooterSelector = ".privacy-footer";
-const defaultToolsSelector = ".floating-tools";
 const defaultBackToTopSelector = "#back-to-top-button";
-const fallbackGapInPixels = 22;
+const scrollThreshold = 400;
 
 const getElement = (target, root = document) => {
   if (typeof target === "string") {
@@ -11,14 +10,6 @@ const getElement = (target, root = document) => {
   }
 
   return target;
-};
-
-const getFloatingGap = (tools) => {
-  const gap = Number.parseFloat(
-    window.getComputedStyle(tools).getPropertyValue("--floating-tools-gap")
-  );
-
-  return Number.isFinite(gap) ? gap : fallbackGapInPixels;
 };
 
 const scrollToTop = () => {
@@ -31,33 +22,28 @@ const scrollToTop = () => {
 export const initFloatingTools = ({
   backToTopSelector = defaultBackToTopSelector,
   footerSelector = defaultFooterSelector,
-  root = document,
-  toolsSelector = defaultToolsSelector
+  root = document
 } = {}) => {
-  const tools = getElement(toolsSelector, root);
+  const backToTopButton = getElement(backToTopSelector, root);
 
-  if (!tools) {
+  if (!backToTopButton) {
     return;
   }
 
   const footer = getElement(footerSelector, root);
-  const backToTopButton = getElement(backToTopSelector, root);
   let frameId = 0;
 
-  const syncFloatingToolsPosition = () => {
+  const syncBackToTopVisibility = () => {
     frameId = 0;
+
+    const scrolled = window.scrollY > scrollThreshold;
+    backToTopButton.classList.toggle("is-visible", scrolled);
 
     const footerTop = footer?.getBoundingClientRect().top ?? window.innerHeight;
     const footerOverlap = Math.max(0, window.innerHeight - footerTop);
-    const gap = getFloatingGap(tools);
-    const toolsHeight = tools.getBoundingClientRect().height;
-    const maxBottom = Math.max(gap, window.innerHeight - toolsHeight - gap);
-    const nextBottom = Math.min(footerOverlap + gap, maxBottom);
+    const offset = footerOverlap > 0 ? footerOverlap + 16 : 24;
 
-    tools.style.setProperty(
-      "--floating-tools-bottom",
-      `${nextBottom}px`
-    );
+    backToTopButton.style.bottom = `${offset}px`;
   };
 
   const requestSync = () => {
@@ -65,7 +51,7 @@ export const initFloatingTools = ({
       return;
     }
 
-    frameId = window.requestAnimationFrame(syncFloatingToolsPosition);
+    frameId = window.requestAnimationFrame(syncBackToTopVisibility);
   };
 
   window.addEventListener("scroll", requestSync, {
@@ -73,32 +59,9 @@ export const initFloatingTools = ({
   });
   window.addEventListener("resize", requestSync);
 
-  if (footer && "ResizeObserver" in window) {
-    const resizeObserver = new ResizeObserver(requestSync);
+  backToTopButton.addEventListener("click", scrollToTop);
 
-    resizeObserver.observe(footer);
-    resizeObserver.observe(tools);
-    resizeObserver.observe(document.documentElement);
-
-    if (document.body) {
-      resizeObserver.observe(document.body);
-    }
-  }
-
-  if ("MutationObserver" in window && document.body) {
-    const mutationObserver = new MutationObserver(requestSync);
-
-    mutationObserver.observe(document.body, {
-      childList: true,
-      subtree: true
-    });
-  }
-
-  if (backToTopButton) {
-    backToTopButton.addEventListener("click", scrollToTop);
-  }
-
-  syncFloatingToolsPosition();
+  syncBackToTopVisibility();
   window.addEventListener("load", requestSync, {
     once: true
   });

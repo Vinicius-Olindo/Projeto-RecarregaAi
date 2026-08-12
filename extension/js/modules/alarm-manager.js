@@ -1,4 +1,4 @@
-// RecarregaAi! 2.4.0
+// RecarregaAi! 2.5.0
 
 import { getTimerAlarmName } from "./shared.js";
 

@@ -1,4 +1,4 @@
-// RecarregaAi! 2.4.0
+// RecarregaAi! 2.5.0
 // Generated from the English interface copy.
 
 export const extendedPageTranslations = {
@@ -479,7 +479,7 @@ export const extendedPageTranslations = {
       "footerDeveloper": "Développé par :",
       "footerFeedback": "Commentaires",
       "footerHome": "Accueil",
-      "footerLegal": "© RecarregaAi! 2.4.0. Tous droits réservés.",
+      "footerLegal": "© RecarregaAi! 2.5.0. Tous droits réservés.",
       "footerPrivacy": "Confidentialité",
       "heroDescription": "Utilisez les minuteries par onglet, videz le cache du site ouvert et maintenez les systèmes tels que Drive, les tableaux de bord internes et les pages de travail toujours à jour.",
       "heroEyebrow": "Nettoyer le cache. Tabulez sur le bon rythme.",
@@ -559,7 +559,7 @@ export const extendedPageTranslations = {
       "footerDeveloper": "Entwickelt von:",
       "footerFeedback": "Feedback",
       "footerHome": "Startseite",
-      "footerLegal": "© RecarregaAi! 2.4.0. Alle Rechte vorbehalten.",
+      "footerLegal": "© RecarregaAi! 2.5.0. Alle Rechte vorbehalten.",
       "footerPrivacy": "Datenschutz",
       "heroDescription": "Verwenden Sie Timer nach Registerkarten, leeren Sie den Cache der geöffneten Site und halten Sie Systeme wie Drive, interne Dashboards und Arbeitsseiten immer auf dem neuesten Stand.",
       "heroEyebrow": "Cache leeren. Tippen Sie auf den richtigen Rhythmus.",
@@ -639,7 +639,7 @@ export const extendedPageTranslations = {
       "footerDeveloper": "Sviluppato da:",
       "footerFeedback": "Feedback",
       "footerHome": "Casa",
-      "footerLegal": "© RecarregaAi! 2.4.0. Tutti i diritti riservati.",
+      "footerLegal": "© RecarregaAi! 2.5.0. Tutti i diritti riservati.",
       "footerPrivacy": "Privacy",
       "heroDescription": "Utilizza i timer per scheda, svuota la cache del sito aperto e mantieni sempre aggiornati sistemi come Drive, dashboard interne e pagine di lavoro.",
       "heroEyebrow": "Pulisci la cache. Tablatura sul ritmo giusto.",
@@ -719,7 +719,7 @@ export const extendedPageTranslations = {
       "footerDeveloper": "Dikembangkan oleh:",
       "footerFeedback": "Masukan",
       "footerHome": "Beranda",
-      "footerLegal": "© RecarregaAi! 2.4.0. Semua hak dilindungi undang-undang.",
+      "footerLegal": "© RecarregaAi! 2.5.0. Semua hak dilindungi undang-undang.",
       "footerPrivacy": "Privasi",
       "heroDescription": "Gunakan pengatur waktu berdasarkan tab, kosongkan cache situs yang terbuka dan jaga agar sistem seperti Drive, dasbor internal, dan halaman kerja selalu diperbarui.",
       "heroEyebrow": "Bersihkan cache. Tab pada ritme yang tepat.",
@@ -799,7 +799,7 @@ export const extendedPageTranslations = {
       "footerDeveloper": "Geliştiren:",
       "footerFeedback": "Geribildirim",
       "footerHome": "Ana Sayfa",
-      "footerLegal": "© RecarregaAi! 2.4.0. Her hakkı saklıdır.",
+      "footerLegal": "© RecarregaAi! 2.5.0. Her hakkı saklıdır.",
       "footerPrivacy": "Gizlilik",
       "heroDescription": "Zamanlayıcıları sekmeye göre kullanın, açık sitenin önbelleğini temizleyin ve Drive, dahili kontrol panelleri ve çalışma sayfaları gibi sistemleri her zaman güncel tutun.",
       "heroEyebrow": "Önbelleği temizleyin. Sağ ritime dokunun.",
@@ -869,7 +869,7 @@ export const extendedPageTranslations = {
       "footerFeedback": "Commentaires",
       "footerDeveloper": "Développé par :",
       "footerHome": "Accueil",
-      "footerLegal": "© RecarregaAi! 2.4.0. Tous droits réservés.",
+      "footerLegal": "© RecarregaAi! 2.5.0. Tous droits réservés.",
       "footerPrivacy": "Confidentialité",
       "formInvalidInterval": "Entrez un intervalle par défaut d'au moins 1 minute.",
       "formInvalidOrigin": "Utilisez une adresse http ou https.",
@@ -968,7 +968,7 @@ export const extendedPageTranslations = {
       "footerFeedback": "Feedback",
       "footerDeveloper": "Entwickelt von:",
       "footerHome": "Startseite",
-      "footerLegal": "© RecarregaAi! 2.4.0. Alle Rechte vorbehalten.",
+      "footerLegal": "© RecarregaAi! 2.5.0. Alle Rechte vorbehalten.",
       "footerPrivacy": "Datenschutz",
       "formInvalidInterval": "Geben Sie ein Standardintervall von mindestens 1 Minute ein.",
       "formInvalidOrigin": "Verwenden Sie eine http- oder https-Adresse.",
@@ -1067,7 +1067,7 @@ export const extendedPageTranslations = {
       "footerFeedback": "Feedback",
       "footerDeveloper": "Sviluppato da:",
       "footerHome": "Casa",
-      "footerLegal": "© RecarregaAi! 2.4.0. Tutti i diritti riservati.",
+      "footerLegal": "© RecarregaAi! 2.5.0. Tutti i diritti riservati.",
       "footerPrivacy": "Privacy",
       "formInvalidInterval": "Inserisci un intervallo predefinito di almeno 1 minuto.",
       "formInvalidOrigin": "Utilizza un indirizzo http o https.",
@@ -1166,7 +1166,7 @@ export const extendedPageTranslations = {
       "footerFeedback": "Masukan",
       "footerDeveloper": "Dikembangkan oleh:",
       "footerHome": "Beranda",
-      "footerLegal": "© RecarregaAi! 2.4.0. Semua hak dilindungi undang-undang.",
+      "footerLegal": "© RecarregaAi! 2.5.0. Semua hak dilindungi undang-undang.",
       "footerPrivacy": "Privasi",
       "formInvalidInterval": "Masukkan interval default minimal 1 menit.",
       "formInvalidOrigin": "Gunakan alamat http atau https.",
@@ -1265,7 +1265,7 @@ export const extendedPageTranslations = {
       "footerFeedback": "Geribildirim",
       "footerDeveloper": "Geliştiren:",
       "footerHome": "Ana Sayfa",
-      "footerLegal": "© RecarregaAi! 2.4.0. Her hakkı saklıdır.",
+      "footerLegal": "© RecarregaAi! 2.5.0. Her hakkı saklıdır.",
       "footerPrivacy": "Gizlilik",
       "formInvalidInterval": "En az 1 dakikalık varsayılan bir aralık girin.",
       "formInvalidOrigin": "Bir http veya https adresi kullanın.",
@@ -1347,7 +1347,7 @@ export const extendedPageTranslations = {
       "footerFeedback": "Commentaires",
       "footerDeveloper": "Développé par :",
       "footerHome": "Accueil",
-      "footerLegal": "© RecarregaAi! 2.4.0. Politique mise à jour le 28/06/2026.",
+      "footerLegal": "© RecarregaAi! 2.5.0. Politique mise à jour le 28/06/2026.",
       "footerPrivacy": "Confidentialité",
       "headerContact": "Contacter",
       "headerNavLabel": "Navigation dans les règles",
@@ -1445,7 +1445,7 @@ export const extendedPageTranslations = {
       "footerFeedback": "Feedback",
       "footerDeveloper": "Entwickelt von:",
       "footerHome": "Startseite",
-      "footerLegal": "© RecarregaAi! 2.4.0. Richtlinie aktualisiert am 28.06.2026.",
+      "footerLegal": "© RecarregaAi! 2.5.0. Richtlinie aktualisiert am 28.06.2026.",
       "footerPrivacy": "Datenschutz",
       "headerContact": "Kontakt",
       "headerNavLabel": "Richtliniennavigation",
@@ -1543,7 +1543,7 @@ export const extendedPageTranslations = {
       "footerFeedback": "Feedback",
       "footerDeveloper": "Sviluppato da:",
       "footerHome": "Casa",
-      "footerLegal": "© RecarregaAi! 2.4.0. Politica aggiornata il 28/06/2026.",
+      "footerLegal": "© RecarregaAi! 2.5.0. Politica aggiornata il 28/06/2026.",
       "footerPrivacy": "Privacy",
       "headerContact": "Contatto",
       "headerNavLabel": "Navigazione delle policy",
@@ -1641,7 +1641,7 @@ export const extendedPageTranslations = {
       "footerFeedback": "Masukan",
       "footerDeveloper": "Dikembangkan oleh:",
       "footerHome": "Beranda",
-      "footerLegal": "© RecarregaAi! 2.4.0. Kebijakan diperbarui pada 28/06/2026.",
+      "footerLegal": "© RecarregaAi! 2.5.0. Kebijakan diperbarui pada 28/06/2026.",
       "footerPrivacy": "Privasi",
       "headerContact": "Kontak",
       "headerNavLabel": "Navigasi kebijakan",
@@ -1739,7 +1739,7 @@ export const extendedPageTranslations = {
       "footerFeedback": "Geribildirim",
       "footerDeveloper": "Geliştiren:",
       "footerHome": "Ana Sayfa",
-      "footerLegal": "© RecarregaAi! 2.4.0. Politika 28.06.2026 tarihinde güncellendi.",
+      "footerLegal": "© RecarregaAi! 2.5.0. Politika 28.06.2026 tarihinde güncellendi.",
       "footerPrivacy": "Gizlilik",
       "headerContact": "İletişim",
       "headerNavLabel": "Politikada gezinme",
@@ -1841,7 +1841,7 @@ export const extendedPageTranslations = {
       "footerDeveloper": "Développé par :",
       "footerFeedback": "Commentaires",
       "footerHome": "Accueil",
-      "footerLegal": "© RecarregaAi! 2.4.0. Tous droits réservés.",
+      "footerLegal": "© RecarregaAi! 2.5.0. Tous droits réservés.",
       "footerPrivacy": "Confidentialité",
       "formSubmitError": "Je n'ai pas pu confirmer l'envoi pour le moment. Réessayez dans quelques instants.",
       "formSubmitLoading": "Envoi de commentaires...",
@@ -1860,7 +1860,7 @@ export const extendedPageTranslations = {
       "reasonRequired": "Sélectionnez une raison avant d'envoyer.",
       "selectedPrefix": "Sélectionné :",
       "sendButton": "Envoyer des commentaires",
-      "versionLabel": "2.4.0"
+      "versionLabel": "2.5.0"
     },
     "de": {
       "backToTop": "Zurück zum Anfang",
@@ -1872,7 +1872,7 @@ export const extendedPageTranslations = {
       "footerDeveloper": "Entwickelt von:",
       "footerFeedback": "Feedback",
       "footerHome": "Startseite",
-      "footerLegal": "© RecarregaAi! 2.4.0. Alle Rechte vorbehalten.",
+      "footerLegal": "© RecarregaAi! 2.5.0. Alle Rechte vorbehalten.",
       "footerPrivacy": "Datenschutz",
       "formSubmitError": "Ich konnte den Versand derzeit nicht bestätigen. Versuchen Sie es in ein paar Augenblicken noch einmal.",
       "formSubmitLoading": "Feedback wird gesendet...",
@@ -1891,7 +1891,7 @@ export const extendedPageTranslations = {
       "reasonRequired": "Wählen Sie vor dem Senden einen Grund aus.",
       "selectedPrefix": "Ausgewählt:",
       "sendButton": "Feedback senden",
-      "versionLabel": "2.4.0"
+      "versionLabel": "2.5.0"
     },
     "it": {
       "backToTop": "Ritorno all'inizio",
@@ -1903,7 +1903,7 @@ export const extendedPageTranslations = {
       "footerDeveloper": "Sviluppato da:",
       "footerFeedback": "Feedback",
       "footerHome": "Casa",
-      "footerLegal": "© RecarregaAi! 2.4.0. Tutti i diritti riservati.",
+      "footerLegal": "© RecarregaAi! 2.5.0. Tutti i diritti riservati.",
       "footerPrivacy": "Privacy",
       "formSubmitError": "Non ho potuto confermare l'invio in questo momento. Riprova tra qualche istante.",
       "formSubmitLoading": "Sending feedback...",
@@ -1922,7 +1922,7 @@ export const extendedPageTranslations = {
       "reasonRequired": "Seleziona un motivo prima di inviare.",
       "selectedPrefix": "Selezionato:",
       "sendButton": "Invia feedback",
-      "versionLabel": "2.4.0"
+      "versionLabel": "2.5.0"
     },
     "id": {
       "backToTop": "Kembali ke awal",
@@ -1934,7 +1934,7 @@ export const extendedPageTranslations = {
       "footerDeveloper": "Dikembangkan oleh:",
       "footerFeedback": "Masukan",
       "footerHome": "Beranda",
-      "footerLegal": "© RecarregaAi! 2.4.0. Semua hak dilindungi undang-undang.",
+      "footerLegal": "© RecarregaAi! 2.5.0. Semua hak dilindungi undang-undang.",
       "footerPrivacy": "Privasi",
       "formSubmitError": "Saya tidak dapat mengonfirmasi pengiriman saat ini. Coba lagi dalam beberapa saat.",
       "formSubmitLoading": "Mengirim masukan...",
@@ -1953,7 +1953,7 @@ export const extendedPageTranslations = {
       "reasonRequired": "Pilih alasan sebelum mengirim.",
       "selectedPrefix": "Terpilih:",
       "sendButton": "Kirim masukan",
-      "versionLabel": "2.4.0"
+      "versionLabel": "2.5.0"
     },
     "tr": {
       "backToTop": "Başa dön",
@@ -1965,7 +1965,7 @@ export const extendedPageTranslations = {
       "footerDeveloper": "Geliştiren:",
       "footerFeedback": "Geribildirim",
       "footerHome": "Ana Sayfa",
-      "footerLegal": "© RecarregaAi! 2.4.0. Her hakkı saklıdır.",
+      "footerLegal": "© RecarregaAi! 2.5.0. Her hakkı saklıdır.",
       "footerPrivacy": "Gizlilik",
       "formSubmitError": "Gönderimi şu anda onaylayamadım. Birkaç dakika sonra tekrar deneyin.",
       "formSubmitLoading": "Geri bildirim gönderiliyor...",
@@ -1984,7 +1984,7 @@ export const extendedPageTranslations = {
       "reasonRequired": "Göndermeden önce bir neden seçin.",
       "selectedPrefix": "Seçilen:",
       "sendButton": "Geri bildirim gönder",
-      "versionLabel": "2.4.0"
+      "versionLabel": "2.5.0"
     }
   }
 };

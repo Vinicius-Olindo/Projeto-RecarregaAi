@@ -1,4 +1,4 @@
-// RecarregaAi! 2.4.0
+// RecarregaAi! 2.5.0
 
 import { readFileSync, writeFileSync, readdirSync, statSync } from "node:fs";
 import { join, relative } from "node:path";
@@ -13,19 +13,19 @@ const parseArgs = () => {
 
   if (args.includes("--help") || args.includes("-h")) {
     console.log("Uso: node scripts/increment-minor-version.mjs [novo-codigo-versao]");
-    console.log("Exemplo: node scripts/increment-minor-version.mjs 2.4.0");
+    console.log("Exemplo: node scripts/increment-minor-version.mjs 2.5.0");
     process.exit(0);
   }
 
   const newVersion = args[0];
 
   if (!newVersion) {
-    console.error("Erro: informe o novo código de versão (ex: 2.4.0).");
+    console.error("Erro: informe o novo código de versão (ex: 2.5.0).");
     process.exit(1);
   }
 
   if (!semverRegex.test(newVersion)) {
-    console.error("Erro: o código de versão deve usar o formato x.y.z (ex: 2.4.0).");
+    console.error("Erro: o código de versão deve usar o formato x.y.z (ex: 2.5.0).");
     process.exit(1);
   }
 

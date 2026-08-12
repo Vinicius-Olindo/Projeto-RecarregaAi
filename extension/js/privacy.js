@@ -1,4 +1,4 @@
-// RecarregaAi! 2.4.0
+// RecarregaAi! 2.5.0
 
 import { initFloatingTools } from "./modules/floating-tools.js";
 import { loadPageI18n } from "./modules/i18n.js";

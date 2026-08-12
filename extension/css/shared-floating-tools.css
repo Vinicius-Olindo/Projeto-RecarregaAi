@@ -1,17 +1,13 @@
-/* RecarregaAi! 2.4.0 */
+/* RecarregaAi! 2.5.0 — Floating Tools */
 
 .floating-tools {
-  --floating-tools-bottom: var(--floating-tools-gap, 24px);
-  --floating-tools-gap: 24px;
-
   position: fixed;
   right: clamp(14px, 2vw, 28px);
-  bottom: var(--floating-tools-bottom);
+  bottom: 24px;
   z-index: 30;
   display: grid;
   gap: 14px;
   justify-items: center;
-  transition: bottom 160ms ease;
 }
 
 .floating-action {
@@ -23,7 +19,6 @@
   min-width: 48px;
   height: 48px;
   padding: 0;
-  gap: 0;
   color: var(--color-text);
   text-decoration: none;
   background: var(--color-surface);
@@ -33,8 +28,6 @@
     var(--shadow-lg),
     0 0 0 1px var(--color-border);
   cursor: pointer;
-  isolation: isolate;
-  overflow: visible;
   transition:
     background 160ms ease,
     box-shadow 160ms ease,
@@ -44,9 +37,6 @@
 
 .floating-action:hover,
 .floating-action:focus-visible {
-  width: 48px;
-  min-width: 48px;
-  gap: 0;
   background: var(--color-surface);
   box-shadow:
     var(--shadow-xl),
@@ -122,9 +112,7 @@
   top: 50%;
   right: calc(100% + 10px);
   display: block;
-  max-width: none;
   padding: 9px 13px;
-  overflow: visible;
   color: var(--color-text);
   font-size: 0.88rem;
   font-weight: 500;
@@ -152,36 +140,8 @@
   visibility: visible;
 }
 
-:root[data-theme="dark"] .floating-action {
-  background: var(--color-surface);
-  box-shadow:
-    var(--shadow-lg),
-    0 0 0 1px var(--color-border);
-}
-
-:root[data-theme="dark"] .floating-action:hover,
-:root[data-theme="dark"] .floating-action:focus-visible {
-  background: var(--color-surface-raised);
-  box-shadow:
-    var(--shadow-xl),
-    0 0 0 1px var(--color-border-strong);
-}
-
-:root[data-theme="dark"] .floating-action:focus-visible {
-  outline-color: var(--color-primary-muted);
-}
-
-:root[data-theme="dark"] .floating-action__label {
-  background: var(--color-surface);
-  box-shadow:
-    var(--shadow-lg),
-    0 0 0 1px var(--color-border);
-}
-
 @media (max-width: 720px) {
   .floating-tools {
-    --floating-tools-gap: 18px;
-
     right: 14px;
     gap: 12px;
   }
@@ -190,12 +150,6 @@
     width: 44px;
     min-width: 44px;
     height: 44px;
-  }
-
-  .floating-action:hover,
-  .floating-action:focus-visible {
-    width: 44px;
-    min-width: 44px;
   }
 
   .floating-action__label {
