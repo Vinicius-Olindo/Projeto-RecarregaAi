@@ -485,6 +485,10 @@ a {
   cursor: pointer;
 }
 
+.toggle--spaced {
+  margin-top: var(--space-4);
+}
+
 .toggle input {
   position: absolute;
   opacity: 0;
@@ -975,6 +979,12 @@ a {
   justify-content: space-between;
   gap: var(--space-4);
   margin-bottom: var(--space-4);
+}
+
+.history-heading__header {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 
 .history-heading__actions {
