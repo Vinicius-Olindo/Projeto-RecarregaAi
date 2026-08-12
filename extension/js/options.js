@@ -1329,3 +1329,33 @@ loadActionHistory().catch((error) => {
     "error"
   );
 });
+
+const initTabNavigation = () => {
+  const navButtons = document.querySelectorAll("[data-nav-section]");
+  const sections = document.querySelectorAll(".settings-section");
+
+  if (navButtons.length === 0 || sections.length === 0) {
+    return;
+  }
+
+  const showSection = (targetId) => {
+    sections.forEach((section) => {
+      section.hidden = section.id !== targetId;
+    });
+
+    navButtons.forEach((button) => {
+      const isActive = button.dataset.navSection === targetId;
+      button.classList.toggle("is-active", isActive);
+    });
+  };
+
+  navButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      showSection(button.dataset.navSection);
+    });
+  });
+
+  showSection(navButtons[0].dataset.navSection);
+};
+
+initTabNavigation();
