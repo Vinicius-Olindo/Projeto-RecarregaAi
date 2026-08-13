@@ -362,7 +362,6 @@ const applyPrivacyLanguage = (language) => {
     "footerFeedback"
   ]);
   setText(".privacy-footer__legal", "footerLegal");
-  setText(".privacy-footer__developer-label", "footerDeveloper");
   updatePrivacyThemeButtonLabel({
     isDarkTheme: document.documentElement.dataset.theme === "dark"
   });

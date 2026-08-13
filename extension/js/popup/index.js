@@ -1,7 +1,7 @@
 // RecarregaAi! 2.5.0 — Popup principal
 
 import { loadThemePreference, watchSystemTheme } from "../modules/theme.js";
-import { getPermissionPatternForOrigin, storageKeys } from "../modules/shared.js";
+import { getPermissionPatternForOrigin, runtimeMessageTypes, storageKeys } from "../modules/shared.js";
 import { popupElements } from "./elements.js";
 import {
   loadPopupLanguage,

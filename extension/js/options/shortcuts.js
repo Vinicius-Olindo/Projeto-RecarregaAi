@@ -49,16 +49,26 @@ const updateShortcutInputs = () => {
   });
 };
 
+const getIsMacPlatform = () => {
+  if (typeof navigator.userAgentData?.platform === "string") {
+    return navigator.userAgentData.platform === "macOS";
+  }
+
+  return navigator.platform?.includes("Mac") ?? false;
+};
+
 const formatShortcutForDisplay = (shortcut) => {
   if (!shortcut) {
     return "";
   }
 
+  const isMac = getIsMacPlatform();
+
   return shortcut
     .replace(/\+/g, " + ")
-    .replace(/Ctrl/g, navigator.platform.includes("Mac") ? "⌘" : "Ctrl")
-    .replace(/Shift/g, navigator.platform.includes("Mac") ? "⇧" : "Shift")
-    .replace(/Alt/g, navigator.platform.includes("Mac") ? "⌥" : "Alt");
+    .replace(/Ctrl/g, isMac ? "⌘" : "Ctrl")
+    .replace(/Shift/g, isMac ? "⇧" : "Shift")
+    .replace(/Alt/g, isMac ? "⌥" : "Alt");
 };
 
 const startShortcutRecording = (input) => {

@@ -108,14 +108,16 @@ export const saveTimerCollection = async (timerCollection) => {
     ])
   );
 
+  // Set new timers first, then remove old ones
+  // This order prevents data loss if the extension crashes between operations
+  if (Object.keys(storageData).length > 0) {
+    await chrome.storage.local.set(storageData);
+  }
+
   await chrome.storage.local.remove([
     storageKeys.timerSettings,
     ...timerKeysToRemove
   ]);
-
-  if (Object.keys(storageData).length > 0) {
-    await chrome.storage.local.set(storageData);
-  }
 
   return normalizedCollection;
 };
