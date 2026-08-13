@@ -108,13 +108,14 @@ RecarregaAI-/
 |       `-- icons/
 |-- site/
 |   |-- index.html
+|   |-- privacy.html
+|   |-- uninstall.html
 |   |-- css/
 |   |-- js/
 |   |   `-- modules/
+|   |-- extension-assets/
 |   `-- assets/
 |       `-- icons/
-|-- backend/
-|   `-- google-apps-script/
 |-- scripts/
 |-- tests/
 |-- .github/
@@ -125,9 +126,7 @@ RecarregaAI-/
 
 ## Feedback de desinstalação
 
-O Chrome abre a URL pública configurada em `extension/js/modules/config.js` após a remoção da extensão. O formulário envia o feedback ao endpoint do Google Apps Script, que deve encaminhar a mensagem para `olinbytedigital@gmail.com`.
-
-O código do serviço está em `backend/google-apps-script/`. O endpoint publicado precisa permanecer configurado em `feedbackBackendUrl` antes do empacotamento.
+A pagina publica de desinstalacao mantem o formulario visual de feedback, mas o servico de envio sera redesenhado em uma etapa futura. Enquanto isso, o envio permanece desativado quando nao houver `feedbackBackendUrl` configurado.
 
 ## Qualidade
 
@@ -153,7 +152,7 @@ Para gerar o arquivo enviado à Chrome Web Store:
 npm run zip
 ```
 
-O pacote é criado em `dist/recarregaai.zip`, com `manifest.json` na raiz e sem arquivos do site, backend, documentação ou desenvolvimento.
+O pacote é criado em `dist/recarregaai.zip`, com `manifest.json` na raiz e sem arquivos do site, documentação ou desenvolvimento.
 
 ## Validação automática
 
@@ -202,7 +201,7 @@ Antes de enviar para análise, adicione no painel:
 - declarações de privacidade iguais ao conteúdo da política pública.
 
 O ícone obrigatório de `128x128` já está no pacote. Não inclua capturas,
-documentação, backend ou arquivos do site dentro do ZIP da extensão.
+documentação ou arquivos do site dentro do ZIP da extensão.
 
 ## Versionamento
 

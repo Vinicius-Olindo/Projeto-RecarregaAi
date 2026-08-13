@@ -1,10 +1,7 @@
 // RecarregaAi! 2.5.0
 
 import { spawnSync } from "node:child_process";
-import {
-  readFileSync,
-  readdirSync
-} from "node:fs";
+import { readdirSync } from "node:fs";
 import { join } from "node:path";
 
 const collectFiles = (directoryPath, extension) => (
@@ -39,17 +36,4 @@ for (const filePath of filesToCheck) {
   if (result.status !== 0) {
     process.exit(result.status || 1);
   }
-}
-
-const appsScriptCheck = spawnSync("node", ["--check", "-"], {
-  input: readFileSync("backend/google-apps-script/Code.gs"),
-  stdio: [
-    "pipe",
-    "inherit",
-    "inherit"
-  ]
-});
-
-if (appsScriptCheck.status !== 0) {
-  process.exit(appsScriptCheck.status || 1);
 }

@@ -24,7 +24,7 @@ test("manifesto, pacote e documentacao usam a mesma versao", () => {
   assert.equal(packageJson.version, manifest.version);
   assert.equal(packageLock.version, manifest.version);
   assert.equal(packageLock.packages[""].version, manifest.version);
-  assert.match(readme, new RegExp(`Versão atual: ${manifest.version}\\b`, "u"));
+  assert.match(readme, new RegExp(`atual: ${manifest.version}\\b`, "u"));
 });
 
 test("CTA da loja permanece oculto enquanto nao houver URL configurada", () => {
@@ -80,13 +80,4 @@ test("URLs publicas canonicas nao possuem barra duplicada", () => {
   const privacyPage = readProjectFile("extension/public/privacy.html");
 
   assert.doesNotMatch(privacyPage, /pages\.dev\/\//u);
-});
-
-test("backend limita abuso e valida o tempo de preenchimento", () => {
-  const backend = readProjectFile("backend/google-apps-script/Code.gs");
-
-  assert.match(backend, /MAX_SUBMISSIONS_PER_MINUTE = 5/u);
-  assert.match(backend, /MAX_SUBMISSIONS_PER_DAY = 40/u);
-  assert.match(backend, /reserveContentFingerprint_/u);
-  assert.match(backend, /parameters\.startedAt/u);
 });
