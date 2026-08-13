@@ -2,7 +2,6 @@
 
 import { appConfig } from "./modules/config.js";
 import { loadPageI18n } from "./modules/i18n.js";
-import { initFloatingTools } from "./modules/floating-tools.js";
 import {
   loadThemePreference,
   toggleThemePreference,
@@ -131,10 +130,6 @@ const updateUninstallThemeButtonLabel = ({ isDarkTheme }) => {
   );
   uninstallElements.themeToggleButton?.setAttribute("aria-label", nextThemeLabel);
   uninstallElements.themeToggleButton?.setAttribute("title", nextThemeLabel);
-
-  if (uninstallElements.themeToggleLabel) {
-    uninstallElements.themeToggleLabel.textContent = nextThemeLabel;
-  }
 };
 
 const loadUninstallTheme = async () => {
@@ -561,7 +556,6 @@ window.addEventListener("keydown", (event) => {
 initializePage();
 updateFeedbackAvailability();
 configureChromeWebStoreLink();
-initFloatingTools();
 loadUninstallTheme().catch((error) => {
   console.error("Erro ao carregar tema da desinstalação:", error);
 });

@@ -13,7 +13,6 @@
   <link rel="stylesheet" href="../css/shared-design-tokens.css" />
   <link rel="stylesheet" href="../css/uninstall.css" />
   <link rel="stylesheet" href="../css/shared-footer.css" />
-  <link rel="stylesheet" href="../css/shared-floating-tools.css" />
 </head>
 
 <body>
@@ -27,27 +26,52 @@
       </div>
     </div>
 
-    <a class="chrome-install-button" data-chrome-web-store-link hidden rel="noopener" target="_blank"
-      aria-label="Adicionar ao Chrome" data-i18n-aria-label="installButton">
-      <span class="chrome-install-button__icon" aria-hidden="true"></span>
-      <span data-i18n="installButton">Adicionar ao Chrome</span>
-    </a>
+    <span class="site-header__spacer"></span>
+
+    <div class="site-header__actions">
+      <button id="open-language-button" class="header-action header-action--language" type="button"
+        aria-haspopup="dialog" aria-controls="language-dialog" data-i18n-aria-label="languageLabel">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="9" />
+          <path d="M3 12h18" />
+          <path d="M12 3c2.3 2.5 3.5 5.5 3.5 9s-1.2 6.5-3.5 9" />
+          <path d="M12 3c-2.3 2.5-3.5 5.5-3.5 9s1.2 6.5 3.5 9" />
+        </svg>
+        <span class="header-action__lang-code">PT-BR</span>
+      </button>
+
+      <button id="theme-toggle-button" class="header-action header-action--theme" type="button"
+        aria-label="Tema escuro" aria-pressed="false" title="Tema escuro">
+        <svg class="theme-icon--sun" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+        </svg>
+        <svg class="theme-icon--moon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+        </svg>
+      </button>
+
+      <a class="header-action header-action--back" href="https://recarregaai.pages.dev/" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M19 12H5" />
+          <path d="m12 19-7-7 7-7" />
+        </svg>
+        <span>Início</span>
+      </a>
+    </div>
   </header>
 
   <main class="uninstall" aria-labelledby="uninstall-title">
     <section class="intro">
+      <p class="eyebrow" data-i18n="eyebrow">SEU FEEDBACK IMPORTA</p>
       <h1 id="uninstall-title" class="intro__title" data-i18n="pageTitle">
-        Lamentamos sua partida.
+        Antes de você ir…
       </h1>
-
-      <p data-i18n="introFirst">
-        Antes de desinstalar de vez, conte rapidamente o que nao funcionou
-        bem. Sua opiniao ajuda a melhorar o RecarregaAi! para outros usuarios.
+      <p class="intro__subtitle" data-i18n="introSubtitle">
+        O que poderíamos melhorar no RecarregaAI?
       </p>
-
-      <p data-i18n="introSecond">
-        Selecione um motivo ou deixe uma mensagem opcional descrevendo sua
-        experiencia.
+      <p class="intro__description" data-i18n="introDescription">
+        Seu feedback leva menos de 30 segundos e nos ajuda a melhorar a extensão para você e outros usuários.
       </p>
     </section>
 
@@ -60,47 +84,51 @@
 
       <p id="feedback-status" class="feedback-status" role="status" aria-live="polite"></p>
 
-      <fieldset class="reason-list">
-        <legend class="sr-only">Motivo da desinstalacao</legend>
+      <div class="reason-section">
+        <p class="reason-section__label" data-i18n="reasonLabel">Por que você decidiu sair?</p>
 
-        <label class="reason-option">
-          <input type="radio" name="reason" data-reason-id="workflow" />
-          <span class="reason-option__control" aria-hidden="true"></span>
-          <span data-reason-text="workflow">
-            Nao e mais necessario para meu fluxo de trabalho
-          </span>
-        </label>
+        <fieldset class="reason-list">
+          <legend class="sr-only">Motivo da desinstalação</legend>
 
-        <label class="reason-option">
-          <input type="radio" name="reason" data-reason-id="cache" />
-          <span class="reason-option__control" aria-hidden="true"></span>
-          <span data-reason-text="cache">Nao limpou o cache como eu esperava</span>
-        </label>
+          <label class="reason-option">
+            <input type="radio" name="reason" data-reason-id="workflow" />
+            <span class="reason-option__control" aria-hidden="true"></span>
+            <span data-reason-text="workflow">
+              Não é mais necessário para meu fluxo de trabalho
+            </span>
+          </label>
 
-        <label class="reason-option">
-          <input type="radio" name="reason" data-reason-id="reload" />
-          <span class="reason-option__control" aria-hidden="true"></span>
-          <span data-reason-text="reload">Recarregou a pagina na hora errada</span>
-        </label>
+          <label class="reason-option">
+            <input type="radio" name="reason" data-reason-id="cache" />
+            <span class="reason-option__control" aria-hidden="true"></span>
+            <span data-reason-text="cache">Não limpou o cache como eu esperava</span>
+          </label>
 
-        <label class="reason-option">
-          <input type="radio" name="reason" data-reason-id="usability" />
-          <span class="reason-option__control" aria-hidden="true"></span>
-          <span data-reason-text="usability">Ficou confuso de usar</span>
-        </label>
+          <label class="reason-option">
+            <input type="radio" name="reason" data-reason-id="reload" />
+            <span class="reason-option__control" aria-hidden="true"></span>
+            <span data-reason-text="reload">Recarregou a página na hora errada</span>
+          </label>
 
-        <label class="reason-option">
-          <input type="radio" name="reason" data-reason-id="feature" />
-          <span class="reason-option__control" aria-hidden="true"></span>
-          <span data-reason-text="feature">Faltou alguma funcao importante</span>
-        </label>
+          <label class="reason-option">
+            <input type="radio" name="reason" data-reason-id="usability" />
+            <span class="reason-option__control" aria-hidden="true"></span>
+            <span data-reason-text="usability">Ficou confuso de usar</span>
+          </label>
 
-        <label class="reason-option">
-          <input type="radio" name="reason" data-reason-id="other" />
-          <span class="reason-option__control" aria-hidden="true"></span>
-          <span data-reason-text="other">Outro motivo</span>
-        </label>
-      </fieldset>
+          <label class="reason-option">
+            <input type="radio" name="reason" data-reason-id="feature" />
+            <span class="reason-option__control" aria-hidden="true"></span>
+            <span data-reason-text="feature">Faltou alguma função importante</span>
+          </label>
+
+          <label class="reason-option">
+            <input type="radio" name="reason" data-reason-id="other" />
+            <span class="reason-option__control" aria-hidden="true"></span>
+            <span data-reason-text="other">Outro motivo</span>
+          </label>
+        </fieldset>
+      </div>
 
       <p id="selected-reason-feedback" class="selected-reason">
         <span data-i18n="noReason">Nenhum motivo selecionado.</span>
@@ -108,19 +136,19 @@
 
       <details class="details">
         <summary data-i18n="optionalCommentSummary">
-          Adicionar comentario opcional
+          Quer contar um pouco mais?
         </summary>
 
         <div class="details__content">
           <label class="field" for="feedback-message">
-            <span data-i18n="commentLabel">Comentario</span>
+            <span data-i18n="commentLabel">Comentário <span class="field__optional" data-i18n="optionalLabel">(Opcional)</span></span>
             <textarea id="feedback-message" name="Comentario" rows="4" maxlength="1200"
-              placeholder="Conte em poucas palavras o que poderíamos melhorar."
+              placeholder="O que aconteceu?"
               data-i18n-placeholder="commentPlaceholder"></textarea>
           </label>
 
           <label class="field" for="contact-email">
-            <span data-i18n="emailLabel">Email para contato</span>
+            <span data-i18n="emailLabel">E-mail para contato <span class="field__optional" data-i18n="optionalLabel">(Opcional)</span></span>
             <input id="contact-email" type="email" name="email" maxlength="254" placeholder="voce@email.com" />
           </label>
         </div>
@@ -181,40 +209,6 @@
     </div>
   </footer>
 
-  <div class="floating-tools" aria-label="Acoes rapidas">
-    <button id="theme-toggle-button" class="floating-action" type="button" aria-label="Tema escuro" aria-pressed="false"
-      title="Tema escuro">
-      <span class="floating-action__theme-icon" aria-hidden="true"></span>
-      <span id="theme-toggle-label" class="floating-action__label" data-theme-toggle-label>
-        Tema escuro
-      </span>
-    </button>
-
-    <button id="open-language-button" class="floating-action" type="button" aria-label="Idioma" aria-haspopup="dialog"
-      aria-controls="language-dialog" data-i18n-aria-label="languageLabel">
-      <svg aria-hidden="true" class="floating-action__icon" viewBox="0 0 24 24">
-        <path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z" />
-        <path d="M3.6 9h16.8M3.6 15h16.8" />
-        <path d="M12 3a13.6 13.6 0 0 1 0 18M12 3a13.6 13.6 0 0 0 0 18" />
-      </svg>
-      <span class="floating-action__label" data-i18n="languageLabel">
-        Idioma
-      </span>
-    </button>
-
-    <button id="back-to-top-button" class="floating-action back-to-top" type="button" aria-label="Voltar ao inicio"
-      data-i18n-aria-label="backToTop">
-      <svg aria-hidden="true" class="floating-action__icon" viewBox="0 0 24 24">
-        <path d="m6 15 6-6 6 6" />
-        <path d="M12 9v12" />
-        <path d="M5 3h14" />
-      </svg>
-      <span class="floating-action__label" data-i18n="backToTop">
-        Voltar ao inicio
-      </span>
-    </button>
-  </div>
-
   <div id="language-dialog" class="language-dialog" role="dialog" aria-labelledby="language-dialog-title"
     aria-modal="true" hidden>
     <div class="language-dialog__backdrop" data-close-language></div>
@@ -230,13 +224,13 @@
       </h2>
 
       <p class="language-dialog__description" data-i18n="languageDialogText">
-        Altere o idioma da pagina para o seu idioma preferido.
+        Altere o idioma da página para o seu idioma preferido.
       </p>
 
-      <div class="language-grid" aria-label="Idiomas disponiveis">
+      <div class="language-grid" aria-label="Idiomas disponíveis">
         <button class="language-card" type="button" data-language-option="pt-BR">
           <span class="language-card__badge">BR</span>
-          <span class="language-card__name">Portugues (BR)</span>
+          <span class="language-card__name">Português (BR)</span>
           <span class="language-card__code">PT-BR</span>
         </button>
 
@@ -248,7 +242,7 @@
 
         <button class="language-card" type="button" data-language-option="es">
           <span class="language-card__badge">ES</span>
-          <span class="language-card__name">Espanol</span>
+          <span class="language-card__name">Español</span>
           <span class="language-card__code">ES</span>
         </button>
 
