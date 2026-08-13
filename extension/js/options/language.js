@@ -145,7 +145,6 @@ export const applyOptionsLanguage = (language, {
     "footerPrivacy",
     "footerFeedback"
   ]);
-  setText(".privacy-footer__developer a", "footerDeveloper");
   setText("#language-dialog-title", "languageDialogTitle");
   setText(".language-dialog__description", "languageDialogDescription");
 
