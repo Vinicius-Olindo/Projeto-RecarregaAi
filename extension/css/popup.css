@@ -11,10 +11,10 @@
 }
 
 :root[data-theme="dark"] {
-  --color-background: #0a0a0a;
-  --color-page-start: #0a0a0a;
-  --color-page-end: #0f0f0f;
-  --shadow-button: 0 4px 12px rgba(20, 184, 166, 0.15);
+  --color-background: #1A120B;
+  --color-page-start: #1A120B;
+  --color-page-end: #3C2A21;
+  --shadow-button: 0 4px 12px rgba(229, 229, 203, 0.14);
 }
 
 * {

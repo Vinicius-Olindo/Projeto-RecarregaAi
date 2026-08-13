@@ -1,0 +1,285 @@
+<!doctype html>
+<!-- RecarregaAi! 2.5.0 -->
+<html id="page-root" lang="pt-BR" data-theme="light">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="no-referrer" />
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; form-action https://script.google.com; frame-src https://script.google.com https://script.googleusercontent.com; upgrade-insecure-requests" />
+  <title>Feedback do RecarregaAi!</title>
+  <link rel="icon" type="image/png" sizes="16x16" href="extension-assets/assets/icons/icon16.png" />
+  <link rel="stylesheet" href="extension-assets/css/shared-design-tokens.css" />
+  <link rel="stylesheet" href="extension-assets/css/uninstall.css" />
+  <link rel="stylesheet" href="extension-assets/css/shared-footer.css" />
+</head>
+
+<body>
+  <header id="top" class="site-header">
+    <div class="brand">
+      <img class="brand__icon" src="extension-assets/assets/icons/icon128.png" alt="" aria-hidden="true" />
+
+      <div>
+        <p class="brand__name">RecarregaAi!</p>
+        <p id="extension-version" class="brand__version">2.5.0</p>
+      </div>
+    </div>
+
+    <span class="site-header__spacer"></span>
+
+    <div class="site-header__actions">
+      <button id="open-language-button" class="header-action header-action--language" type="button"
+        aria-haspopup="dialog" aria-controls="language-dialog" data-i18n-aria-label="languageLabel">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="9" />
+          <path d="M3 12h18" />
+          <path d="M12 3c2.3 2.5 3.5 5.5 3.5 9s-1.2 6.5-3.5 9" />
+          <path d="M12 3c-2.3 2.5-3.5 5.5-3.5 9s1.2 6.5 3.5 9" />
+        </svg>
+        <span class="header-action__lang-code">PT-BR</span>
+      </button>
+
+      <button id="theme-toggle-button" class="header-action header-action--theme" type="button"
+        aria-label="Tema escuro" aria-pressed="false" title="Tema escuro">
+        <svg class="theme-icon--sun" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+        </svg>
+        <svg class="theme-icon--moon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+        </svg>
+      </button>
+
+      <a class="header-action header-action--back" href="https://recarregaai.pages.dev/" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M19 12H5" />
+          <path d="m12 19-7-7 7-7" />
+        </svg>
+        <span>Início</span>
+      </a>
+    </div>
+  </header>
+
+  <main class="uninstall" aria-labelledby="uninstall-title">
+    <section class="intro">
+      <p class="eyebrow" data-i18n="eyebrow">SEU FEEDBACK IMPORTA</p>
+      <h1 id="uninstall-title" class="intro__title" data-i18n="pageTitle">
+        Antes de você ir…
+      </h1>
+      <p class="intro__subtitle" data-i18n="introSubtitle">
+        O que poderíamos melhorar no RecarregaAI?
+      </p>
+      <p class="intro__description" data-i18n="introDescription">
+        Seu feedback leva menos de 30 segundos e nos ajuda a melhorar a extensão para você e outros usuários.
+      </p>
+    </section>
+
+    <form id="feedback-form" class="feedback-form" method="POST">
+      <input id="feedback-version-input" type="hidden" name="Versao" />
+      <input id="feedback-date-input" type="hidden" name="Data" />
+      <input id="feedback-browser-input" type="hidden" name="Navegador" />
+      <input id="feedback-language-input" type="hidden" name="Idioma" />
+      <input id="feedback-reason-input" type="hidden" name="Motivo" value="Nao informou motivo" />
+
+      <p id="feedback-status" class="feedback-status" role="status" aria-live="polite"></p>
+
+      <div class="reason-section">
+        <p class="reason-section__label" data-i18n="reasonLabel">Por que você decidiu sair?</p>
+
+        <fieldset class="reason-list">
+          <legend class="sr-only">Motivo da desinstalação</legend>
+
+          <label class="reason-option">
+            <input type="radio" name="reason" data-reason-id="workflow" />
+            <span class="reason-option__control" aria-hidden="true"></span>
+            <span data-reason-text="workflow">
+              Não é mais necessário para meu fluxo de trabalho
+            </span>
+          </label>
+
+          <label class="reason-option">
+            <input type="radio" name="reason" data-reason-id="cache" />
+            <span class="reason-option__control" aria-hidden="true"></span>
+            <span data-reason-text="cache">Não limpou o cache como eu esperava</span>
+          </label>
+
+          <label class="reason-option">
+            <input type="radio" name="reason" data-reason-id="reload" />
+            <span class="reason-option__control" aria-hidden="true"></span>
+            <span data-reason-text="reload">Recarregou a página na hora errada</span>
+          </label>
+
+          <label class="reason-option">
+            <input type="radio" name="reason" data-reason-id="usability" />
+            <span class="reason-option__control" aria-hidden="true"></span>
+            <span data-reason-text="usability">Ficou confuso de usar</span>
+          </label>
+
+          <label class="reason-option">
+            <input type="radio" name="reason" data-reason-id="feature" />
+            <span class="reason-option__control" aria-hidden="true"></span>
+            <span data-reason-text="feature">Faltou alguma função importante</span>
+          </label>
+
+          <label class="reason-option">
+            <input type="radio" name="reason" data-reason-id="other" />
+            <span class="reason-option__control" aria-hidden="true"></span>
+            <span data-reason-text="other">Outro motivo</span>
+          </label>
+        </fieldset>
+      </div>
+
+      <p id="selected-reason-feedback" class="selected-reason">
+        <span data-i18n="noReason">Nenhum motivo selecionado.</span>
+      </p>
+
+      <details class="details">
+        <summary data-i18n="optionalCommentSummary">
+          Quer contar um pouco mais?
+        </summary>
+
+        <div class="details__content">
+          <label class="field" for="feedback-message">
+            <span data-i18n="commentLabel">Comentário <span class="field__optional" data-i18n="optionalLabel">(Opcional)</span></span>
+            <textarea id="feedback-message" name="Comentario" rows="4" maxlength="1200"
+              placeholder="O que aconteceu?"
+              data-i18n-placeholder="commentPlaceholder"></textarea>
+          </label>
+
+          <label class="field" for="contact-email">
+            <span data-i18n="emailLabel">E-mail para contato <span class="field__optional" data-i18n="optionalLabel">(Opcional)</span></span>
+            <input id="contact-email" type="email" name="email" maxlength="254" placeholder="voce@email.com" />
+          </label>
+        </div>
+      </details>
+
+      <div class="actions">
+        <button id="send-feedback-button" class="button button--primary" type="submit" disabled>
+          <span data-i18n="sendButton">Enviar feedback</span>
+        </button>
+      </div>
+    </form>
+
+    <iframe id="feedback-delivery-frame" name="recarregaai-feedback-delivery" title="Processamento do feedback"
+      hidden></iframe>
+  </main>
+
+  <footer class="privacy-footer">
+    <div class="privacy-footer__inner">
+      <a class="privacy-footer__brand" href="https://recarregaai.pages.dev/" aria-label="RecarregaAi!">
+        <img class="privacy-footer__logo" src="extension-assets/assets/icons/icon128.png" alt="" aria-hidden="true" />
+        <strong>RecarregaAi!</strong>
+        <small>2.5.0</small>
+      </a>
+
+      <nav class="privacy-footer__nav" aria-label="Links finais">
+        <a href="https://recarregaai.pages.dev/" data-i18n="footerHome">Início</a>
+        <a href="privacy.html" data-i18n="footerPrivacy">Privacidade</a>
+        <a href="uninstall.html" data-i18n="footerFeedback">Feedback</a>
+      </nav>
+
+      <nav class="privacy-footer__social" aria-label="Canais de contato">
+        <a class="privacy-footer__icon-link" href="mailto:olinbytedigital@gmail.com" aria-label="E-mail" title="E-mail">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="2" y="4" width="20" height="16" rx="2" />
+            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+          </svg>
+        </a>
+        <a class="privacy-footer__icon-link" href="https://olinbytedigital.pages.dev/" rel="noopener" target="_blank" aria-label="Olinbyte Digital" title="Olinbyte Digital">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="2" y="2" width="20" height="20" rx="5" />
+            <circle cx="12" cy="12" r="5" />
+            <circle cx="17.5" cy="6.5" r="1.5" />
+          </svg>
+        </a>
+        <a class="privacy-footer__icon-link" href="uninstall.html" aria-label="Feedback" title="Feedback">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+          </svg>
+        </a>
+      </nav>
+
+      <p class="privacy-footer__developer">
+        Desenvolvido por
+        <a href="https://olinbytedigital.pages.dev/" rel="noopener" target="_blank">
+          Olinbyte Digital
+        </a>
+      </p>
+    </div>
+  </footer>
+
+  <div id="language-dialog" class="language-dialog" role="dialog" aria-labelledby="language-dialog-title"
+    aria-modal="true" hidden>
+    <div class="language-dialog__backdrop" data-close-language></div>
+
+    <section class="language-dialog__panel">
+      <button id="close-language-button" class="language-dialog__close" type="button" aria-label="Fechar"
+        data-i18n-aria-label="closeDialog">
+        <span aria-hidden="true">&times;</span>
+      </button>
+
+      <h2 id="language-dialog-title" class="language-dialog__title" data-i18n="languageDialogTitle">
+        Idioma
+      </h2>
+
+      <p class="language-dialog__description" data-i18n="languageDialogText">
+        Altere o idioma da página para o seu idioma preferido.
+      </p>
+
+      <div class="language-grid" aria-label="Idiomas disponíveis">
+        <button class="language-card" type="button" data-language-option="pt-BR">
+          <span class="language-card__badge">BR</span>
+          <span class="language-card__name">Português (BR)</span>
+          <span class="language-card__code">PT-BR</span>
+        </button>
+
+        <button class="language-card" type="button" data-language-option="en">
+          <span class="language-card__badge">US</span>
+          <span class="language-card__name">English</span>
+          <span class="language-card__code">EN</span>
+        </button>
+
+        <button class="language-card" type="button" data-language-option="es">
+          <span class="language-card__badge">ES</span>
+          <span class="language-card__name">Español</span>
+          <span class="language-card__code">ES</span>
+        </button>
+
+        <button class="language-card" type="button" data-language-option="fr">
+          <span class="language-card__badge">FR</span>
+          <span class="language-card__name">Français</span>
+          <span class="language-card__code">FR</span>
+        </button>
+
+        <button class="language-card" type="button" data-language-option="de">
+          <span class="language-card__badge">DE</span>
+          <span class="language-card__name">Deutsch</span>
+          <span class="language-card__code">DE</span>
+        </button>
+
+        <button class="language-card" type="button" data-language-option="it">
+          <span class="language-card__badge">IT</span>
+          <span class="language-card__name">Italiano</span>
+          <span class="language-card__code">IT</span>
+        </button>
+
+        <button class="language-card" type="button" data-language-option="id">
+          <span class="language-card__badge">ID</span>
+          <span class="language-card__name">Bahasa Indonesia</span>
+          <span class="language-card__code">ID</span>
+        </button>
+
+        <button class="language-card" type="button" data-language-option="tr">
+          <span class="language-card__badge">TR</span>
+          <span class="language-card__name">Türkçe</span>
+          <span class="language-card__code">TR</span>
+        </button>
+      </div>
+    </section>
+  </div>
+
+  <script type="module" src="extension-assets/js/uninstall.js"></script>
+</body>
+
+</html>

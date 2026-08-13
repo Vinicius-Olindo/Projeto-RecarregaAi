@@ -1,0 +1,544 @@
+{
+  "pt-BR": {
+    "backToTop": "Voltar ao início",
+    "closeDialog": "Fechar",
+    "commentLabel": "Comentário",
+    "commentPlaceholder": "O que aconteceu?",
+    "documentTitle": "Feedback do RecarregaAi!",
+    "emailLabel": "E-mail para contato",
+    "eyebrow": "SEU FEEDBACK IMPORTA",
+    "footerDeveloper": "Desenvolvido por:",
+    "footerFeedback": "Feedback",
+    "footerHome": "Início",
+    "footerLegal": "© RecarregaAi! 2.5.0. Todos os direitos reservados.",
+    "footerPrivacy": "Privacidade",
+    "feedbackNotConfigured": "O serviço de feedback ainda não foi configurado.",
+    "formSubmitError": "Não consegui confirmar o envio agora. Tente novamente em alguns instantes.",
+    "formSubmitLoading": "Enviando feedback...",
+    "formSubmitRateLimit": "Aguarde {seconds} segundos antes de enviar outro feedback.",
+    "formSubmitSuccess": "Feedback enviado com sucesso. Obrigado por ajudar.",
+    "introSubtitle": "O que poderíamos melhorar no RecarregaAI?",
+    "introDescription": "Seu feedback leva menos de 30 segundos e nos ajuda a melhorar a extensão para você e outros usuários.",
+    "languageDialogText": "Altere o idioma da página para o seu idioma preferido.",
+    "languageDialogTitle": "Idioma",
+    "languageLabel": "Idioma",
+    "installButton": "Adicionar ao Chrome",
+    "noReason": "Nenhum motivo selecionado.",
+    "optionalCommentSummary": "Quer contar um pouco mais?",
+    "optionalLabel": "(Opcional)",
+    "pageTitle": "Antes de você ir…",
+    "reasonLabel": "Por que você decidiu sair?",
+    "reasonRequired": "Selecione um motivo antes de enviar.",
+    "selectedPrefix": "Selecionado: ",
+    "sendButton": "Enviar feedback",
+    "themeToDark": "Tema escuro",
+    "themeToLight": "Tema claro",
+    "versionLabel": "2.5.0"
+  },
+  "en": {
+    "backToTop": "Back to start",
+    "closeDialog": "Close",
+    "commentLabel": "Comment",
+    "commentPlaceholder": "What happened?",
+    "documentTitle": "RecarregaAi! Feedback",
+    "emailLabel": "Contact email",
+    "eyebrow": "YOUR FEEDBACK MATTERS",
+    "footerDeveloper": "Developed by:",
+    "footerFeedback": "Feedback",
+    "footerHome": "Home",
+    "footerLegal": "© RecarregaAi! 2.5.0. All rights reserved.",
+    "footerPrivacy": "Privacy",
+    "feedbackNotConfigured": "The feedback service has not been configured yet.",
+    "formSubmitError": "I could not confirm the send right now. Try again in a few moments.",
+    "formSubmitLoading": "Sending feedback...",
+    "formSubmitRateLimit": "Wait {seconds} seconds before sending more feedback.",
+    "formSubmitSuccess": "Feedback sent successfully. Thanks for helping.",
+    "introSubtitle": "What could we improve about RecarregaAI?",
+    "introDescription": "Your feedback takes less than 30 seconds and helps us improve the extension for you and other users.",
+    "languageDialogText": "Change this page to your preferred language.",
+    "languageDialogTitle": "Language",
+    "languageLabel": "Language",
+    "installButton": "Add to Chrome",
+    "noReason": "No reason selected.",
+    "optionalCommentSummary": "Want to tell us a bit more?",
+    "optionalLabel": "(Optional)",
+    "pageTitle": "Before you go…",
+    "reasonLabel": "Why did you decide to leave?",
+    "reasonRequired": "Select a reason before sending.",
+    "selectedPrefix": "Selected: ",
+    "sendButton": "Send feedback",
+    "themeToDark": "Dark theme",
+    "themeToLight": "Light theme",
+    "versionLabel": "2.5.0"
+  },
+  "es": {
+    "backToTop": "Volver al inicio",
+    "closeDialog": "Cerrar",
+    "commentLabel": "Comentario",
+    "commentPlaceholder": "¿Qué pasó?",
+    "documentTitle": "Feedback de RecarregaAi!",
+    "emailLabel": "Email de contacto",
+    "eyebrow": "TU OPINIÓN IMPORTA",
+    "footerDeveloper": "Desarrollado por:",
+    "footerFeedback": "Feedback",
+    "footerHome": "Inicio",
+    "footerLegal": "© RecarregaAi! 2.5.0. Todos los derechos reservados.",
+    "footerPrivacy": "Privacidad",
+    "feedbackNotConfigured": "El servicio de feedback todavía no está configurado.",
+    "formSubmitError": "No pude confirmar el envío ahora. Inténtalo de nuevo en unos momentos.",
+    "formSubmitLoading": "Enviando feedback...",
+    "formSubmitRateLimit": "Espera {seconds} segundos antes de enviar otro feedback.",
+    "formSubmitSuccess": "Feedback enviado correctamente. Gracias por ayudar.",
+    "introSubtitle": "¿Qué podríamos mejorar en RecarregaAI?",
+    "introDescription": "Tu feedback tarda menos de 30 segundos y nos ayuda a mejorar la extensión para ti y otros usuarios.",
+    "languageDialogText": "Cambia esta página a tu idioma preferido.",
+    "languageDialogTitle": "Idioma",
+    "languageLabel": "Idioma",
+    "installButton": "Agregar a Chrome",
+    "noReason": "Ningún motivo seleccionado.",
+    "optionalCommentSummary": "¿Quieres contarnos un poco más?",
+    "optionalLabel": "(Opcional)",
+    "pageTitle": "Antes de que te vayas…",
+    "reasonLabel": "¿Por qué decidiste irte?",
+    "reasonRequired": "Selecciona un motivo antes de enviar.",
+    "selectedPrefix": "Seleccionado: ",
+    "sendButton": "Enviar feedback",
+    "themeToDark": "Tema oscuro",
+    "themeToLight": "Tema claro",
+    "versionLabel": "2.5.0"
+  },
+  "fr": {
+    "backToTop": "Retour au début",
+    "closeDialog": "Fermer",
+    "commentLabel": "Commentaire",
+    "commentPlaceholder": "Que s'est-il passé?",
+    "documentTitle": "RecarregaAi ! Commentaires",
+    "emailLabel": "E-mail de contact",
+    "eyebrow": "VOTRE AVIS COMPTE",
+    "footerDeveloper": "Développé par :",
+    "footerFeedback": "Commentaires",
+    "footerHome": "Accueil",
+    "footerLegal": "© RecarregaAi! 2.5.0. Tous droits réservés.",
+    "footerPrivacy": "Confidentialité",
+    "feedbackNotConfigured": "Le service de commentaires n'a pas encore été configuré.",
+    "formSubmitError": "Je n'ai pas pu confirmer l'envoi pour le moment. Réessayez dans quelques instants.",
+    "formSubmitLoading": "Envoi de commentaires...",
+    "formSubmitRateLimit": "Attendez {seconds} secondes avant d'envoyer un autre commentaire.",
+    "formSubmitSuccess": "Commentaires envoyés avec succès. Merci de votre aide.",
+    "introSubtitle": "Que pourrions-nous améliorer dans RecarregaAI?",
+    "introDescription": "Vos commentaires prennent moins de 30 secondes et nous aident à améliorer l'extension pour vous et d'autres utilisateurs.",
+    "languageDialogText": "Modifiez cette page dans votre langue préférée.",
+    "languageDialogTitle": "Langue",
+    "languageLabel": "Langue",
+    "installButton": "Ajouter à Chrome",
+    "noReason": "Aucune raison sélectionnée.",
+    "optionalCommentSummary": "Vous en dire un peu plus?",
+    "optionalLabel": "(Facultatif)",
+    "pageTitle": "Avant de partir…",
+    "reasonLabel": "Pourquoi avez-vous décidé de partir?",
+    "reasonRequired": "Sélectionnez une raison avant d'envoyer.",
+    "selectedPrefix": "Sélectionné : ",
+    "sendButton": "Envoyer des commentaires",
+    "themeToDark": "Thème sombre",
+    "themeToLight": "Thème lumière",
+    "versionLabel": "2.5.0"
+  },
+  "de": {
+    "backToTop": "Zurück zum Anfang",
+    "closeDialog": "Schließen",
+    "commentLabel": "Kommentar",
+    "commentPlaceholder": "Was ist passiert?",
+    "documentTitle": "RecarregaAi! Rückmeldung",
+    "emailLabel": "Kontakt-E-Mail",
+    "eyebrow": "IHR FEEDBACK ZÄHLT",
+    "footerDeveloper": "Entwickelt von:",
+    "footerFeedback": "Feedback",
+    "footerHome": "Startseite",
+    "footerLegal": "© RecarregaAi! 2.5.0. Alle Rechte vorbehalten.",
+    "footerPrivacy": "Datenschutz",
+    "feedbackNotConfigured": "Der Feedback-Dienst wurde noch nicht eingerichtet.",
+    "formSubmitError": "Ich konnte den Versand derzeit nicht bestätigen. Versuchen Sie es in ein paar Augenblicken noch einmal.",
+    "formSubmitLoading": "Feedback wird gesendet...",
+    "formSubmitRateLimit": "Warten Sie {seconds} Sekunden, bevor Sie weiteres Feedback senden.",
+    "formSubmitSuccess": "Feedback erfolgreich gesendet. Danke für deine Hilfe.",
+    "introSubtitle": "Was könnten wir an RecarregaAI verbessern?",
+    "introDescription": "Ihr Feedback dauert weniger als 30 Sekunden und hilft uns, die Erweiterung für Sie und andere Benutzer zu verbessern.",
+    "languageDialogText": "Ändern Sie diese Seite in Ihre bevorzugte Sprache.",
+    "languageDialogTitle": "Sprache",
+    "languageLabel": "Sprache",
+    "installButton": "Zu Chrome hinzufügen",
+    "noReason": "Kein Grund ausgewählt.",
+    "optionalCommentSummary": "Möchten Sie uns mehr erzählen?",
+    "optionalLabel": "(Optional)",
+    "pageTitle": "Bevor Sie gehen…",
+    "reasonLabel": "Warum haben Sie beschlossen zu gehen?",
+    "reasonRequired": "Wählen Sie vor dem Senden einen Grund aus.",
+    "selectedPrefix": "Ausgewählt: ",
+    "sendButton": "Feedback senden",
+    "themeToDark": "Dunkles Thema",
+    "themeToLight": "Leichtes Thema",
+    "versionLabel": "2.5.0"
+  },
+  "it": {
+    "backToTop": "Ritorno all'inizio",
+    "closeDialog": "Chiudi",
+    "commentLabel": "Commento",
+    "commentPlaceholder": "Cos'è successo?",
+    "documentTitle": "RecarregaAi! Feedback",
+    "emailLabel": "E-mail di contatto",
+    "eyebrow": "IL TUO FEEDBACK CONTANO",
+    "footerDeveloper": "Sviluppato da:",
+    "footerFeedback": "Feedback",
+    "footerHome": "Casa",
+    "footerLegal": "© RecarregaAi! 2.5.0. Tutti i diritti riservati.",
+    "footerPrivacy": "Privacy",
+    "feedbackNotConfigured": "Il servizio di feedback non è ancora stato configurato.",
+    "formSubmitError": "Non ho potuto confermare l'invio in questo momento. Riprova tra qualche istante.",
+    "formSubmitLoading": "Invio del feedback...",
+    "formSubmitRateLimit": "Attendi {seconds} secondi prima di inviare un altro feedback.",
+    "formSubmitSuccess": "Feedback inviato con successo. Grazie per l'aiuto.",
+    "introSubtitle": "Cosa potremmo migliorare in RecarregaAI?",
+    "introDescription": "Il tuo feedback richiede meno di 30 secondi e ci aiuta a migliorare l'estensione per te e altri utenti.",
+    "languageDialogText": "Cambia questa pagina nella tua lingua preferita.",
+    "languageDialogTitle": "Lingua",
+    "languageLabel": "Lingua",
+    "installButton": "Aggiungi a Chrome",
+    "noReason": "Nessun motivo selezionato.",
+    "optionalCommentSummary": "Vuoi raccontarci di più?",
+    "optionalLabel": "(Facoltativo)",
+    "pageTitle": "Prima che tu vada…",
+    "reasonLabel": "Perché hai deciso di andartene?",
+    "reasonRequired": "Seleziona un motivo prima di inviare.",
+    "selectedPrefix": "Selezionato: ",
+    "sendButton": "Invia feedback",
+    "themeToDark": "Tema scuro",
+    "themeToLight": "Tema leggero",
+    "versionLabel": "2.5.0"
+  },
+  "id": {
+    "backToTop": "Kembali ke awal",
+    "closeDialog": "Tutup",
+    "commentLabel": "Komentar",
+    "commentPlaceholder": "Apa yang terjadi?",
+    "documentTitle": "RecarregaAi! Umpan balik",
+    "emailLabel": "Email kontak",
+    "eyebrow": "MASUKAN ANDA PENTING",
+    "footerDeveloper": "Dikembangkan oleh:",
+    "footerFeedback": "Masukan",
+    "footerHome": "Beranda",
+    "footerLegal": "© RecarregaAi! 2.5.0. Semua hak dilindungi undang-undang.",
+    "footerPrivacy": "Privasi",
+    "feedbackNotConfigured": "Layanan umpan balik belum dikonfigurasi.",
+    "formSubmitError": "Saya tidak dapat mengonfirmasi pengiriman saat ini. Coba lagi dalam beberapa saat.",
+    "formSubmitLoading": "Mengirim masukan...",
+    "formSubmitRateLimit": "Tunggu {seconds} detik sebelum mengirim masukan lagi.",
+    "formSubmitSuccess": "Masukan berhasil dikirim. Terima kasih telah membantu.",
+    "introSubtitle": "Apa yang bisa kami tingkatkan dari RecarregaAI?",
+    "introDescription": "Masukan Anda membutuhkan waktu kurang dari 30 detik dan membantu kami meningkatkan ekstensi untuk Anda dan pengguna lain.",
+    "languageDialogText": "Ubah halaman ini ke bahasa pilihan Anda.",
+    "languageDialogTitle": "Bahasa",
+    "languageLabel": "Bahasa",
+    "installButton": "Tambahkan ke Chrome",
+    "noReason": "Tidak ada alasan yang dipilih.",
+    "optionalCommentSummary": "Ingin ceritakan lebih banyak?",
+    "optionalLabel": "(Opsional)",
+    "pageTitle": "Sebelum Anda pergi…",
+    "reasonLabel": "Mengapa Anda memutuskan untuk pergi?",
+    "reasonRequired": "Pilih alasan sebelum mengirim.",
+    "selectedPrefix": "Terpilih: ",
+    "sendButton": "Kirim masukan",
+    "themeToDark": "Tema gelap",
+    "themeToLight": "Tema ringan",
+    "versionLabel": "2.5.0"
+  },
+  "tr": {
+    "backToTop": "Başa dön",
+    "closeDialog": "Kapat",
+    "commentLabel": "Yorum",
+    "commentPlaceholder": "Ne oldu?",
+    "documentTitle": "RecarregaAi! Geribildirim",
+    "emailLabel": "İletişim e-postası",
+    "eyebrow": "GERİ BİLDİRİMİNİZ ÖNEMLİ",
+    "footerDeveloper": "Geliştiren:",
+    "footerFeedback": "Geribildirim",
+    "footerHome": "Ana Sayfa",
+    "footerLegal": "© RecarregaAi! 2.5.0. Her hakkı saklıdır.",
+    "footerPrivacy": "Gizlilik",
+    "feedbackNotConfigured": "Geri bildirim servisi henüz yapılandırılmadı.",
+    "formSubmitError": "Gönderimi şu anda onaylayamadım. Birkaç dakika sonra tekrar deneyin.",
+    "formSubmitLoading": "Geri bildirim gönderiliyor...",
+    "formSubmitRateLimit": "Başka bir geri bildirim göndermeden önce {seconds} saniye bekleyin.",
+    "formSubmitSuccess": "Geri bildirim başarıyla gönderildi. Yardım ettiğin için teşekkürler.",
+    "introSubtitle": "RecarregaAI'da neleri geliştirebiliriz?",
+    "introDescription": "Geri bildiriminiz 30 saniyeden kısa sürer ve uzantıyı sizin ve diğer kullanıcıların iyileştirmemize yardımcı olur.",
+    "languageDialogText": "Bu sayfayı tercih ettiğiniz dile değiştirin.",
+    "languageDialogTitle": "Dil",
+    "languageLabel": "Dil",
+    "installButton": "Chrome'a Ekle",
+    "noReason": "Neden seçilmedi.",
+    "optionalCommentSummary": "Bize biraz daha anlatmak ister misiniz?",
+    "optionalLabel": "(İsteğe bağlı)",
+    "pageTitle": "Ayrılmadan önce…",
+    "reasonLabel": "Neden gitmeye karar verdiniz?",
+    "reasonRequired": "Göndermeden önce bir neden seçin.",
+    "selectedPrefix": "Seçilen: ",
+    "sendButton": "Geri bildirim gönder",
+    "themeToDark": "Koyu tema",
+    "themeToLight": "Işık teması",
+    "versionLabel": "2.5.0"
+  },
+  "reasons": {
+    "workflow": {
+      "pt-BR": {
+        "label": "Fluxo de trabalho",
+        "reason": "Não é mais necessário para meu fluxo de trabalho",
+        "text": "Não é mais necessário para meu fluxo de trabalho"
+      },
+      "en": {
+        "label": "Workflow",
+        "reason": "It is no longer needed for my workflow",
+        "text": "It is no longer needed for my workflow"
+      },
+      "es": {
+        "label": "Flujo de trabajo",
+        "reason": "Ya no es necesario para mi flujo de trabajo",
+        "text": "Ya no es necesario para mi flujo de trabajo"
+      },
+      "fr": {
+        "label": "Flux de travail",
+        "reason": "Il n'est plus nécessaire pour mon flux de travail",
+        "text": "Il n'est plus nécessaire pour mon flux de travail"
+      },
+      "de": {
+        "label": "Workflow",
+        "reason": "Es wird für meinen Workflow nicht mehr benötigt",
+        "text": "Es wird für meinen Workflow nicht mehr benötigt"
+      },
+      "it": {
+        "label": "Flusso di lavoro",
+        "reason": "Non è più necessario per il mio flusso di lavoro",
+        "text": "Non è più necessario per il mio flusso di lavoro"
+      },
+      "id": {
+        "label": "Alur Kerja",
+        "reason": "Ini tidak lagi diperlukan untuk alur kerja saya",
+        "text": "Ini tidak lagi diperlukan untuk alur kerja saya"
+      },
+      "tr": {
+        "label": "İş Akışı",
+        "reason": "Artık iş akışım için gerekli değil",
+        "text": "Artık iş akışım için gerekli değil"
+      }
+    },
+    "cache": {
+      "pt-BR": {
+        "label": "Cache",
+        "reason": "Não limpou o cache como eu esperava",
+        "text": "Não limpou o cache como eu esperava"
+      },
+      "en": {
+        "label": "Cache",
+        "reason": "It did not clear cache as expected",
+        "text": "It did not clear cache as expected"
+      },
+      "es": {
+        "label": "Cache",
+        "reason": "No limpió la caché como esperaba",
+        "text": "No limpió la caché como esperaba"
+      },
+      "fr": {
+        "label": "Cache",
+        "reason": "Le cache n'a pas été vidé comme prévu",
+        "text": "Le cache n'a pas été vidé comme prévu"
+      },
+      "de": {
+        "label": "Cache",
+        "reason": "Der Cache wurde nicht wie erwartet geleert",
+        "text": "Der Cache wurde nicht wie erwartet geleert"
+      },
+      "it": {
+        "label": "Cache",
+        "reason": "Non ha svuotato la cache come previsto",
+        "text": "Non ha svuotato la cache come previsto"
+      },
+      "id": {
+        "label": "Tembolok",
+        "reason": "Tidak menghapus cache seperti yang diharapkan",
+        "text": "Tidak menghapus cache seperti yang diharapkan"
+      },
+      "tr": {
+        "label": "Önbellek",
+        "reason": "Önbelleği beklendiği gibi temizlemedi",
+        "text": "Önbelleği beklendiği gibi temizlemedi"
+      }
+    },
+    "reload": {
+      "pt-BR": {
+        "label": "Reload",
+        "reason": "Recarregou a página na hora errada",
+        "text": "Recarregou a página na hora errada"
+      },
+      "en": {
+        "label": "Reload",
+        "reason": "It reloaded the page at the wrong time",
+        "text": "It reloaded the page at the wrong time"
+      },
+      "es": {
+        "label": "Recarga",
+        "reason": "Recargó la página en el momento equivocado",
+        "text": "Recargó la página en el momento equivocado"
+      },
+      "fr": {
+        "label": "Recharger",
+        "reason": "Il a rechargé la page au mauvais moment",
+        "text": "Il a rechargé la page au mauvais moment"
+      },
+      "de": {
+        "label": "Neu laden",
+        "reason": "Die Seite wurde zum falschen Zeitpunkt neu geladen",
+        "text": "Die Seite wurde zum falschen Zeitpunkt neu geladen"
+      },
+      "it": {
+        "label": "Ricarica",
+        "reason": "Ha ricaricato la pagina nel momento sbagliato",
+        "text": "Ha ricaricato la pagina nel momento sbagliato"
+      },
+      "id": {
+        "label": "Muat ulang",
+        "reason": "Ini memuat ulang halaman pada waktu yang salah",
+        "text": "Ini memuat ulang halaman pada waktu yang salah"
+      },
+      "tr": {
+        "label": "Yeniden Yükle",
+        "reason": "Sayfayı yanlış zamanda yeniden yükledi",
+        "text": "Sayfayı yanlış zamanda yeniden yükledi"
+      }
+    },
+    "usability": {
+      "pt-BR": {
+        "label": "Usabilidade",
+        "reason": "Ficou confuso de usar",
+        "text": "Ficou confuso de usar"
+      },
+      "en": {
+        "label": "Usability",
+        "reason": "It was confusing to use",
+        "text": "It was confusing to use"
+      },
+      "es": {
+        "label": "Usabilidad",
+        "reason": "Fue confuso de usar",
+        "text": "Fue confuso de usar"
+      },
+      "fr": {
+        "label": "Convivialité",
+        "reason": "C'était déroutant à utiliser",
+        "text": "C'était déroutant à utiliser"
+      },
+      "de": {
+        "label": "Benutzerfreundlichkeit",
+        "reason": "Die Verwendung war verwirrend",
+        "text": "Die Verwendung war verwirrend"
+      },
+      "it": {
+        "label": "Usabilità",
+        "reason": "Era confuso da usare",
+        "text": "Era confuso da usare"
+      },
+      "id": {
+        "label": "Kegunaan",
+        "reason": "Membingungkan untuk digunakan",
+        "text": "Membingungkan untuk digunakan"
+      },
+      "tr": {
+        "label": "Kullanılabilirlik",
+        "reason": "Kullanımı kafa karıştırıcıydı",
+        "text": "Kullanımı kafa karıştırıcıydı"
+      }
+    },
+    "feature": {
+      "pt-BR": {
+        "label": "Função ausente",
+        "reason": "Faltou alguma função importante",
+        "text": "Faltou alguma função importante"
+      },
+      "en": {
+        "label": "Missing feature",
+        "reason": "An important feature was missing",
+        "text": "An important feature was missing"
+      },
+      "es": {
+        "label": "Función faltante",
+        "reason": "Faltó alguna función importante",
+        "text": "Faltó alguna función importante"
+      },
+      "fr": {
+        "label": "Fonctionnalité manquante",
+        "reason": "Il manquait une fonctionnalité importante",
+        "text": "Il manquait une fonctionnalité importante"
+      },
+      "de": {
+        "label": "Fehlende Funktion",
+        "reason": "Eine wichtige Funktion fehlte",
+        "text": "Eine wichtige Funktion fehlte"
+      },
+      "it": {
+        "label": "Caratteristica mancante",
+        "reason": "Mancava una funzionalità importante",
+        "text": "Mancava una funzionalità importante"
+      },
+      "id": {
+        "label": "Fitur tidak ada",
+        "reason": "Fitur penting hilang",
+        "text": "Fitur penting hilang"
+      },
+      "tr": {
+        "label": "Eksik özellik",
+        "reason": "Önemli bir özellik eksikti",
+        "text": "Önemli bir özellik eksikti"
+      }
+    },
+    "other": {
+      "pt-BR": {
+        "label": "Outro",
+        "reason": "Outro motivo",
+        "text": "Outro motivo"
+      },
+      "en": {
+        "label": "Other",
+        "reason": "Other reason",
+        "text": "Other reason"
+      },
+      "es": {
+        "label": "Otro",
+        "reason": "Otro motivo",
+        "text": "Otro motivo"
+      },
+      "fr": {
+        "label": "Autre",
+        "reason": "Autre raison",
+        "text": "Autre raison"
+      },
+      "de": {
+        "label": "Sonstiges",
+        "reason": "Anderer Grund",
+        "text": "Anderer Grund"
+      },
+      "it": {
+        "label": "Altro",
+        "reason": "Altro motivo",
+        "text": "Altro motivo"
+      },
+      "id": {
+        "label": "Lainnya",
+        "reason": "Alasan lain",
+        "text": "Alasan lain"
+      },
+      "tr": {
+        "label": "Diğer",
+        "reason": "Diğer sebep",
+        "text": "Diğer sebep"
+      }
+    }
+  }
+}
