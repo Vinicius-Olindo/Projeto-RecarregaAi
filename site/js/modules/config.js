@@ -2,6 +2,6 @@
 
 export const appConfig = Object.freeze({
   chromeWebStoreUrl: "",
-  olinbyteDigitalUrl: "https://www.instagram.com/olinbytedigital/",
+  olinbyteDigitalUrl: "https://olinbytedigital.pages.dev/",
   supportEmail: "olinbytedigital@gmail.com"
 });

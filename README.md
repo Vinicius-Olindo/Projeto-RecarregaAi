@@ -200,4 +200,4 @@ Toda alteração entregue incrementa a versão do projeto e mantém os arquivos 
 ## Contato
 
 - E-mail: [olinbytedigital@gmail.com](mailto:olinbytedigital@gmail.com)
-- Instagram: [Olinbyte Digital](https://www.instagram.com/olinbytedigital/)
+- Site: [Olinbyte Digital](https://olinbytedigital.pages.dev/)
