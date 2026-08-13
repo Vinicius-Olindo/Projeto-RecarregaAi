@@ -216,6 +216,7 @@ export const getAppSettings = async () => {
     autoStartSites: Array.isArray(storedSettings.autoStartSites)
       ? storedSettings.autoStartSites
       : [],
+    debugMode: Boolean(storedSettings.debugMode),
     operatingHours: normalizeOperatingHours(storedSettings.operatingHours),
     playSoundOnComplete: Boolean(storedSettings.playSoundOnComplete),
     preserveScrollPosition: Boolean(storedSettings.preserveScrollPosition)

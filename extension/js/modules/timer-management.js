@@ -42,6 +42,7 @@ import {
   updateTimerSettingsByTabId,
   upsertTimerSettings
 } from "./storage.js";
+import { debugLog } from "./debug.js";
 import { collectLoadedOrigins } from "./tabs.js";
 import { createTimerRestorationPlan } from "./timer-restoration.js";
 import {
@@ -678,6 +679,13 @@ export const startTimer = async (payload) => {
     }
   );
 
+  debugLog("Timer iniciado:", {
+    tabId,
+    intervalInMinutes,
+    mainOrigin: origins[0],
+    source: timerSettings.source
+  });
+
   return applyTimerConstraints(timerSettings);
 };
 
@@ -1025,6 +1033,12 @@ export const runScheduledRefresh = async (tabId) => {
         appSettings.preserveScrollPosition
       );
 
+      debugLog("Cache limpo e recarregado:", {
+        tabId: timerSettings.tabId,
+        origins,
+        mainOrigin: timerSettings.mainOrigin
+      });
+
       await saveTimerRunResult(timerSettings, {
         error: null,
         finishedAt: new Date().toISOString(),
@@ -1033,6 +1047,7 @@ export const runScheduledRefresh = async (tabId) => {
         tabId: timerSettings.tabId
       });
     } catch (error) {
+      debugLog("Erro no refresh:", error.message);
       console.error("Erro no timer do RecarregaAi:", error);
 
       await saveTimerRunResult(timerSettings, {

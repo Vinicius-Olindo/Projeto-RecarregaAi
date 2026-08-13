@@ -9,17 +9,24 @@ import {
   restoreGlobalPause,
   syncOperatingHoursState,
   resumeAllTimers,
+  pauseAllTimers,
   runScheduledRefresh,
   handleCompletedTabUpdate,
   restorePendingScrollPosition,
   removePendingScrollPosition,
   stopTimer,
+  startTimer,
   ensureStartupAlarms,
   pauseTimerForMedia,
   pauseTimerForTyping,
   resumeTimerWhenMediaSafetyEnds
 } from "./modules/timer-management.js";
 import { setupMessageListener } from "./modules/message-handler.js";
+import {
+  getUrlOrigin,
+  getPermissionPatternForOrigin
+} from "./modules/shared.js";
+import { loadDebugMode, debugLog } from "./modules/debug.js";
 
 const openOnboardingPage = async () => {
   await chrome.tabs.create({
@@ -41,6 +48,7 @@ const bootstrapRecarregaAi = async ({
   openOnboarding = false,
   restoreAlarms = true
 } = {}) => {
+  await loadDebugMode();
   await configureUninstallFeedbackPage();
 
   if (markInstalled) {
@@ -154,4 +162,66 @@ configureUninstallFeedbackPage().catch((error) => {
 
 queueTimerMaintenance(ensureStartupAlarms).catch((error) => {
   console.error("Erro ao restaurar alarmes do RecarregaAi:", error);
+});
+
+const handleStartTimerCommand = async () => {
+  const [activeTab] = await chrome.tabs.query({
+    active: true,
+    currentWindow: true
+  });
+
+  if (!activeTab?.url) {
+    return;
+  }
+
+  const tabOrigin = getUrlOrigin(activeTab.url);
+
+  if (!tabOrigin) {
+    return;
+  }
+
+  const hasPermission = await chrome.permissions.contains({
+    origins: [getPermissionPatternForOrigin(tabOrigin)]
+  });
+
+  if (!hasPermission) {
+    return;
+  }
+
+  await queueTimerMaintenance(() =>
+    startTimer({
+      intervalInMinutes: 3,
+      mainOrigin: tabOrigin,
+      origins: [tabOrigin],
+      source: "manual",
+      tabId: activeTab.id,
+      tabTitle: activeTab.title,
+      tabUrl: activeTab.url,
+      windowId: activeTab.windowId
+    })
+  );
+};
+
+chrome.commands.onCommand.addListener((command) => {
+  debugLog("Comando de atalho recebido:", command);
+
+  if (command === "start-timer") {
+    handleStartTimerCommand().catch((error) => {
+      console.error("Erro ao iniciar timer via atalho:", error);
+    });
+    return;
+  }
+
+  if (command === "pause-all-timers") {
+    queueTimerMaintenance(() => pauseAllTimers(60)).catch((error) => {
+      console.error("Erro ao pausar timers via atalho:", error);
+    });
+    return;
+  }
+
+  if (command === "resume-all-timers") {
+    queueTimerMaintenance(() => resumeAllTimers()).catch((error) => {
+      console.error("Erro ao retomar timers via atalho:", error);
+    });
+  }
 });

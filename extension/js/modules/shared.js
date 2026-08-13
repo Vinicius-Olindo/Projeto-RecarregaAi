@@ -6,6 +6,7 @@ export const mediaResumeSafetySeconds = 3;
 export const storageKeys = Object.freeze({
   actionHistory: "recarregaAiActionHistory",
   appSettings: "recarregaAiSettings",
+  debugMode: "recarregaAiDebugMode",
   globalPause: "recarregaAiGlobalPause",
   language: "recarregaAiLanguage",
   lastTimerRun: "recarregaAiLastTimerRun",
@@ -93,6 +94,7 @@ export const defaultOperatingHours = Object.freeze({
 
 export const defaultAppSettings = Object.freeze({
   autoStartSites: [],
+  debugMode: false,
   defaultIntervalInMinutes: 3,
   operatingHours: defaultOperatingHours,
   playSoundOnComplete: false,
