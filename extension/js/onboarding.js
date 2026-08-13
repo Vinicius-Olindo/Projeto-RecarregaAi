@@ -57,15 +57,14 @@ const applyOnboardingLanguage = () => {
   setOnboardingText("title[data-i18n='pageTitle']", "pageTitle");
   setOnboardingText(".eyebrow[data-i18n='eyebrow']", "eyebrow");
   setOnboardingText("h1[data-i18n='title']", "title");
-  setOnboardingText(".intro__description[data-i18n='description']", "description");
+  setOnboardingText(".hero__description[data-i18n='description']", "description");
   setOnboardingText("h2[data-i18n='step1Title']", "step1Title");
-  setOnboardingText("p[data-i18n='step1Description']", "step1Description");
+  setOnboardingText(".flow__step:first-child p[data-i18n='step1Description']", "step1Description");
   setOnboardingText("h2[data-i18n='step2Title']", "step2Title");
-  setOnboardingText("p[data-i18n='step2Description']", "step2Description");
+  setOnboardingText(".flow__step:nth-child(3) p[data-i18n='step2Description']", "step2Description");
   setOnboardingText("h2[data-i18n='step3Title']", "step3Title");
-  setOnboardingText("p[data-i18n='step3Description']", "step3Description");
-  setOnboardingText("strong[data-i18n='controlTitle']", "controlTitle");
-  setOnboardingText("span[data-i18n='controlDescription']", "controlDescription");
+  setOnboardingText(".flow__step:last-child p[data-i18n='step3Description']", "step3Description");
+  setOnboardingText(".hint p[data-i18n='hint']", "hint");
   setOnboardingText("#open-options-button[data-i18n='openOptionsButton']", "openOptionsButton");
   setOnboardingText("#finish-onboarding-button[data-i18n='startButton']", "startButton");
   setOnboardingAttribute("#theme-toggle-button", "aria-label",
