@@ -45,7 +45,7 @@ const welcomeTranslations = extendPageTranslations({
       "Remove cache do site aberto e recarrega a página para buscar conteúdo atualizado.",
     feature1Title: "Limpeza com recarga",
     feature2Body:
-      "Escolha rapidamente entre 3, 5 ou 10 minutos para começar sem configurar demais.",
+      "Escolha rapidamente entre 1, 3, 5, 10 ou 30 minutos para começar sem configurar demais.",
     feature2Title: "Tempos prontos",
     feature3Body:
       "Defina seu próprio intervalo em minutos quando o fluxo pede mais controle.",
@@ -146,7 +146,7 @@ const welcomeTranslations = extendPageTranslations({
       "Removes cache from the open site and reloads the page to fetch updated content.",
     feature1Title: "Cleanup with reload",
     feature2Body:
-      "Quickly choose 3, 5 or 10 minutes to start without extra setup.",
+      "Quickly choose 1, 3, 5, 10 or 30 minutes to start without extra setup.",
     feature2Title: "Ready-made times",
     feature3Body:
       "Set your own interval in minutes when your workflow needs more control.",
@@ -246,7 +246,7 @@ const welcomeTranslations = extendPageTranslations({
       "Elimina la caché del sitio abierto y recarga la página para buscar contenido actualizado.",
     feature1Title: "Limpieza con recarga",
     feature2Body:
-      "Elige rápidamente entre 3, 5 o 10 minutos para empezar sin configurar demasiado.",
+      "Elige rápidamente entre 1, 3, 5, 10 o 30 minutos para empezar sin configurar demasiado.",
     feature2Title: "Tiempos listos",
     feature3Body:
       "Define tu propio intervalo en minutos cuando el flujo necesita más control.",

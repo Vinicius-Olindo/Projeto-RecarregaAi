@@ -14,7 +14,11 @@
     "openOptionsButton": "Abrir configurações",
     "startButton": "Começar configuração →",
     "themeLight": "Ativar tema escuro",
-    "themeDark": "Ativar tema claro"
+    "themeDark": "Ativar tema claro",
+    "footerHome": "Início",
+    "footerPrivacy": "Privacidade",
+    "footerFeedback": "Feedback",
+    "footerDeveloper": "Desenvolvido por"
   },
   "en": {
     "pageTitle": "Getting Started - RecarregaAi!",
@@ -31,7 +35,11 @@
     "openOptionsButton": "Open settings",
     "startButton": "Start setup →",
     "themeLight": "Enable dark theme",
-    "themeDark": "Enable light theme"
+    "themeDark": "Enable light theme",
+    "footerHome": "Home",
+    "footerPrivacy": "Privacy",
+    "footerFeedback": "Feedback",
+    "footerDeveloper": "Developed by"
   },
   "es": {
     "pageTitle": "Primeros pasos - RecarregaAi!",
@@ -48,7 +56,11 @@
     "openOptionsButton": "Abrir configuración",
     "startButton": "Comenzar configuración →",
     "themeLight": "Activar tema oscuro",
-    "themeDark": "Activar tema claro"
+    "themeDark": "Activar tema claro",
+    "footerHome": "Inicio",
+    "footerPrivacy": "Privacidad",
+    "footerFeedback": "Feedback",
+    "footerDeveloper": "Desarrollado por"
   },
   "fr": {
     "pageTitle": "Premiers pas - RecarregaAi!",
@@ -65,7 +77,11 @@
     "openOptionsButton": "Ouvrir les paramètres",
     "startButton": "Commencer la configuration →",
     "themeLight": "Activer le thème sombre",
-    "themeDark": "Activer le thème clair"
+    "themeDark": "Activer le thème clair",
+    "footerHome": "Accueil",
+    "footerPrivacy": "Confidentialité",
+    "footerFeedback": "Commentaires",
+    "footerDeveloper": "Développé par"
   },
   "de": {
     "pageTitle": "Erste Schritte - RecarregaAi!",
@@ -82,7 +98,11 @@
     "openOptionsButton": "Einstellungen öffnen",
     "startButton": "Einrichtung starten →",
     "themeLight": "Dunkles Thema aktivieren",
-    "themeDark": "Helles Thema aktivieren"
+    "themeDark": "Helles Thema aktivieren",
+    "footerHome": "Startseite",
+    "footerPrivacy": "Datenschutz",
+    "footerFeedback": "Feedback",
+    "footerDeveloper": "Entwickelt von"
   },
   "it": {
     "pageTitle": "Primi passi - RecarregaAi!",
@@ -99,7 +119,11 @@
     "openOptionsButton": "Apri impostazioni",
     "startButton": "Inizia configurazione →",
     "themeLight": "Attiva tema scuro",
-    "themeDark": "Attiva tema chiaro"
+    "themeDark": "Attiva tema chiaro",
+    "footerHome": "Home",
+    "footerPrivacy": "Privacy",
+    "footerFeedback": "Feedback",
+    "footerDeveloper": "Sviluppato da"
   },
   "id": {
     "pageTitle": "Memulai - RecarregaAi!",
@@ -116,7 +140,11 @@
     "openOptionsButton": "Buka pengaturan",
     "startButton": "Mulai pengaturan →",
     "themeLight": "Aktifkan tema gelap",
-    "themeDark": "Aktifkan tema terang"
+    "themeDark": "Aktifkan tema terang",
+    "footerHome": "Beranda",
+    "footerPrivacy": "Privasi",
+    "footerFeedback": "Masukan",
+    "footerDeveloper": "Dikembangkan oleh"
   },
   "tr": {
     "pageTitle": "Başlangıç - RecarregaAi!",
@@ -133,6 +161,10 @@
     "openOptionsButton": "Ayarları aç",
     "startButton": "Kuruluma başla →",
     "themeLight": "Koyu temayı etkinleştir",
-    "themeDark": "Açık temayı etkinleştir"
+    "themeDark": "Açık temayı etkinleştir",
+    "footerHome": "Ana Sayfa",
+    "footerPrivacy": "Gizlilik",
+    "footerFeedback": "Geribildirim",
+    "footerDeveloper": "Geliştiren"
   }
 }

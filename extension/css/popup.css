@@ -280,7 +280,7 @@ input {
 
 .timer-overview__details {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(94px, 1fr));
   gap: 8px;
   margin: 0;
 }
@@ -317,10 +317,6 @@ input {
   font-size: 0.72rem;
   font-weight: 600;
   line-height: 1.2;
-}
-
-.timer-overview__detail:last-child {
-  grid-column: span 3;
 }
 
 .timer-overview[data-state="warning"] .timer-overview__countdown {
@@ -949,10 +945,6 @@ input {
 
   .timer-overview__details {
     grid-template-columns: 1fr;
-  }
-
-  .timer-overview__detail:last-child {
-    grid-column: auto;
   }
 
   .popup__actions,

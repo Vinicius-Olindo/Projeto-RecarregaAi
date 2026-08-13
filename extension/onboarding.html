@@ -10,9 +10,10 @@
     <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/icon16.png" />
     <link rel="stylesheet" href="css/shared-design-tokens.css" />
     <link rel="stylesheet" href="css/onboarding.css" />
+    <link rel="stylesheet" href="css/shared-footer.css" />
   </head>
   <body>
-    <header class="onboarding-header">
+    <header id="top" class="onboarding-header">
       <a class="brand" href="#" aria-label="RecarregaAi!">
         <img src="assets/icons/icon128.png" alt="" aria-hidden="true" />
         <span>
@@ -160,6 +161,50 @@
         </button>
       </section>
     </main>
+
+    <footer class="privacy-footer">
+      <div class="privacy-footer__inner">
+        <a class="privacy-footer__brand" href="#top" aria-label="RecarregaAi!">
+          <img class="privacy-footer__logo" src="assets/icons/icon128.png" alt="" aria-hidden="true" />
+          <strong>RecarregaAi!</strong>
+          <small>2.5.0</small>
+        </a>
+
+        <nav class="privacy-footer__nav" aria-label="Links finais">
+          <a href="https://recarregaai.pages.dev/" rel="noopener" target="_blank" data-i18n="footerHome">Início</a>
+          <a href="https://recarregaai.pages.dev/privacy.html" rel="noopener" target="_blank" data-i18n="footerPrivacy">Privacidade</a>
+          <a href="https://recarregaai.pages.dev/uninstall.html" rel="noopener" target="_blank" data-i18n="footerFeedback">Feedback</a>
+        </nav>
+
+        <nav class="privacy-footer__social" aria-label="Canais de contato">
+          <a class="privacy-footer__icon-link" href="mailto:olinbytedigital@gmail.com" aria-label="E-mail" title="E-mail">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="2" y="4" width="20" height="16" rx="2" />
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+            </svg>
+          </a>
+          <a class="privacy-footer__icon-link" href="https://olinbytedigital.pages.dev/" rel="noopener" target="_blank" aria-label="Olinbyte Digital" title="Olinbyte Digital">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="5" />
+              <circle cx="12" cy="12" r="5" />
+              <circle cx="17.5" cy="6.5" r="1.5" />
+            </svg>
+          </a>
+          <a class="privacy-footer__icon-link" href="https://recarregaai.pages.dev/uninstall.html" rel="noopener" target="_blank" aria-label="Feedback" title="Feedback">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+            </svg>
+          </a>
+        </nav>
+
+        <p class="privacy-footer__developer">
+          <span data-i18n="footerDeveloper">Desenvolvido por</span>
+          <a href="https://olinbytedigital.pages.dev/" rel="noopener" target="_blank">
+            Olinbyte Digital
+          </a>
+        </p>
+      </div>
+    </footer>
 
     <script type="module" src="js/onboarding.js"></script>
   </body>

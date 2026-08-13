@@ -67,6 +67,10 @@ const applyOnboardingLanguage = () => {
   setOnboardingText(".hint p[data-i18n='hint']", "hint");
   setOnboardingText("#open-options-button[data-i18n='openOptionsButton']", "openOptionsButton");
   setOnboardingText("#finish-onboarding-button[data-i18n='startButton']", "startButton");
+  setOnboardingText(".privacy-footer__nav a[data-i18n='footerHome']", "footerHome");
+  setOnboardingText(".privacy-footer__nav a[data-i18n='footerPrivacy']", "footerPrivacy");
+  setOnboardingText(".privacy-footer__nav a[data-i18n='footerFeedback']", "footerFeedback");
+  setOnboardingText(".privacy-footer__developer [data-i18n='footerDeveloper']", "footerDeveloper");
   setOnboardingAttribute("#theme-toggle-button", "aria-label",
     activeOnboardingLanguage === "pt-BR" ? "themeLight" : "themeLight");
   setOnboardingAttribute("#theme-toggle-button", "title",
