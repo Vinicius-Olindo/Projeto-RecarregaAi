@@ -18,6 +18,7 @@ import {
   getUrlOrigin,
   isWithinOperatingHours,
   mediaResumeSafetySeconds,
+  normalizeTimerIntervalInMinutes,
   normalizeOrigins,
   normalizeMediaKind,
   pauseReasons
@@ -624,10 +625,12 @@ export const openTimerTab = async (tabId) => {
 };
 
 export const startTimer = async (payload) => {
-  const intervalInMinutes = Math.floor(Number(payload.intervalInMinutes));
+  const intervalInMinutes = normalizeTimerIntervalInMinutes(
+    payload.intervalInMinutes
+  );
   const tabId = Number(payload.tabId);
 
-  if (!Number.isFinite(intervalInMinutes) || intervalInMinutes < 1) {
+  if (!intervalInMinutes) {
     throw new Error("Intervalo do timer invalido.");
   }
 
@@ -950,7 +953,10 @@ export const restorePendingScrollPosition = async (tabId) => {
 
 const clearCacheAndReloadTab = async (
   timerSettings,
-  preserveScrollPosition = false
+  {
+    includeAdvancedCleanup = false,
+    preserveScrollPosition = false
+  } = {}
 ) => {
   const tab = await chrome.tabs.get(timerSettings.tabId);
   const tabOrigin = getUrlOrigin(tab.url);
@@ -979,7 +985,9 @@ const clearCacheAndReloadTab = async (
     }
   }
 
-  await clearCacheForOrigins(origins);
+  await clearCacheForOrigins(origins, {
+    includeAdvancedCleanup
+  });
 
   try {
     await reloadTabIgnoringCache(timerSettings.tabId);
@@ -1030,7 +1038,10 @@ export const runScheduledRefresh = async (tabId) => {
       const appSettings = await getAppSettings();
       const origins = await clearCacheAndReloadTab(
         timerSettings,
-        appSettings.preserveScrollPosition
+        {
+          includeAdvancedCleanup: appSettings.advancedCleanupEnabled,
+          preserveScrollPosition: appSettings.preserveScrollPosition
+        }
       );
 
       debugLog("Cache limpo e recarregado:", {

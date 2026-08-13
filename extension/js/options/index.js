@@ -2,6 +2,8 @@
 
 import { initFloatingTools } from "../modules/floating-tools.js";
 import {
+  maximumTimerIntervalInMinutes,
+  minimumTimerIntervalInMinutes,
   normalizeOperatingHours,
   storageKeys
 } from "../modules/shared.js";
@@ -20,6 +22,7 @@ import {
   renderActionHistory,
   loadActionHistory,
   clearStoredActionHistory,
+  exportDebugDiagnostics,
   resetHistoryClearConfirmation,
   setActiveHistoryFilter,
   incrementVisibleHistoryLimit,
@@ -49,6 +52,9 @@ const syncPreferenceControls = () => {
   const isEnabled = operatingHours.enabled;
 
   currentSettings.operatingHours = operatingHours;
+  optionsElements.advancedCleanupInput.checked = Boolean(
+    currentSettings.advancedCleanupEnabled
+  );
   optionsElements.preserveScrollInput.checked = Boolean(
     currentSettings.preserveScrollPosition
   );
@@ -58,6 +64,7 @@ const syncPreferenceControls = () => {
   optionsElements.debugModeInput.checked = Boolean(
     currentSettings.debugMode
   );
+  optionsElements.exportDiagnosticsButton.hidden = !currentSettings.debugMode;
   optionsElements.operatingHoursEnabled.checked = isEnabled;
   optionsElements.operatingStartTime.value = operatingHours.startTime;
   optionsElements.operatingEndTime.value = operatingHours.endTime;
@@ -77,6 +84,8 @@ const syncPreferenceControls = () => {
 const savePreferenceSettings = async () => {
   const currentSettings = getCurrentSettings();
 
+  currentSettings.advancedCleanupEnabled =
+    optionsElements.advancedCleanupInput.checked;
   currentSettings.preserveScrollPosition =
     optionsElements.preserveScrollInput.checked;
   currentSettings.playSoundOnComplete =
@@ -108,7 +117,11 @@ const loadOptionsSettings = async () => {
 const saveDefaultInterval = async () => {
   const defaultInterval = Number(optionsElements.defaultIntervalInput.value);
 
-  if (!Number.isFinite(defaultInterval) || defaultInterval < 1) {
+  if (
+    !Number.isFinite(defaultInterval)
+    || defaultInterval < minimumTimerIntervalInMinutes
+    || defaultInterval > maximumTimerIntervalInMinutes
+  ) {
     updateOptionsStatus(
       getOptionsCopy("formInvalidInterval"),
       "error"
@@ -251,6 +264,18 @@ optionsElements.preserveScrollInput.addEventListener(
   "change",
   handlePreferenceChange
 );
+optionsElements.advancedCleanupInput.addEventListener(
+  "change",
+  handlePreferenceChange
+);
+optionsElements.playSoundInput.addEventListener(
+  "change",
+  handlePreferenceChange
+);
+optionsElements.debugModeInput.addEventListener(
+  "change",
+  handlePreferenceChange
+);
 optionsElements.operatingHoursEnabled.addEventListener(
   "change",
   handlePreferenceChange
@@ -291,6 +316,15 @@ optionsElements.exportSettingsButton.addEventListener("click", () => {
   } catch (error) {
     updateOptionsStatus(error.message || getOptionsCopy("formExportError"), "error");
   }
+});
+
+optionsElements.exportDiagnosticsButton.addEventListener("click", () => {
+  exportDebugDiagnostics(updateOptionsStatus).catch((error) => {
+    updateOptionsStatus(
+      error.message || getOptionsCopy("diagnosticsExportError"),
+      "error"
+    );
+  });
 });
 
 optionsElements.importSettingsButton.addEventListener("click", () => {

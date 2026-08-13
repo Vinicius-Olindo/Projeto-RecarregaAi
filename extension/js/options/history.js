@@ -7,6 +7,12 @@ import {
 } from "../modules/shared.js";
 import { optionsElements } from "./elements.js";
 import { getOptionsCopy, replaceOptionsToken } from "./language.js";
+import {
+  createSettingsExportPayload,
+  downloadJsonFile,
+  getCurrentSettings,
+  getOptionsVersionLabel
+} from "./settings.js";
 
 const historyPageSize = 5;
 
@@ -332,4 +338,67 @@ export const getCurrentActionHistory = () => currentActionHistory;
 
 export const setCurrentActionHistory = (history) => {
   currentActionHistory = history;
+};
+
+const sendOptionsRuntimeMessage = (message) => new Promise((resolve, reject) => {
+  if (typeof chrome === "undefined" || !chrome.runtime?.sendMessage) {
+    resolve({
+      activeTimers: [],
+      appSettings: getCurrentSettings(),
+      entries: currentActionHistory,
+      ok: true
+    });
+    return;
+  }
+
+  chrome.runtime.sendMessage(message, (response) => {
+    const runtimeError = chrome.runtime.lastError;
+
+    if (runtimeError) {
+      reject(new Error(runtimeError.message));
+      return;
+    }
+
+    if (response?.ok === false) {
+      reject(new Error(response.error));
+      return;
+    }
+
+    resolve(response);
+  });
+});
+
+export const exportDebugDiagnostics = async (updateOptionsStatus) => {
+  const [historyResponse, timerStateResponse] = await Promise.all([
+    sendOptionsRuntimeMessage({
+      type: runtimeMessageTypes.getActionHistory
+    }),
+    sendOptionsRuntimeMessage({
+      payload: {
+        activeTabId: null
+      },
+      type: runtimeMessageTypes.getTimerState
+    })
+  ]);
+  const exportDate = new Date().toISOString().slice(0, 10);
+  const diagnosticsPayload = {
+    app: "RecarregaAi!",
+    exportedAt: new Date().toISOString(),
+    extensionVersion: getOptionsVersionLabel(),
+    history: Array.isArray(historyResponse.entries)
+      ? historyResponse.entries
+      : currentActionHistory,
+    settings: createSettingsExportPayload().settings,
+    timers: Array.isArray(timerStateResponse.activeTimers)
+      ? timerStateResponse.activeTimers
+      : [],
+    type: "recarregaai-debug-diagnostics",
+    version: 1
+  };
+
+  downloadJsonFile(
+    `recarregaai-diagnostico-${exportDate}.json`,
+    diagnosticsPayload
+  );
+  updateOptionsStatus(getOptionsCopy("diagnosticsExported"), "success");
 };

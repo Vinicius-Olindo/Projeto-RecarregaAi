@@ -24,6 +24,7 @@ test("storageKeys contem todas as chaves necessarias", () => {
 });
 
 test("defaultAppSettings tem valores padrao", () => {
+  assert.equal(defaultAppSettings.advancedCleanupEnabled, false);
   assert.deepEqual(defaultAppSettings.autoStartSites, []);
   assert.equal(defaultAppSettings.defaultIntervalInMinutes, 3);
   assert.equal(defaultAppSettings.preserveScrollPosition, false);

@@ -1,6 +1,9 @@
 // RecarregaAi! 2.5.0
 
 export const oneSecondInMilliseconds = 1000;
+export const chromeMinimumAlarmDelayInMinutes = 0.5;
+export const minimumTimerIntervalInMinutes = 1;
+export const maximumTimerIntervalInMinutes = 24 * 60;
 export const mediaResumeSafetySeconds = 3;
 
 export const storageKeys = Object.freeze({
@@ -93,6 +96,7 @@ export const defaultOperatingHours = Object.freeze({
 });
 
 export const defaultAppSettings = Object.freeze({
+  advancedCleanupEnabled: false,
   autoStartSites: [],
   debugMode: false,
   defaultIntervalInMinutes: 3,
@@ -215,11 +219,21 @@ export const getNextOperatingHoursBoundary = (
   return null;
 };
 
-export const cacheDataTypes = Object.freeze({
+export const standardCacheDataTypes = Object.freeze({
+  cache: true
+});
+
+export const advancedCacheDataTypes = Object.freeze({
   cache: true,
   cacheStorage: true,
   serviceWorkers: true
 });
+
+export const getCacheDataTypes = ({
+  includeAdvancedCleanup = false
+} = {}) => (
+  includeAdvancedCleanup ? advancedCacheDataTypes : standardCacheDataTypes
+);
 
 export const editableInputTypes = Object.freeze([
   "email",
@@ -266,6 +280,20 @@ export const getNextRunDate = (intervalInMinutes) => (
 export const getNextRunDateFromSeconds = (remainingSeconds) => (
   new Date(Date.now() + remainingSeconds * oneSecondInMilliseconds).toISOString()
 );
+
+export const normalizeTimerIntervalInMinutes = (intervalInMinutes) => {
+  const normalizedInterval = Math.floor(Number(intervalInMinutes));
+
+  if (
+    !Number.isFinite(normalizedInterval)
+    || normalizedInterval < minimumTimerIntervalInMinutes
+    || normalizedInterval > maximumTimerIntervalInMinutes
+  ) {
+    return null;
+  }
+
+  return normalizedInterval;
+};
 
 export const getRemainingSeconds = (nextRunAt) => {
   if (!nextRunAt) {

@@ -43,10 +43,7 @@
         <h1 id="privacy-title">Transparência para usar sem surpresa.</h1>
         <p class="policy-meta">Última atualização: 28/06/2026</p>
         <p>
-          O RecarregaAi! é uma extensão para navegador criada para limpar
-          dados temporários do site atual, recarregar abas, executar timers
-          automáticos e proteger atividades de digitação e mídia contra
-          recarregamentos inesperados.
+          O RecarregaAi! e uma extensao para navegador criada para limpar cache HTTP do site atual, recarregar abas, executar timers automaticos e proteger atividades de digitacao e midia contra recarregamentos inesperados. Cache Storage e service workers so entram na limpeza avancada opcional.
         </p>
       </div>
 
@@ -118,9 +115,7 @@
           <p>
             Para funcionar corretamente, a extensão processa localmente o
             endereço e a origem da página atual e de alguns recursos carregados
-            por ela. Esses dados são usados para identificar o site, limpar
-            cache, CacheStorage e service workers relacionados e recarregar a
-            guia.
+            por ela. Esses dados sao usados para identificar o site, limpar cache HTTP relacionado e recarregar a guia. CacheStorage e service workers podem ser limpos somente quando o usuario ativa a limpeza avancada.
           </p>
           <p>
             A extensão também pode salvar localmente o tema, o idioma, o
@@ -281,8 +276,7 @@
             <div>
               <dt>browsingData</dt>
               <dd>
-                Usada para limpar cache, CacheStorage e service workers das
-                origens relacionadas à página atual ou autorizada.
+                Usada para limpar cache HTTP das origens relacionadas a pagina atual ou autorizada. CacheStorage e service workers sao limpos somente quando a opcao de limpeza avancada esta ativa.
               </dd>
             </div>
             <div>

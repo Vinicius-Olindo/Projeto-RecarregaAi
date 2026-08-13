@@ -1,6 +1,7 @@
 // RecarregaAi! 2.5.0 — Elementos das configurações
 
 export const optionsElements = {
+  advancedCleanupInput: document.querySelector("#advanced-cleanup-input"),
   addSiteButton: document.querySelector("#add-site-button"),
   clearHistoryButton: document.querySelector("#clear-history-button"),
   closeOptionsButton: document.querySelector("#close-options-button"),
@@ -8,6 +9,7 @@ export const optionsElements = {
   defaultIntervalInput: document.querySelector("#default-interval-input"),
   extensionVersion: document.querySelector("#extension-version"),
   exportSettingsButton: document.querySelector("#export-settings-button"),
+  exportDiagnosticsButton: document.querySelector("#export-diagnostics-button"),
   importSettingsButton: document.querySelector("#import-settings-button"),
   importSettingsInput: document.querySelector("#import-settings-input"),
   historyCount: document.querySelector("#history-count"),

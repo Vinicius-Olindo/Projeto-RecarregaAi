@@ -215,6 +215,7 @@ export const getAppSettings = async () => {
   return {
     ...defaultAppSettings,
     ...storedSettings,
+    advancedCleanupEnabled: Boolean(storedSettings.advancedCleanupEnabled),
     autoStartSites: Array.isArray(storedSettings.autoStartSites)
       ? storedSettings.autoStartSites
       : [],

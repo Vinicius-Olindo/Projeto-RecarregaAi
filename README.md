@@ -2,7 +2,7 @@
 
 **Versão atual: 2.5.0**
 
-O RecarregaAi! é uma extensão para Google Chrome que limpa o cache do endereço aberto e recarrega páginas automaticamente em intervalos definidos pelo usuário.
+O RecarregaAi! é uma extensão para Google Chrome que recarrega a página escolhida em intervalos definidos pelo usuário e, quando necessário, limpa dados temporários do site de forma controlada.
 
 O repositório reúne dois produtos independentes:
 
@@ -11,9 +11,9 @@ O repositório reúne dois produtos independentes:
 
 ## Funcionalidades
 
-- Limpeza de cache com recarga imediata.
+- Limpeza de cache HTTP com recarga imediata.
 - Timers independentes por guia.
-- Intervalos prontos de 3, 5 e 10 minutos.
+- Intervalos prontos de 1, 3, 5, 10 e 30 minutos.
 - Intervalo personalizado em minutos.
 - Contagem regressiva no popup e no ícone da extensão.
 - Pausa automática durante digitação e reprodução de mídia.
@@ -23,8 +23,18 @@ O repositório reúne dois produtos independentes:
 - Importação e exportação de configurações.
 - Temas claro e escuro.
 - Atalhos de teclado configuráveis.
-- Modo debug para desenvolvedores.
+- Modo debug com exportação local de diagnóstico.
 - Interface em português, inglês, espanhol, francês, alemão, italiano, indonésio e turco.
+
+## Atualizações recentes
+
+- Intervalo personalizado limitado a no máximo 1440 minutos.
+- Presets rápidos de 1, 3, 5, 10 e 30 minutos.
+- Popup com status explícito de intervalo, próximo reload e tipo de limpeza.
+- Limpeza padrão restrita ao cache HTTP.
+- Limpeza de Cache Storage e service workers disponível somente como opção avançada.
+- Exportação local de diagnóstico visível apenas quando o modo debug está ativo.
+- Textos de privacidade e justificativas de permissões revisados para envio à Chrome Web Store.
 
 ## Extensão
 
@@ -45,7 +55,7 @@ O manifesto solicita somente as permissões necessárias ao funcionamento princi
 
 - `activeTab`: acesso temporário à guia escolhida pelo usuário;
 - `alarms`: restauração e execução dos timers;
-- `browsingData`: limpeza do cache do endereço aberto;
+- `browsingData`: limpeza do cache HTTP do endereço aberto; Cache Storage e service workers são limpos somente quando a opção avançada estiver ativa;
 - `scripting`: detecção de digitação e mídia na guia controlada;
 - `storage`: preferências, timers e histórico local.
 
@@ -174,8 +184,7 @@ arquivos executados pela extensão, com `manifest.json` na raiz.
 
 No painel da loja, use estas informações:
 
-- propósito único: **limpar o cache da página escolhida e recarregá-la
-  automaticamente no intervalo definido pelo usuário**;
+- propósito único: **recarregar a página escolhida automaticamente no intervalo definido pelo usuário e limpar dados temporários do site quando solicitado**;
 - política de privacidade:
   `https://recarregaai.pages.dev/privacy.html`;
 - página do produto: `https://recarregaai.pages.dev/`;
@@ -185,9 +194,11 @@ No painel da loja, use estas informações:
 
 Antes de enviar para análise, adicione no painel:
 
-- pelo menos uma captura atual da extensão em `1280x800` ou `640x400`;
+- pelo menos uma captura atual da extensão em `1280x800` ou `640x400`,
+  mostrando status, intervalo, próximo reload e tipo de limpeza;
 - imagem promocional pequena em `440x280`;
-- descrições curta e completa coerentes com o propósito único;
+- descrições curta e completa coerentes com o propósito único, explicando que
+  Cache Storage/service workers são uma opção avançada;
 - declarações de privacidade iguais ao conteúdo da política pública.
 
 O ícone obrigatório de `128x128` já está no pacote. Não inclua capturas,

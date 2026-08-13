@@ -4,10 +4,13 @@ import {
   actionHistoryStatuses,
   getPermissionPatternForOrigin,
   getUrlOrigin,
+  maximumTimerIntervalInMinutes,
+  minimumTimerIntervalInMinutes,
   pauseReasons,
   runtimeMessageTypes
 } from "../modules/shared.js";
 import { clearCacheForOrigins, reloadTabIgnoringCache } from "../modules/cache.js";
+import { getAppSettings } from "../modules/storage.js";
 import { collectLoadedOrigins } from "../modules/tabs.js";
 import { popupElements } from "./elements.js";
 import {
@@ -26,7 +29,7 @@ import {
 } from "./status.js";
 
 const PENDING_START_KEY = "recarregaAiPendingStart";
-const presetTimerIntervals = [3, 5, 10];
+const presetTimerIntervals = [1, 3, 5, 10, 30];
 
 let automaticResumeNoticeUntil = 0;
 let currentActiveTab = null;
@@ -113,7 +116,11 @@ export const clearCacheAndReloadCurrentPage = async () => {
       "working"
     );
 
-    await clearCacheForOrigins(loadedOrigins);
+    const appSettings = await getAppSettings();
+
+    await clearCacheForOrigins(loadedOrigins, {
+      includeAdvancedCleanup: appSettings.advancedCleanupEnabled
+    });
     await reloadTabIgnoringCache(activeTab.id);
     await recordManualCleanupHistory({
       origin: cleanupOrigin,
@@ -152,8 +159,15 @@ export const getSelectedTimerInterval = () => {
 
   const customInterval = Number(popupElements.customTimerInput.value);
 
-  if (!Number.isFinite(customInterval) || customInterval < 1) {
-    throw new Error(getPopupCopy("invalidInterval"));
+  if (
+    !Number.isFinite(customInterval)
+    || customInterval < minimumTimerIntervalInMinutes
+    || customInterval > maximumTimerIntervalInMinutes
+  ) {
+    throw new Error(replacePopupTokens("invalidInterval", {
+      max: String(maximumTimerIntervalInMinutes),
+      min: String(minimumTimerIntervalInMinutes)
+    }));
   }
 
   return Math.floor(customInterval);
@@ -202,12 +216,34 @@ const updateTimerProtectionStatus = (timerSettings) => {
   );
 };
 
-const updateTimerOverview = (timerSettings) => {
+const updateTimerDetails = (timerSettings, timerVisualState, appSettings) => {
+  popupElements.timerCleanupValue.textContent = appSettings?.advancedCleanupEnabled
+    ? getPopupCopy("timerCleanupAdvancedValue")
+    : getPopupCopy("timerCleanupStandardValue");
+
+  if (!timerSettings?.enabled) {
+    popupElements.timerIntervalValue.textContent = getPopupCopy("emptyTimerDetail");
+    popupElements.timerNextReloadValue.textContent = getPopupCopy("emptyCountdown");
+    return;
+  }
+
+  popupElements.timerIntervalValue.textContent = formatTimerInterval(
+    timerSettings.intervalInMinutes
+  );
+  popupElements.timerNextReloadValue.textContent = timerSettings.paused
+    ? getPopupCopy("pausedCountdown")
+    : timerVisualState.countdownText;
+};
+
+const updateTimerOverview = (timerSettings, appSettings) => {
   if (!timerSettings?.enabled) {
     popupElements.timerOverview.dataset.state = "empty";
     popupElements.controlledTabTitle.textContent = getPopupCopy("refreshOffTitle");
     popupElements.controlledTabUrl.textContent = getPopupCopy("chooseTime");
     popupElements.popupCountdown.textContent = "--:--";
+    updateTimerDetails(timerSettings, {
+      countdownText: getPopupCopy("emptyCountdown")
+    }, appSettings);
     updateTimerProtectionStatus(timerSettings);
     updateTimerActionButtons(timerSettings);
     return;
@@ -222,6 +258,7 @@ const updateTimerOverview = (timerSettings) => {
     || getPopupCopy("pageNotIdentified");
   popupElements.popupCountdown.textContent = timerVisualState.countdownText;
 
+  updateTimerDetails(timerSettings, timerVisualState, appSettings);
   updateTimerProtectionStatus(timerSettings);
   updateTimerActionButtons(timerSettings);
 };
@@ -395,7 +432,7 @@ export const refreshTimerState = async ({ updateStatus = false } = {}) => {
 
   lastObservedTimerState = createObservedTimerState(timerSettings);
 
-  updateTimerOverview(timerSettings);
+  updateTimerOverview(timerSettings, response.appSettings);
   updateActiveTimersList(activeTimers, activeTab);
 
   if (!updateStatus) {

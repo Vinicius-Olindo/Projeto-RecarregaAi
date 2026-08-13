@@ -1,6 +1,10 @@
 // RecarregaAi! 2.5.0 — Sites automáticos
 
-import { runtimeMessageTypes } from "../modules/shared.js";
+import {
+  maximumTimerIntervalInMinutes,
+  minimumTimerIntervalInMinutes,
+  runtimeMessageTypes
+} from "../modules/shared.js";
 import { optionsElements } from "./elements.js";
 import { getOptionsCopy, replaceOptionsToken } from "./language.js";
 import {
@@ -79,7 +83,23 @@ export const addAutoStartSite = async () => {
     }
 
     const rawInterval = Number(optionsElements.siteIntervalInput.value);
-    const intervalInMinutes = Number.isFinite(rawInterval) && rawInterval >= 1
+    const hasCustomInterval = optionsElements.siteIntervalInput.value.trim() !== "";
+
+    if (
+      hasCustomInterval
+      && (
+        !Number.isFinite(rawInterval)
+        || rawInterval < minimumTimerIntervalInMinutes
+        || rawInterval > maximumTimerIntervalInMinutes
+      )
+    ) {
+      updateSiteFormAlert(getOptionsCopy("formInvalidInterval"));
+      optionsElements.siteIntervalInput.focus();
+      optionsElements.siteIntervalInput.select();
+      return;
+    }
+
+    const intervalInMinutes = hasCustomInterval
       ? Math.floor(rawInterval)
       : currentSettings.defaultIntervalInMinutes;
 

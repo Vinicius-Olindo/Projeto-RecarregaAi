@@ -163,14 +163,30 @@ test("cache.js usa browsingData.remove (compativel com SW)", () => {
   assert.ok(cache.includes("chrome.browsingData.remove"));
 });
 
-test("cache.js inclui serviceWorkers nos dataTypes", () => {
+test("limpeza avancada inclui serviceWorkers nos dataTypes", () => {
   const shared = readText("js/modules/shared.js");
-  const cacheDataTypesMatch = shared.match(
-    /cacheDataTypes\s*=\s*Object\.freeze\(\{[^}]+\}\)/s
+  const advancedCacheDataTypesMatch = shared.match(
+    /advancedCacheDataTypes\s*=\s*Object\.freeze\(\{[^}]+\}\)/s
   );
 
-  assert.ok(cacheDataTypesMatch, "cacheDataTypes nao encontrado");
-  assert.ok(cacheDataTypesMatch[0].includes("serviceWorkers: true"));
+  assert.ok(
+    advancedCacheDataTypesMatch,
+    "advancedCacheDataTypes nao encontrado"
+  );
+  assert.ok(advancedCacheDataTypesMatch[0].includes("serviceWorkers: true"));
+});
+
+test("limpeza padrao nao remove serviceWorkers", () => {
+  const shared = readText("js/modules/shared.js");
+  const standardCacheDataTypesMatch = shared.match(
+    /standardCacheDataTypes\s*=\s*Object\.freeze\(\{[^}]+\}\)/s
+  );
+
+  assert.ok(
+    standardCacheDataTypesMatch,
+    "standardCacheDataTypes nao encontrado"
+  );
+  assert.ok(!standardCacheDataTypesMatch[0].includes("serviceWorkers: true"));
 });
 
 test("storage.js nao depende de DOM", () => {

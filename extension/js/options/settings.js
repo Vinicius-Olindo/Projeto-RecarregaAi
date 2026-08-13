@@ -2,6 +2,8 @@
 
 import {
   defaultAppSettings,
+  maximumTimerIntervalInMinutes,
+  minimumTimerIntervalInMinutes,
   normalizeOperatingHours,
   storageKeys
 } from "../modules/shared.js";
@@ -88,6 +90,7 @@ export const getStoredOptionsSettings = async () => {
   return {
     ...defaultAppSettings,
     ...storedSettings,
+    advancedCleanupEnabled: Boolean(storedSettings.advancedCleanupEnabled),
     autoStartSites: Array.isArray(storedSettings.autoStartSites)
       ? storedSettings.autoStartSites
       : [],
@@ -119,7 +122,11 @@ export const normalizeOptionsInterval = (
 ) => {
   const intervalInMinutes = Number(interval);
 
-  if (!Number.isFinite(intervalInMinutes) || intervalInMinutes < 1) {
+  if (
+    !Number.isFinite(intervalInMinutes)
+    || intervalInMinutes < minimumTimerIntervalInMinutes
+    || intervalInMinutes > maximumTimerIntervalInMinutes
+  ) {
     return fallback;
   }
 
@@ -179,6 +186,7 @@ export const normalizeOptionsSettings = (settings) => {
   });
 
   return {
+    advancedCleanupEnabled: Boolean(settings.advancedCleanupEnabled),
     autoStartSites: [...siteMap.values()],
     defaultIntervalInMinutes,
     operatingHours: normalizeOperatingHours(settings.operatingHours),

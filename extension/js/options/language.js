@@ -79,6 +79,8 @@ export const applyOptionsLanguage = (language, {
   setText("#preserve-scroll-description", "preserveScrollDescription");
   setText("#play-sound-title", "playSoundTitle");
   setText("#play-sound-description", "playSoundDescription");
+  setText("#advanced-cleanup-title", "advancedCleanupTitle");
+  setText("#advanced-cleanup-description", "advancedCleanupDescription");
   setText("#operating-hours-title", "operatingTitle");
   setText("#operating-hours-description", "operatingDescription");
   setText("#operating-days-label", "operatingDays");
@@ -115,6 +117,7 @@ export const applyOptionsLanguage = (language, {
   setText("#clear-history-button", isHistoryClearPending
     ? "historyClearConfirm"
     : "historyClear");
+  setText("#export-diagnostics-button", "diagnosticsExport");
   setTexts(".history-filter", [
     "historyFilterAll",
     "historyFilterRefreshes",

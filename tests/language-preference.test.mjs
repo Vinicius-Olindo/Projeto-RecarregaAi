@@ -53,9 +53,16 @@ test("traducoes nao contem sinais de texto corrompido", () => {
   const popupTranslations = JSON.parse(
     readProjectFile("extension/translations/popup.json")
   );
-  const serializedTranslations = JSON.stringify(popupTranslations);
+  const optionsTranslations = JSON.parse(
+    readProjectFile("extension/translations/options.json")
+  );
+  const serializedTranslations = JSON.stringify({
+    optionsTranslations,
+    popupTranslations
+  });
 
-  assert.doesNotMatch(serializedTranslations, /Ã.|Â.|â€|ðŸ/u);
+  assert.doesNotMatch(serializedTranslations, /\u00c3\u0192.|\u00c3\u201a.|\u00c3\u00a2\u00e2\u201a\u00ac|\u00c3\u00b0\u00c5\u00b8/u);
+  assert.doesNotMatch(serializedTranslations, /[A-Za-z]\?[A-Za-z]/u);
 });
 
 test("preferencia de idioma usa o armazenamento compartilhado", async () => {

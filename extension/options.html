@@ -119,7 +119,7 @@
         <div class="inline-row">
           <label class="field" for="default-interval-input">
             <span class="field__label">Intervalo em minutos</span>
-            <input id="default-interval-input" class="field__input field__input--small" type="number" min="1"
+            <input id="default-interval-input" class="field__input field__input--small" type="number" min="1" max="1440"
               step="1" value="3" />
           </label>
           <button id="save-settings-button" class="button" type="button">
@@ -145,6 +145,17 @@
             <strong id="play-sound-title">Som de notificação</strong>
             <small id="play-sound-description">
               Reproduz um som curto quando o timer completa o reload.
+            </small>
+          </span>
+        </label>
+
+        <label class="toggle" for="advanced-cleanup-input">
+          <input id="advanced-cleanup-input" type="checkbox" />
+          <span class="toggle__track" aria-hidden="true"></span>
+          <span class="toggle__label">
+            <strong id="advanced-cleanup-title">Limpeza avancada</strong>
+            <small id="advanced-cleanup-description">
+              Inclui Cache Storage e service workers do site. Use somente quando o cache comum nao resolver.
             </small>
           </span>
         </label>
@@ -215,7 +226,7 @@
 
             <label class="field" for="site-interval-input">
               <span id="site-interval-label" class="field__label">Minutos</span>
-              <input id="site-interval-input" class="field__input" type="number" min="1" step="1"
+              <input id="site-interval-input" class="field__input" type="number" min="1" max="1440" step="1"
                 placeholder="Padrão" />
             </label>
 
@@ -323,6 +334,9 @@
             <span id="history-count" class="history-count">Nenhuma ação</span>
             <button id="clear-history-button" class="button button--ghost button--sm" type="button" disabled>
               Limpar
+            </button>
+            <button id="export-diagnostics-button" class="button button--ghost button--sm" type="button" hidden>
+              Exportar diagnostico
             </button>
           </div>
         </div>

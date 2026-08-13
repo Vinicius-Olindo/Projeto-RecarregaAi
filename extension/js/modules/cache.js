@@ -1,13 +1,20 @@
 // RecarregaAi! 2.5.0
 
-import { cacheDataTypes } from "./shared.js";
+import { getCacheDataTypes } from "./shared.js";
 
-export const clearCacheForOrigins = async (origins) => {
+export const clearCacheForOrigins = async (
+  origins,
+  {
+    includeAdvancedCleanup = false
+  } = {}
+) => {
   await chrome.browsingData.remove(
     {
       origins
     },
-    cacheDataTypes
+    getCacheDataTypes({
+      includeAdvancedCleanup
+    })
   );
 };
 

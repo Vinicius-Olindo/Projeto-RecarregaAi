@@ -54,6 +54,10 @@ export const applyPopupLanguage = () => {
   setPopupText(".timer-overview__copy .popup__label", "currentPageLabel");
   setPopupText("#controlled-tab-title", "refreshOffTitle");
   setPopupText("#controlled-tab-url", "chooseTimeBelow");
+  setPopupText("#timer-interval-label", "timerIntervalLabel");
+  setPopupText("#timer-next-reload-label", "timerNextReloadLabel");
+  setPopupText("#timer-cleanup-label", "timerCleanupLabel");
+  setPopupText("#timer-cleanup-value", "timerCleanupStandardValue");
   setPopupText(".timer-overview__note", "timerNote");
   setPopupText("#open-controlled-tab-button", "openControlledPage");
   setPopupText("#pause-timer-button", "pauseTimer");

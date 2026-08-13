@@ -13,7 +13,9 @@ import {
   getTimerAlarmName,
   getTabIdFromTimerAlarmName,
   isWithinOperatingHours,
+  maximumTimerIntervalInMinutes,
   normalizeOrigins,
+  normalizeTimerIntervalInMinutes,
   normalizeTimerCollection,
   normalizeTimerSettings,
   getUrlOrigin
@@ -38,6 +40,22 @@ test("getNextRunDateFromSeconds retorna ISO no futuro", () => {
 
   assert.ok(result.getTime() >= before + 120 * ONE_SECOND_MS);
   assert.ok(result.getTime() <= after + 120 * ONE_SECOND_MS);
+});
+
+test("normalizeTimerIntervalInMinutes aceita somente a faixa suportada", () => {
+  assert.equal(normalizeTimerIntervalInMinutes(1), 1);
+  assert.equal(
+    normalizeTimerIntervalInMinutes(maximumTimerIntervalInMinutes),
+    maximumTimerIntervalInMinutes
+  );
+  assert.equal(normalizeTimerIntervalInMinutes(1.9), 1);
+  assert.equal(normalizeTimerIntervalInMinutes(0), null);
+  assert.equal(normalizeTimerIntervalInMinutes(-1), null);
+  assert.equal(
+    normalizeTimerIntervalInMinutes(maximumTimerIntervalInMinutes + 1),
+    null
+  );
+  assert.equal(normalizeTimerIntervalInMinutes("abc"), null);
 });
 
 test("getRemainingSeconds retorna 0 para null", () => {

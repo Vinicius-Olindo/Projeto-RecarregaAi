@@ -1,6 +1,9 @@
 // RecarregaAi! 2.5.0
 
-import { getTimerAlarmName } from "./shared.js";
+import {
+  chromeMinimumAlarmDelayInMinutes,
+  getTimerAlarmName
+} from "./shared.js";
 
 export const clearChromeAlarm = async (alarmName) => {
   try {
@@ -42,7 +45,7 @@ export const createTimerAlarm = async (
 
   await clearChromeAlarm(alarmName);
   await createChromeAlarm(alarmName, {
-    delayInMinutes: Math.max(0.01, delayInMinutes),
+    delayInMinutes: Math.max(chromeMinimumAlarmDelayInMinutes, delayInMinutes),
     periodInMinutes: timerSettings.intervalInMinutes
   });
 };
