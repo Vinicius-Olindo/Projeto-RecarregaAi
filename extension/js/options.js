@@ -57,6 +57,7 @@ const optionsElements = {
   operatingWeekdays: document.querySelectorAll("[name='operating-weekday']"),
   preserveScrollInput: document.querySelector("#preserve-scroll-input"),
   playSoundInput: document.querySelector("#play-sound-input"),
+  debugModeInput: document.querySelector("#debug-mode-input"),
   saveSettingsButton: document.querySelector("#save-settings-button"),
   showMoreHistoryButton: document.querySelector("#show-more-history-button"),
   siteFormAlert: document.querySelector("#site-form-alert"),
@@ -844,6 +845,9 @@ const syncPreferenceControls = () => {
   optionsElements.playSoundInput.checked = Boolean(
     currentSettings.playSoundOnComplete
   );
+  optionsElements.debugModeInput.checked = Boolean(
+    currentSettings.debugMode
+  );
   optionsElements.operatingHoursEnabled.checked = isEnabled;
   optionsElements.operatingStartTime.value = operatingHours.startTime;
   optionsElements.operatingEndTime.value = operatingHours.endTime;
@@ -865,6 +869,8 @@ const savePreferenceSettings = async () => {
     optionsElements.preserveScrollInput.checked;
   currentSettings.playSoundOnComplete =
     optionsElements.playSoundInput.checked;
+  currentSettings.debugMode =
+    optionsElements.debugModeInput.checked;
   currentSettings.operatingHours = normalizeOperatingHours({
     enabled: optionsElements.operatingHoursEnabled.checked,
     endTime: optionsElements.operatingEndTime.value,
@@ -1122,6 +1128,22 @@ const applyOptionsLanguage = (language) => {
   setAttribute("#back-to-top-button", "aria-label", "backToTop");
   setAttribute("#close-language-button", "aria-label", "closeDialog");
 
+  const langCodeMap = {
+    "pt-BR": "PT-BR",
+    "en": "EN",
+    "es": "ES",
+    "fr": "FR",
+    "de": "DE",
+    "it": "IT",
+    "id": "ID",
+    "tr": "TR"
+  };
+  const langCodeElement = document.querySelector(".header-action__lang-code");
+
+  if (langCodeElement) {
+    langCodeElement.textContent = langCodeMap[language] || "PT-BR";
+  }
+
   renderSites();
   renderActionHistory();
   updateOptionsThemeButtonLabel({
@@ -1330,8 +1352,157 @@ loadActionHistory().catch((error) => {
   );
 });
 
+const shortcutStorageKey = "recarregaAiCustomShortcuts";
+let customShortcuts = {
+  "start-timer": "Ctrl+Shift+R",
+  "pause-all-timers": "Ctrl+Shift+P",
+  "resume-all-timers": "Ctrl+Shift+O"
+};
+let activeShortcutInput = null;
+
+const loadCustomShortcuts = async () => {
+  if (typeof chrome === "undefined" || !chrome.storage?.local) {
+    return;
+  }
+
+  const storedData = await chrome.storage.local.get(shortcutStorageKey);
+  const stored = storedData[shortcutStorageKey];
+
+  if (stored && typeof stored === "object") {
+    customShortcuts = {
+      ...customShortcuts,
+      ...stored
+    };
+  }
+
+  updateShortcutInputs();
+};
+
+const saveCustomShortcuts = async () => {
+  if (typeof chrome !== "undefined" && chrome.storage?.local) {
+    await chrome.storage.local.set({
+      [shortcutStorageKey]: customShortcuts
+    });
+  }
+};
+
+const updateShortcutInputs = () => {
+  document.querySelectorAll("[data-shortcut]").forEach((input) => {
+    const command = input.dataset.shortcut;
+    const shortcut = customShortcuts[command];
+
+    if (shortcut) {
+      input.value = formatShortcutForDisplay(shortcut);
+    }
+  });
+};
+
+const formatShortcutForDisplay = (shortcut) => {
+  if (!shortcut) {
+    return "";
+  }
+
+  return shortcut
+    .replace(/\+/g, " + ")
+    .replace(/Ctrl/g, navigator.platform.includes("Mac") ? "⌘" : "Ctrl")
+    .replace(/Shift/g, navigator.platform.includes("Mac") ? "⇧" : "Shift")
+    .replace(/Alt/g, navigator.platform.includes("Mac") ? "⌥" : "Alt");
+};
+
+const startShortcutRecording = (input) => {
+  if (activeShortcutInput) {
+    cancelShortcutRecording();
+  }
+
+  activeShortcutInput = input;
+  input.dataset.recording = "true";
+  input.value = getOptionsCopy("shortcutRecording");
+  input.placeholder = "";
+};
+
+const cancelShortcutRecording = () => {
+  if (!activeShortcutInput) {
+    return;
+  }
+
+  activeShortcutInput.dataset.recording = "false";
+  activeShortcutInput = null;
+  updateShortcutInputs();
+};
+
+const handleShortcutKeydown = (event) => {
+  if (!activeShortcutInput) {
+    return;
+  }
+
+  event.preventDefault();
+  event.stopPropagation();
+
+  if (event.key === "Escape") {
+    cancelShortcutRecording();
+    return;
+  }
+
+  if (event.key === "Control" || event.key === "Shift" || event.key === "Alt" || event.key === "Meta") {
+    return;
+  }
+
+  const parts = [];
+
+  if (event.ctrlKey || event.metaKey) {
+    parts.push("Ctrl");
+  }
+
+  if (event.shiftKey) {
+    parts.push("Shift");
+  }
+
+  if (event.altKey) {
+    parts.push("Alt");
+  }
+
+  const key = event.key.toUpperCase();
+
+  if (["CONTROL", "SHIFT", "ALT", "META"].includes(key)) {
+    return;
+  }
+
+  parts.push(key);
+  const shortcut = parts.join("+");
+  const command = activeShortcutInput.dataset.shortcut;
+
+  const conflict = Object.entries(customShortcuts).find(
+    ([cmd, existing]) => cmd !== command && existing === shortcut
+  );
+
+  if (conflict) {
+    updateOptionsStatus(getOptionsCopy("shortcutConflict"), "error");
+    cancelShortcutRecording();
+    return;
+  }
+
+  customShortcuts[command] = shortcut;
+  saveCustomShortcuts();
+  cancelShortcutRecording();
+  updateOptionsStatus(getOptionsCopy("shortcutSaved"), "success");
+};
+
+document.addEventListener("keydown", handleShortcutKeydown);
+
+document.querySelectorAll("[data-shortcut]").forEach((input) => {
+  input.addEventListener("click", () => {
+    if (activeShortcutInput === input) {
+      cancelShortcutRecording();
+    } else {
+      startShortcutRecording(input);
+    }
+  });
+});
+
+loadCustomShortcuts();
+
 const initTabNavigation = () => {
-  const navButtons = document.querySelectorAll("[data-nav-section]");
+  const navButtons = document.querySelectorAll(".settings-nav__item[data-nav-section]");
   const sections = document.querySelectorAll(".settings-section");
 
   if (navButtons.length === 0 || sections.length === 0) {

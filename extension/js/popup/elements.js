@@ -1,0 +1,27 @@
+// RecarregaAi! 2.5.0 — Elementos do popup
+
+export const popupElements = {
+  activeTimersCount: document.querySelector("#active-timers-count"),
+  activeTimersList: document.querySelector("#active-timers-list"),
+  activeTimersSection: document.querySelector("#active-timers-section"),
+  controlledTabTitle: document.querySelector("#controlled-tab-title"),
+  controlledTabUrl: document.querySelector("#controlled-tab-url"),
+  customTimerInput: document.querySelector("#custom-timer-input"),
+  extensionVersion: document.querySelector("#extension-version"),
+  openControlledTabButton: document.querySelector("#open-controlled-tab-button"),
+  openOptionsButton: document.querySelector("#open-options-button"),
+  pauseTimerButton: document.querySelector("#pause-timer-button"),
+  popupCountdown: document.querySelector("#popup-countdown"),
+  reloadPageButton: document.querySelector("#reload-page-button"),
+  removeTimerButton: document.querySelector("#remove-timer-button"),
+  resumeTimerButton: document.querySelector("#resume-timer-button"),
+  startTimerButton: document.querySelector("#start-timer-button"),
+  statusPanel: document.querySelector(".popup__status"),
+  statusMessage: document.querySelector("#status-message"),
+  stopTimerButton: document.querySelector("#stop-timer-button"),
+  timerOverview: document.querySelector("#timer-overview"),
+  timerProtectionDetail: document.querySelector("#timer-protection-detail"),
+  timerProtectionStatus: document.querySelector("#timer-protection-status"),
+  timerProtectionTitle: document.querySelector("#timer-protection-title"),
+  timerIntervalInputs: document.querySelectorAll("[name='timer-interval']")
+};

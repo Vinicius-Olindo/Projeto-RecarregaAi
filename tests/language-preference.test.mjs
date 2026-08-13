@@ -7,10 +7,6 @@ import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 import {
-  extendedPageTranslations,
-  extendPageTranslations
-} from "../extension/js/modules/extended-translations.js";
-import {
   defaultLanguage,
   loadLanguagePreference,
   saveLanguagePreference,
@@ -35,27 +31,29 @@ test("popup oferece traducoes completas para os oito idiomas", () => {
     "tr"
   ]);
 
-  const referenceKeys = Object.keys(extendedPageTranslations.popup.fr).sort();
-  const baseCopy = Object.fromEntries(referenceKeys.map((key) => [key, key]));
-  const translations = extendPageTranslations({
-    "pt-BR": baseCopy,
-    en: baseCopy,
-    es: baseCopy
-  }, "popup");
+  const popupTranslations = JSON.parse(
+    readProjectFile("extension/translations/popup.json")
+  );
+
+  const referenceKeys = Object.keys(popupTranslations.fr).sort();
 
   supportedLanguages.forEach((language) => {
+    const langTranslations = popupTranslations[language];
+
+    assert.ok(langTranslations, `Language ${language} missing in popup.json`);
     assert.deepEqual(
-      Object.keys(translations[language]).sort(),
+      Object.keys(langTranslations).sort(),
       referenceKeys,
       language
     );
   });
 });
 
-test("traducoes estendidas nao contem sinais de texto corrompido", () => {
-  const serializedTranslations = JSON.stringify(
-    extendedPageTranslations.popup
+test("traducoes nao contem sinais de texto corrompido", () => {
+  const popupTranslations = JSON.parse(
+    readProjectFile("extension/translations/popup.json")
   );
+  const serializedTranslations = JSON.stringify(popupTranslations);
 
   assert.doesNotMatch(serializedTranslations, /Ã.|Â.|â€|ðŸ/u);
 });
@@ -91,11 +89,11 @@ test("preferencia de idioma usa o armazenamento compartilhado", async () => {
 });
 
 test("popup e configuracoes usam a preferencia compartilhada", () => {
-  const popupSource = readProjectFile("extension/js/popup.js");
-  const optionsSource = readProjectFile("extension/js/options.js");
+  const popupSource = readProjectFile("extension/js/popup/language.js");
+  const optionsSource = readProjectFile("extension/js/options/language.js");
 
   assert.match(popupSource, /loadLanguagePreference/u);
-  assert.match(popupSource, /changes\[storageKeys\.language\]/u);
-  assert.match(optionsSource, /initializeOptionsLanguageDialog/u);
+  assert.match(popupSource, /saveLanguagePreference/u);
+  assert.match(optionsSource, /loadLanguagePreference/u);
   assert.match(optionsSource, /saveLanguagePreference/u);
 });
