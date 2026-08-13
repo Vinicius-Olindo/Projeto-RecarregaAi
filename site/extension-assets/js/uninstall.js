@@ -444,7 +444,9 @@ const updateLocalizedText = () => {
     }
   });
 
-  uninstallElements.extensionVersion.textContent = getCopy("versionLabel");
+  if (uninstallElements.extensionVersion) {
+    uninstallElements.extensionVersion.textContent = getCopy("versionLabel");
+  }
   uninstallElements.pageRoot.lang = activeLanguage;
   document.documentElement.lang = activeLanguage;
   updateUninstallThemeButtonLabel({

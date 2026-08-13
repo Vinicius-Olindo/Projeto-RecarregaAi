@@ -184,8 +184,10 @@ const loadOptionsVersion = () => {
 
   const manifest = chrome.runtime.getManifest();
 
-  optionsElements.extensionVersion.textContent = manifest.version_name
-    || manifest.version;
+  if (optionsElements.extensionVersion) {
+    optionsElements.extensionVersion.textContent = manifest.version_name
+      || manifest.version;
+  }
 };
 
 const importOptionsSettingsFromFile = async (file) => {
