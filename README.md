@@ -22,7 +22,9 @@ O repositório reúne dois produtos independentes:
 - Histórico local de ações.
 - Importação e exportação de configurações.
 - Temas claro e escuro.
-- Interface em português, inglês e espanhol.
+- Atalhos de teclado configuráveis.
+- Modo debug para desenvolvedores.
+- Interface em português, inglês, espanhol, francês, alemão, italiano, indonésio e turco.
 
 ## Extensão
 
@@ -89,6 +91,8 @@ RecarregaAI-/
 |   |   `-- uninstall.html
 |   |-- css/
 |   |-- js/
+|   |   |-- popup/
+|   |   |-- options/
 |   |   `-- modules/
 |   `-- assets/
 |       `-- icons/
@@ -102,6 +106,7 @@ RecarregaAI-/
 |-- backend/
 |   `-- google-apps-script/
 |-- scripts/
+|-- tests/
 |-- .github/
 |   `-- workflows/
 |-- package.json
@@ -190,7 +195,7 @@ documentação, backend ou arquivos do site dentro do ZIP da extensão.
 
 ## Versionamento
 
-Toda alteração entregue incrementa a versão do projeto e mantém os arquivos sincronizados no formato numérico `x.y.z`. Ao chegar a uma versão como `2.5.0`, a próxima será `2.5.0`.
+Toda alteração entregue incrementa a versão do projeto e mantém os arquivos sincronizados no formato numérico `x.y.z`. Ao chegar a uma versão como `2.5.0`, a próxima será `2.6.0`.
 
 ## Contato
 
