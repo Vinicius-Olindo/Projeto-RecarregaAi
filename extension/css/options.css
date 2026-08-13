@@ -1363,7 +1363,22 @@ a {
   color: var(--color-muted);
   font-size: var(--text-sm);
   font-weight: var(--weight-medium);
+  opacity: 0;
   text-align: center;
+  transform: translateY(-2px);
+  transition:
+    opacity 220ms ease,
+    transform 220ms ease;
+}
+
+.options__status.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.options__status.is-hiding {
+  opacity: 0;
+  transform: translateY(4px);
 }
 
 .options__status[data-status="success"] {

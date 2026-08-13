@@ -13,7 +13,9 @@ export const getNextTheme = (theme) => (
 );
 
 export const getSystemTheme = () => (
-  window.matchMedia("(prefers-color-scheme: dark)").matches
+  typeof window !== "undefined"
+    && typeof window.matchMedia === "function"
+    && window.matchMedia("(prefers-color-scheme: dark)").matches
     ? themeModes.dark
     : themeModes.light
 );
@@ -24,6 +26,37 @@ export const getChromeLocalStorage = () => {
   }
 
   return chrome.storage.local;
+};
+
+const getUseSystemThemePreference = async (storageArea) => {
+  if (!storageArea) {
+    return false;
+  }
+
+  const storedData = await storageArea.get(storageKeys.appSettings);
+  const storedSettings = storedData[storageKeys.appSettings] || {};
+
+  return Boolean(storedSettings.useSystemTheme);
+};
+
+const disableSystemThemePreference = async (storageArea) => {
+  if (!storageArea) {
+    return;
+  }
+
+  const storedData = await storageArea.get(storageKeys.appSettings);
+  const storedSettings = storedData[storageKeys.appSettings] || {};
+
+  if (!storedSettings.useSystemTheme) {
+    return;
+  }
+
+  await storageArea.set({
+    [storageKeys.appSettings]: {
+      ...storedSettings,
+      useSystemTheme: false
+    }
+  });
 };
 
 export const applyThemePreference = ({
@@ -47,28 +80,31 @@ export const applyThemePreference = ({
 };
 
 export const loadThemePreference = async ({
-  defaultTheme = null,
+  defaultTheme = themeModes.light,
   onChange = null,
   root = document.documentElement,
   storageArea = getChromeLocalStorage()
 } = {}) => {
   if (!storageArea) {
-    const resolved = defaultTheme || getSystemTheme();
-    return applyThemePreference({ onChange, root, theme: resolved });
+    return applyThemePreference({ onChange, root, theme: defaultTheme });
   }
 
   const storedData = await storageArea.get(storageKeys.theme);
   const storedTheme = storedData[storageKeys.theme];
 
+  if (await getUseSystemThemePreference(storageArea)) {
+    return applyThemePreference({ onChange, root, theme: getSystemTheme() });
+  }
+
   if (storedTheme) {
     return applyThemePreference({ onChange, root, theme: storedTheme });
   }
 
-  const systemTheme = getSystemTheme();
-  return applyThemePreference({ onChange, root, theme: systemTheme });
+  return applyThemePreference({ onChange, root, theme: defaultTheme });
 };
 
 export const saveThemePreference = async ({
+  disableSystemTheme = true,
   onChange = null,
   root = document.documentElement,
   storageArea = getChromeLocalStorage(),
@@ -81,6 +117,10 @@ export const saveThemePreference = async ({
   });
 
   if (storageArea) {
+    if (disableSystemTheme) {
+      await disableSystemThemePreference(storageArea);
+    }
+
     await storageArea.set({
       [storageKeys.theme]: nextTheme
     });
@@ -110,20 +150,14 @@ export const watchSystemTheme = ({
   root = document.documentElement,
   storageArea = getChromeLocalStorage()
 } = {}) => {
-  if (systemThemeListener) {
+  if (systemThemeListener || !storageArea || typeof window.matchMedia !== "function") {
     return;
   }
 
   const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
   systemThemeListener = async () => {
-    if (!storageArea) {
-      return;
-    }
-
-    const storedData = await storageArea.get(storageKeys.theme);
-
-    if (storedData[storageKeys.theme]) {
+    if (!await getUseSystemThemePreference(storageArea)) {
       return;
     }
 
@@ -138,7 +172,7 @@ export const watchSystemTheme = ({
 };
 
 export const unwatchSystemTheme = () => {
-  if (!systemThemeListener) {
+  if (!systemThemeListener || typeof window.matchMedia !== "function") {
     return;
   }
 

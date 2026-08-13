@@ -181,7 +181,9 @@
     ],
     "diagnosticsExport": "Exportar diagnostico",
     "diagnosticsExportError": "Erro ao exportar diagnostico.",
-    "diagnosticsExported": "Diagnostico exportado."
+    "diagnosticsExported": "Diagnostico exportado.",
+    "systemThemeTitle": "Usar tema do sistema",
+    "systemThemeDescription": "Segue automaticamente o tema claro ou escuro definido no sistema."
   },
   "en": {
     "addSite": "Add site",
@@ -365,7 +367,9 @@
     ],
     "diagnosticsExport": "Export diagnostics",
     "diagnosticsExportError": "Error exporting diagnostics.",
-    "diagnosticsExported": "Diagnostics exported."
+    "diagnosticsExported": "Diagnostics exported.",
+    "systemThemeTitle": "Use system theme",
+    "systemThemeDescription": "Automatically follows the light or dark theme set by the system."
   },
   "es": {
     "addSite": "Agregar sitio",
@@ -549,7 +553,9 @@
     ],
     "diagnosticsExport": "Exportar diagnostico",
     "diagnosticsExportError": "Error al exportar diagnostico.",
-    "diagnosticsExported": "Diagnostico exportado."
+    "diagnosticsExported": "Diagnostico exportado.",
+    "systemThemeTitle": "Usar tema del sistema",
+    "systemThemeDescription": "Sigue automáticamente el tema claro u oscuro definido en el sistema."
   },
   "fr": {
     "addSite": "Ajouter un site",
@@ -733,7 +739,9 @@
     ],
     "diagnosticsExport": "Exporter diagnostic",
     "diagnosticsExportError": "Erreur lors de export du diagnostic.",
-    "diagnosticsExported": "Diagnostic exporte."
+    "diagnosticsExported": "Diagnostic exporte.",
+    "systemThemeTitle": "Utiliser le thème du système",
+    "systemThemeDescription": "Suit automatiquement le thème clair ou sombre défini par le système."
   },
   "de": {
     "addSite": "Website hinzufügen",
@@ -917,7 +925,9 @@
     ],
     "diagnosticsExport": "Diagnose exportieren",
     "diagnosticsExportError": "Fehler beim Exportieren der Diagnose.",
-    "diagnosticsExported": "Diagnose exportiert."
+    "diagnosticsExported": "Diagnose exportiert.",
+    "systemThemeTitle": "Systemdesign verwenden",
+    "systemThemeDescription": "Folgt automatisch dem im System festgelegten hellen oder dunklen Design."
   },
   "it": {
     "addSite": "Aggiungi sito",
@@ -1101,7 +1111,9 @@
     ],
     "diagnosticsExport": "Esporta diagnostica",
     "diagnosticsExportError": "Errore durante esportazione della diagnostica.",
-    "diagnosticsExported": "Diagnostica esportata."
+    "diagnosticsExported": "Diagnostica esportata.",
+    "systemThemeTitle": "Usa tema di sistema",
+    "systemThemeDescription": "Segue automaticamente il tema chiaro o scuro impostato dal sistema."
   },
   "id": {
     "addSite": "Tambahkan situs",
@@ -1285,7 +1297,9 @@
     ],
     "diagnosticsExport": "Ekspor diagnostik",
     "diagnosticsExportError": "Gagal mengekspor diagnostik.",
-    "diagnosticsExported": "Diagnostik diekspor."
+    "diagnosticsExported": "Diagnostik diekspor.",
+    "systemThemeTitle": "Gunakan tema sistem",
+    "systemThemeDescription": "Secara otomatis mengikuti tema terang atau gelap yang diatur di sistem."
   },
   "tr": {
     "addSite": "Site ekle",
@@ -1469,6 +1483,8 @@
     ],
     "diagnosticsExport": "Tanilamayi disa aktar",
     "diagnosticsExportError": "Tanilama disa aktarilirken hata olustu.",
-    "diagnosticsExported": "Tanilama disa aktarildi."
+    "diagnosticsExported": "Tanilama disa aktarildi.",
+    "systemThemeTitle": "Sistem temasını kullan",
+    "systemThemeDescription": "Sistemde ayarlanan açık veya koyu temayı otomatik olarak izler."
   }
 }

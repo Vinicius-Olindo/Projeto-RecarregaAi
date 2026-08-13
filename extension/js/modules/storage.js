@@ -222,7 +222,8 @@ export const getAppSettings = async () => {
     debugMode: Boolean(storedSettings.debugMode),
     operatingHours: normalizeOperatingHours(storedSettings.operatingHours),
     playSoundOnComplete: Boolean(storedSettings.playSoundOnComplete),
-    preserveScrollPosition: Boolean(storedSettings.preserveScrollPosition)
+    preserveScrollPosition: Boolean(storedSettings.preserveScrollPosition),
+    useSystemTheme: Boolean(storedSettings.useSystemTheme)
   };
 };
 

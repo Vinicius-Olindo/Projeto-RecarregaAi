@@ -102,7 +102,8 @@ export const defaultAppSettings = Object.freeze({
   defaultIntervalInMinutes: 3,
   operatingHours: defaultOperatingHours,
   playSoundOnComplete: false,
-  preserveScrollPosition: false
+  preserveScrollPosition: false,
+  useSystemTheme: false
 });
 
 const normalizeClockTime = (time, fallback) => (

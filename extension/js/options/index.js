@@ -61,6 +61,9 @@ const syncPreferenceControls = () => {
   optionsElements.playSoundInput.checked = Boolean(
     currentSettings.playSoundOnComplete
   );
+  optionsElements.systemThemeInput.checked = Boolean(
+    currentSettings.useSystemTheme
+  );
   optionsElements.debugModeInput.checked = Boolean(
     currentSettings.debugMode
   );
@@ -90,6 +93,8 @@ const savePreferenceSettings = async () => {
     optionsElements.preserveScrollInput.checked;
   currentSettings.playSoundOnComplete =
     optionsElements.playSoundInput.checked;
+  currentSettings.useSystemTheme =
+    optionsElements.systemThemeInput.checked;
   currentSettings.debugMode =
     optionsElements.debugModeInput.checked;
   currentSettings.operatingHours = normalizeOperatingHours({
@@ -102,6 +107,9 @@ const savePreferenceSettings = async () => {
   });
 
   await saveOptionsSettings();
+  await loadThemePreference({
+    onChange: updateOptionsThemeButtonLabel
+  });
   syncPreferenceControls();
   updateOptionsStatus(getOptionsCopy("formSettingsSaved"), "success");
 };
@@ -159,9 +167,14 @@ const loadOptionsTheme = async () => {
 };
 
 const toggleOptionsTheme = async () => {
+  const currentSettings = getCurrentSettings();
+
+  currentSettings.useSystemTheme = false;
+  await saveOptionsSettings();
   await toggleThemePreference({
     onChange: updateOptionsThemeButtonLabel
   });
+  syncPreferenceControls();
 };
 
 const loadOptionsVersion = () => {
@@ -204,6 +217,7 @@ const importOptionsSettingsFromFile = async (file) => {
 
     if (importedData.preferences.theme) {
       await saveThemePreference({
+        disableSystemTheme: !getCurrentSettings().useSystemTheme,
         onChange: updateOptionsThemeButtonLabel,
         theme: importedData.preferences.theme
       });
@@ -219,6 +233,10 @@ const importOptionsSettingsFromFile = async (file) => {
         applyOptionsLanguage(importedData.preferences.language);
       }
     }
+
+    await loadThemePreference({
+      onChange: updateOptionsThemeButtonLabel
+    });
   } catch (error) {
     setCurrentSettings(previousSettings);
     throw error;

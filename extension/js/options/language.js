@@ -79,6 +79,8 @@ export const applyOptionsLanguage = (language, {
   setText("#preserve-scroll-description", "preserveScrollDescription");
   setText("#play-sound-title", "playSoundTitle");
   setText("#play-sound-description", "playSoundDescription");
+  setText("#system-theme-title", "systemThemeTitle");
+  setText("#system-theme-description", "systemThemeDescription");
   setText("#advanced-cleanup-title", "advancedCleanupTitle");
   setText("#advanced-cleanup-description", "advancedCleanupDescription");
   setText("#operating-hours-title", "operatingTitle");

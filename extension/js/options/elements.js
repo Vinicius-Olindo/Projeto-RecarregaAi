@@ -35,6 +35,7 @@ export const optionsElements = {
   siteOriginInput: document.querySelector("#site-origin-input"),
   sitesEmptyState: document.querySelector("#sites-empty-state"),
   sitesList: document.querySelector("#sites-list"),
+  systemThemeInput: document.querySelector("#system-theme-input"),
   themeToggleButton: document.querySelector("#theme-toggle-button"),
   themeToggleLabel: document.querySelector("#theme-toggle-label")
 };

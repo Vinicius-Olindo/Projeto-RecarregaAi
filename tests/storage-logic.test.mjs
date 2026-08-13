@@ -28,6 +28,7 @@ test("defaultAppSettings tem valores padrao", () => {
   assert.deepEqual(defaultAppSettings.autoStartSites, []);
   assert.equal(defaultAppSettings.defaultIntervalInMinutes, 3);
   assert.equal(defaultAppSettings.preserveScrollPosition, false);
+  assert.equal(defaultAppSettings.useSystemTheme, false);
   assert.ok(defaultAppSettings.operatingHours);
 });
 

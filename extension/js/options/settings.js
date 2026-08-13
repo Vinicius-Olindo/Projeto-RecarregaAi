@@ -16,8 +16,12 @@ import { getOptionsCopy } from "./language.js";
 const optionsPreviewStorageKey = "recarregaAiOptionsPreviewSettings";
 const settingsExportType = "recarregaai-settings";
 const settingsExportVersion = 2;
+const optionsStatusVisibleMilliseconds = 10000;
+const optionsStatusFadeMilliseconds = 240;
 
 let currentSettings = { ...defaultAppSettings };
+let optionsStatusHideTimeoutId = null;
+let optionsStatusClearTimeoutId = null;
 
 export const getCurrentSettings = () => currentSettings;
 export const setCurrentSettings = (settings) => {
@@ -45,8 +49,28 @@ export const savePreviewSettings = (settings) => {
 };
 
 export const updateOptionsStatus = (message, status = "neutral") => {
+  window.clearTimeout(optionsStatusHideTimeoutId);
+  window.clearTimeout(optionsStatusClearTimeoutId);
+
   optionsElements.optionsStatus.textContent = message;
   optionsElements.optionsStatus.dataset.status = status;
+  optionsElements.optionsStatus.classList.toggle("is-visible", Boolean(message));
+  optionsElements.optionsStatus.classList.remove("is-hiding");
+
+  if (!message) {
+    return;
+  }
+
+  optionsStatusHideTimeoutId = window.setTimeout(() => {
+    optionsElements.optionsStatus.classList.add("is-hiding");
+    optionsElements.optionsStatus.classList.remove("is-visible");
+
+    optionsStatusClearTimeoutId = window.setTimeout(() => {
+      optionsElements.optionsStatus.textContent = "";
+      optionsElements.optionsStatus.dataset.status = "neutral";
+      optionsElements.optionsStatus.classList.remove("is-hiding");
+    }, optionsStatusFadeMilliseconds);
+  }, optionsStatusVisibleMilliseconds);
 };
 
 export const updateSiteFormAlert = (message = "") => {
@@ -95,7 +119,8 @@ export const getStoredOptionsSettings = async () => {
       ? storedSettings.autoStartSites
       : [],
     operatingHours: normalizeOperatingHours(storedSettings.operatingHours),
-    preserveScrollPosition: Boolean(storedSettings.preserveScrollPosition)
+    preserveScrollPosition: Boolean(storedSettings.preserveScrollPosition),
+    useSystemTheme: Boolean(storedSettings.useSystemTheme)
   };
 };
 
@@ -190,7 +215,8 @@ export const normalizeOptionsSettings = (settings) => {
     autoStartSites: [...siteMap.values()],
     defaultIntervalInMinutes,
     operatingHours: normalizeOperatingHours(settings.operatingHours),
-    preserveScrollPosition: Boolean(settings.preserveScrollPosition)
+    preserveScrollPosition: Boolean(settings.preserveScrollPosition),
+    useSystemTheme: Boolean(settings.useSystemTheme)
   };
 };
 
