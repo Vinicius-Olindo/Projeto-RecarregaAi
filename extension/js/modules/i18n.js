@@ -10,7 +10,9 @@ const loadPageTranslations = async (pageName) => {
   }
 
   try {
-    const url = chrome.runtime.getURL(`translations/${pageName}.json`);
+    const url = globalThis.chrome?.runtime?.getURL
+      ? chrome.runtime.getURL(`translations/${pageName}.json`)
+      : new URL(`../../translations/${pageName}.json`, import.meta.url).href;
     const response = await fetch(url);
     const translations = await response.json();
 

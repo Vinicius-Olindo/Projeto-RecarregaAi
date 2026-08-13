@@ -12,7 +12,8 @@ import { enforceTopLevelPublicPage } from "./modules/public-page-security.js";
 enforceTopLevelPublicPage();
 
 const feedbackBackendUrl = appConfig.feedbackBackendUrl;
-const defaultVersionLabel = chrome.runtime?.getManifest?.()?.version || "2.5.0";
+const defaultVersionLabel =
+  globalThis.chrome?.runtime?.getManifest?.()?.version || "2.5.0";
 const defaultLanguage = "pt-BR";
 const defaultReason = "Não informou motivo";
 const feedbackCooldownInMilliseconds = 60 * 1000;

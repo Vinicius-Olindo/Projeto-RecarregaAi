@@ -18,6 +18,7 @@ const extensionAssetsOutput = join(output, "extension-assets");
 const publicPages = ["privacy.html", "uninstall.html"];
 const publicStyles = [
   "privacy.css",
+  "shared-design-tokens.css",
   "shared-floating-tools.css",
   "shared-footer.css",
   "shared-language-dialog.css",
@@ -26,13 +27,14 @@ const publicStyles = [
 const publicScripts = ["privacy.js", "uninstall.js"];
 const publicModules = [
   "config.js",
-  "extended-translations.js",
   "floating-tools.js",
+  "i18n.js",
   "language-dialog.js",
   "public-page-security.js",
   "shared.js",
   "theme.js"
 ];
+const publicTranslations = ["privacy.json", "uninstall.json"];
 
 const copyFile = (source, destination) => {
   mkdirSync(dirname(destination), {
@@ -80,6 +82,12 @@ publicModules.forEach((fileName) => {
   copyFile(
     join(extensionSource, "js", "modules", fileName),
     join(extensionAssetsOutput, "js", "modules", fileName)
+  );
+});
+publicTranslations.forEach((fileName) => {
+  copyFile(
+    join(extensionSource, "translations", fileName),
+    join(extensionAssetsOutput, "translations", fileName)
   );
 });
 cpSync(
